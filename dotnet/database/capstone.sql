@@ -22,6 +22,7 @@ CREATE TABLE users (
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+	CONSTRAINT CHK_User CHECK (user_role IN ('user', 'admin'))
 )
 
 -- Populate default data for testing: user and admin with password of 'password'

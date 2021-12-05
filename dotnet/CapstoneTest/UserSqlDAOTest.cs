@@ -38,5 +38,16 @@ namespace CapstoneTest
 
             Assert.AreEqual("admin", user.Role);
         }
+
+        [TestMethod]
+        public void AddUserWithoutValidRoleThrowsExceptionTest()
+        {
+            Assert.ThrowsException<SqlException>(() =>
+            {
+                UserSqlDAO access = new UserSqlDAO(ConnectionString);
+
+                User user = access.AddUser("anotheruser", "password", "notarole");
+            });
+        }
     }
 }
