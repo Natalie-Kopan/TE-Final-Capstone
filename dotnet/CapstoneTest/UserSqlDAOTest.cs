@@ -26,7 +26,7 @@ namespace CapstoneTest
         {
             UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-            User user = access.AddUser("anotheruser", "password", "admin");
+            User user = access.AddUser("anotheruser", "password", 1, "admin");
 
             Assert.IsNotNull(user);
 
@@ -37,6 +37,17 @@ namespace CapstoneTest
             Assert.IsNotNull(user);
 
             Assert.AreEqual("admin", user.Role);
+        }
+
+        [TestMethod]
+        public void AddUserWithoutValidRoleThrowsExceptionTest()
+        {
+            Assert.ThrowsException<SqlException>(() =>
+            {
+                UserSqlDAO access = new UserSqlDAO(ConnectionString);
+
+                User user = access.AddUser("anotheruser", "password", 1, "notarole");
+            });
         }
     }
 }
