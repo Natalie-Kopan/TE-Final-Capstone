@@ -26,7 +26,7 @@ namespace CapstoneTest
         {
             UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-            User user = access.AddUser("anotheruser", "password", "admin");
+            User user = access.AddUser("anotheruser", "password", 1, "admin");
 
             Assert.IsNotNull(user);
 
@@ -46,7 +46,7 @@ namespace CapstoneTest
             {
                 UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-                User user = access.AddUser("anotheruser", "password", "notarole");
+                User user = access.AddUser("anotheruser", "password", 1, "notarole");
             });
         }
     }

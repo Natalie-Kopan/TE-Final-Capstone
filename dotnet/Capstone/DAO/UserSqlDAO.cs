@@ -11,8 +11,8 @@ namespace Capstone.DAO
         private readonly string connectionString;
 
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
-        private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, user_role) VALUES " +
-            "(@username, @password_hash, @salt, @user_role)";
+        private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_id, user_role) VALUES " +
+            "(@username, @password_hash, @salt, @family_id, @user_role)";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -41,7 +41,7 @@ namespace Capstone.DAO
         }
 
 
-        public User AddUser(string username, string password, string role)
+        public User AddUser(string username, string password, int family_id, string role)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
@@ -54,6 +54,7 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password_hash", hash.Password);
                 cmd.Parameters.AddWithValue("@salt", hash.Salt);
+                cmd.Parameters.AddWithValue("@family_id", family_id);
                 cmd.Parameters.AddWithValue("@user_role", role);
                 cmd.ExecuteNonQuery();
             }
