@@ -12,7 +12,7 @@ namespace Capstone.DAO
         private const string AddBooksSql = "INSERT INTO books (isbn, title, author) VALUES (@isbn, @title, @author)";
         private const string AddUserBookSql = "INSERT INTO user_books(isbn, user_id) VALUES(@isbn, @user_id)";
         private const string getUserBooks = "SELECT b.isbn, b.title, b.author FROM books b " +
-            "INNER JOIN user_books ub ON ub.isbn = b.isbn" +
+            "INNER JOIN user_books ub ON ub.isbn = b.isbn " +
             "WHERE ub.user_id = @user_id";
         private const string getBookByIsbn = "SELECT b.isbn, b.title, b.author FROM books b " +
             "WHERE b.isbn = @isbn";

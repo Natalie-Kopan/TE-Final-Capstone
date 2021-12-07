@@ -1,6 +1,6 @@
 <template>
     <form v-on:submit.prevent="addedBook">
-        <div >
+        <div>
         <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" 
                 v-model.trim="addBook.title"
