@@ -56,11 +56,16 @@ const router = new Router({
     },
    {
       path: '/book',
-      name: 'book',
+      name: 'addBook',
       component: AddBook,
       meta: {
         requiresAuth: false,
       },
+    },
+    {
+      path: '/book',
+      name: 'userLibrary',
+      component: UserLibrary
     },
     {
       path: "*",

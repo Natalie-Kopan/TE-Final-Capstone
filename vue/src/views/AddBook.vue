@@ -34,7 +34,7 @@
 import AuthService from '../services/AuthService';
 
 export default {
-    name: 'book',
+    name: 'addBook',
         data() {
         return {
             addBook: {

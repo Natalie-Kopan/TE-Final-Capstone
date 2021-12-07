@@ -14,4 +14,8 @@ export default {
     return axios.post('/book', book)
   },
 
+  displayUserBookLibrary(userId){
+    return axios.get('/book', userId)
+  }
+
 }
