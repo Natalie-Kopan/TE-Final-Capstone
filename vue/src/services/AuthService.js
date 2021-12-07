@@ -16,6 +16,6 @@ export default {
 
   displayUserBookLibrary(userId){
     return axios.get('/book', userId)
-  }
+  },
 
 }
