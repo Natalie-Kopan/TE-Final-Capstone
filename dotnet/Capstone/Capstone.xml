@@ -4,6 +4,12 @@
         <name>Capstone</name>
     </assembly>
     <members>
+        <member name="M:Capstone.Controllers.BookController.GetAllUserBooks">
+            <summary>
+            get all book
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Capstone.Controllers.LoginController.Ready">
             <summary>
             A test endpoint to ensure that the server is running.

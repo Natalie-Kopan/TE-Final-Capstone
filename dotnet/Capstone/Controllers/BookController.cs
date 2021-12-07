@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,11 +25,32 @@ namespace Capstone.Controllers
         [Authorize]
         public ActionResult AddNewBook(Book bookToAdd)
         {
-            Book addBook = bookDAO.AddBook(bookToAdd);
+          int userId = int.Parse(this.User.FindFirst("sub").Value);
+          Book addBook = new Book();
 
+            try
+            {
+                addBook = bookDAO.AddBook(bookToAdd, userId);
+            }
+            catch (SqlException)
+            {
+                return BadRequest(new { message = "This book either already exists or is invalid" });
+            }
+            
             return Created("/book/" + addBook.ISBN, addBook);
         }
 
-        
+        /// <summary>
+        /// get all book
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize]
+        public ActionResult GetAllUserBooks()
+        {
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            IEnumerable<Book> allBooks = bookDAO.GetBooks(userId);
+            return Ok(allBooks);
+        }
     }
 }
