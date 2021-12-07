@@ -17,7 +17,7 @@
         <div>
         <label for="isbn" class="form-label">ISBN</label>
             <input type="text" class="form-control" id="isbn" 
-                v-model.trim="addBook.isbn"
+                v-model.trim.number="addBook.isbn"
                 required 
                 placeholder="Enter a Book ISBN">
         </div>
@@ -44,7 +44,13 @@ export default {
         addedBook() {
             AuthService.addNewBook(this.addBook)
                 .then(response => {
-                    books = response.data;
+                    const newItem = response.data;
+                    this.books.push(newItem);
+                    this.addBook={
+                        title: '',
+                        author: '',
+                        isbn: '',
+                        };
                 })
                 .catch(response => {
                     console.error("Could not add book", response);

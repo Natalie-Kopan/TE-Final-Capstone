@@ -9,5 +9,7 @@ namespace Capstone.DAO
     public interface IBookDAO
     {
         Book AddBook(Book bookToAdd, int userId);
+        List<Book> GetBooks(int userId);
+
     }
 }

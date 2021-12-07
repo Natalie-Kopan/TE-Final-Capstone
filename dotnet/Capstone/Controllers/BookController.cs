@@ -24,11 +24,23 @@ namespace Capstone.Controllers
         [Authorize]
         public ActionResult AddNewBook(Book bookToAdd)
         {
+
             int userId = int.Parse(this.User.FindFirst("sub").Value);
             Book addBook = bookDAO.AddBook(bookToAdd, userId);
             return Created("/book/" + addBook.ISBN, addBook);
         }
 
-        
+        /// <summary>
+        /// get all book
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize]
+        public ActionResult GetAllUserBooks()
+        {
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            IEnumerable<Book> allBooks = bookDAO.GetBooks(userId);
+            return Ok(allBooks);
+        }
     }
 }
