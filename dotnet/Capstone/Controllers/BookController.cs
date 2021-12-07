@@ -24,8 +24,8 @@ namespace Capstone.Controllers
         [Authorize]
         public ActionResult AddNewBook(Book bookToAdd)
         {
-            Book addBook = bookDAO.AddBook(bookToAdd);
-
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            Book addBook = bookDAO.AddBook(bookToAdd, userId);
             return Created("/book/" + addBook.ISBN, addBook);
         }
 

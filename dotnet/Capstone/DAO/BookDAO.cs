@@ -10,6 +10,7 @@ namespace Capstone.DAO
     public class BookDAO : IBookDAO
     {
         private const string AddBooksSql = "INSERT INTO books (isbn, title, author) VALUES (@isbn, @title, @author)";
+        private const string AddUserBookSql = "INSERT INTO user_books(isbn, user_id) VALUES(@isbn, @user_id)";
 
         private readonly string connectionString;
 
@@ -18,7 +19,7 @@ namespace Capstone.DAO
             this.connectionString = connectionString;
         }
 
-        public Book AddBook(Book bookToAdd)
+        public Book AddBook(Book bookToAdd, int user_id)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -33,10 +34,22 @@ namespace Capstone.DAO
 
                     command.ExecuteNonQuery();
                 }
+
+                using (SqlCommand command = new SqlCommand(AddUserBookSql, conn))
+                {
+
+                    command.Parameters.AddWithValue("@isbn", bookToAdd.ISBN);
+                    command.Parameters.AddWithValue("@user_id", user_id);
+
+                    command.ExecuteNonQuery();
+                }
+
+
             }
 
             return bookToAdd;
         }
+
 
     }
 }

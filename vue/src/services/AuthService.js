@@ -8,6 +8,10 @@ export default {
 
   register(user) {
     return axios.post('/login/register', user)
-  }
+  },
+
+  addNewBook(book){
+    return axios.post('/book', book)
+  },
 
 }
