@@ -1,4 +1,5 @@
 <template>
+<section>
     <form v-on:submit.prevent="addedBook">
         <div >
         <label for="title" class="form-label">Title</label>
@@ -23,6 +24,10 @@
         </div>
         <button type="submit" class="btn btn-succes"> Add</button>
     </form>
+    <p v-if="errorMessage">
+        {{errorMessage}}
+    </p>
+</section>
 </template>
 
 <script> 
@@ -37,7 +42,8 @@ export default {
                 author: '',
                 isbn: '',
             },
-            books:[]
+            books:[],
+            errorMessage: ''
         }
     },
     methods: {
@@ -51,10 +57,11 @@ export default {
                         author: '',
                         isbn: '',
                         };
+                    this.errorMessage = '';
                 })
                 .catch(response => {
                     console.error("Could not add book", response);
-                    alert("Could not add book. Please try again.");
+                    this.errorMessage = 'This book either already exists or is invalid. Check user books list';
                 });
         }
             
