@@ -1,8 +1,12 @@
 <template>
   <section id="container">
-      <div v-for="book of allBooks" v-bind:key="book.isbn">
-          {{book}} 
-      </div>
+    <div v-for="book of allBooks" v-bind:key="book.isbn">
+      <div class = "card">
+      <h2>{{book.title}}</h2>
+      <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+      <h3 class="book-author">{{ book.author }}</h3>
+    </div>
+    </div>
   </section>
 </template>
 
@@ -38,5 +42,13 @@ export default {
 </script>
 
 <style>
+.card {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 250px;
+    height: 550px;
+    margin: 20px;
+}
+
 
 </style>

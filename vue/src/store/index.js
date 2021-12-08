@@ -43,7 +43,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    
-
+    BOOKS_LOADED(state, books) {
+      state.books = books;
+    },
   }
 })

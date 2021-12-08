@@ -17,7 +17,7 @@ GO
 -- Create Tables
 CREATE TABLE family (
 	family_id int IDENTITY(1,1) NOT NULL,
-	family_name varchar(200) NOT NULL,
+	family_name varchar(200) NOT NULL UNIQUE,
 	CONSTRAINT PK_family_id PRIMARY KEY (family_id)
 )
 
@@ -30,7 +30,7 @@ CREATE TABLE users (
 	family_id int NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id),
 	CONSTRAINT FK_users_family_id FOREIGN KEY (family_id) REFERENCES family(family_id),
-	CONSTRAINT CHK_User CHECK (user_role IN ('user', 'admin'))
+	CONSTRAINT CHK_User CHECK (user_role IN ('parent', 'child'))
 )
 
 CREATE TABLE books (
@@ -84,7 +84,7 @@ CREATE TABLE user_prizes (
 -- Populate default data for testing: user and admin with password of 'password'
 -- These values should not be kept when going to Production
 INSERT INTO family (family_name) VALUES ('test');
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('child','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('parent','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
 GO
 
