@@ -17,6 +17,16 @@
       </div>
       <div class="form-group">
         <input
+          type="text"
+          id="familyName"
+          class="form-control"
+          placeholder="Family Name"
+          v-model="user.familyName"
+          required
+          autofocus />
+      </div>
+      <div class="form-group">
+        <input
           type="password"
           id="password"
           class="form-control"
@@ -62,7 +72,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        role: 'parent',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
