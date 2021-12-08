@@ -31,13 +31,13 @@
         class="nav-item"
         v-bind:to="{ name: 'book' }"
         v-if="$store.state.token">
-        AddBook
+        Add Book
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'userLibrary' }"
         v-if="$store.state.token">
-        UserLibrary
+        User Library
       </router-link>
     </div>
     
@@ -55,6 +55,7 @@ export default {
      Any valid CSS or SCSS is allowable here. See https://sass-lang.com/documentation/style-rules for info on SCSS -->
 <style lang="scss">
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import './styles/colors.scss';
 @import './styles/style.scss';
 
