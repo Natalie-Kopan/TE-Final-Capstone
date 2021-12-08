@@ -1,32 +1,37 @@
 <template>
-<section class="container">
+
+<section>
+    <div class="container">
     <form v-on:submit.prevent="addedBook">
-        <div>
+        <div class="form-part">
         <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" 
                 v-model.trim="addBook.title"
                 required 
                 placeholder="Enter a Book title">
         </div>
-        <div>
+        <div class="form-part">
         <label for="author" class="form-label">Author</label>
             <input type="text" class="form-control" id="author" 
                 v-model.trim="addBook.author"
                 required 
                 placeholder="Enter a Book author">
         </div>
-        <div>
+        <div class="form-part">
         <label for="isbn" class="form-label">ISBN</label>
             <input type="text" class="form-control" id="isbn" 
                 v-model.trim.number="addBook.isbn"
                 required 
                 placeholder="Enter a Book ISBN">
         </div>
-        <button type="submit" class="btn btn-succes"> Add</button>
+        <div>
+        <button type="submit" class="submitBook"> Add</button>
+        </div>
     </form>
     <p v-if="errorMessage">
         {{errorMessage}}
     </p>
+    </div>
 </section>
 </template>
 
@@ -69,5 +74,19 @@ export default {
 </script>
 
 <style>
+.container{
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 450px;
+    height: 280px;
+    margin: 20px;
+    align-self: center;
+}
+
+ .submitBook{
+    border-radius: 10px;
+    bottom: 0;
+}
+
 
 </style>
