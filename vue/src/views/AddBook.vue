@@ -39,7 +39,7 @@
 import AuthService from '../services/AuthService';
 
 export default {
-    name: 'addBook',
+    name: 'AddBook',
         data() {
         return {
             addBook: {

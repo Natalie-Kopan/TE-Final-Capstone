@@ -36,7 +36,7 @@
           required />
       </div>
       <div class="form-group">
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+        <router-link :to="{ name: 'Register' }">Need an account?</router-link>
       </div>
       <button class="btn btn-primary" type="submit">Sign in</button>
     </form>
@@ -47,7 +47,7 @@
 import authService from "../services/AuthService";
 
 export default {
-  name: "login",
+  name: "Login",
   components: {},
   data() {
     return {
