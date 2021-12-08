@@ -1,8 +1,8 @@
 <template>
   <section id="container">
-      <div v-for="book of allBooks" v-bind:key="book.isbn">
-          {{book}} 
-      </div>
+    <div v-for="book of allBooks" v-bind:key="book.isbn">
+          {{book.title}} 
+    </div>
   </section>
 </template>
 
