@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style>
-.container{
+form{
     border: 2px solid black;
     border-radius: 10px;
     width: 450px;
