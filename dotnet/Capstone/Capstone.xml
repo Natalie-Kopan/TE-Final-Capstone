@@ -37,6 +37,26 @@
             </summary>
             <param name="userParam">The new user to create</param>
         </member>
+        <member name="M:Capstone.DAO.UserSqlDAO.AddUser(System.String,System.String,System.Int32,System.String)">
+            <summary>
+             RegisterUser Calls this method to create a user and add it to the database
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="family_id"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Capstone.DAO.UserSqlDAO.RegisterUser(System.String,System.String,System.String,System.String)">
+            <summary>
+            This method creates a family and then adds the user (using the AddUser method) with the family ID
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="familyName"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
         <member name="T:Capstone.Models.LoginResponse">
             <summary>
             Model to return upon successful login (user data + token)

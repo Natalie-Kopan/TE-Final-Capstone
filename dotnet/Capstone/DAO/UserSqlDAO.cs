@@ -41,7 +41,14 @@ namespace Capstone.DAO
             return returnUser;
         }
 
-
+        /// <summary>
+        ///  RegisterUser Calls this method to create a user and add it to the database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="family_id"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public User AddUser(string username, string password, int family_id, string role)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
@@ -63,6 +70,14 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
+        /// <summary>
+        /// This method creates a family and then adds the user (using the AddUser method) with the family ID
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="familyName"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public User RegisterUser(string username, string password, string familyName, string role)
         {
             int familyId;
