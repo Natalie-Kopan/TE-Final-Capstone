@@ -10,6 +10,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
+        private string sqlAddFamily = "INSERT INTO family (family_name) VALUES (@family_name); SELECT @@IDENTITY";
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_id, user_role) VALUES " +
             "(@username, @password_hash, @salt, @family_id, @user_role)";
@@ -60,6 +61,21 @@ namespace Capstone.DAO
             }
 
             return GetUser(username);
+        }
+
+        public User RegisterUser(string username, string password, string familyName, string role)
+        {
+            int familyId;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlAddFamily, conn);
+                cmd.Parameters.AddWithValue("@family_name", familyName);
+                familyId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            return AddUser(username, password, familyId, role);
         }
 
         private User GetUserFromReader(SqlDataReader reader)
