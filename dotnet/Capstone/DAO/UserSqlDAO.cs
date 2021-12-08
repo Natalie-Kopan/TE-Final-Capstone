@@ -11,8 +11,9 @@ namespace Capstone.DAO
         private readonly string connectionString;
 
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
-        private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_id, user_role) VALUES " +
-            "(@username, @password_hash, @salt, @family_id, @user_role)";
+        private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_name, user_role) VALUES " +
+            "(@username, @password_hash, @salt, @family_name, @user_role)";
+        private string sqlAddFamily = "INSERT INTO family (family_name) VALUES(@family_name)";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -41,7 +42,7 @@ namespace Capstone.DAO
         }
 
 
-        public User AddUser(string username, string password, int family_id, string role)
+        public User AddUser(string username, string password, string familyName, string role)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
@@ -50,13 +51,19 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(sqlAddUser, conn);
+                using (SqlCommand cmd = new SqlCommand(sqlAddUser, conn))
+                {
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password_hash", hash.Password);
                 cmd.Parameters.AddWithValue("@salt", hash.Salt);
-                cmd.Parameters.AddWithValue("@family_id", family_id);
+                cmd.Parameters.AddWithValue("@family_name", familyName);
                 cmd.Parameters.AddWithValue("@user_role", role);
                 cmd.ExecuteNonQuery();
+                }
+                using(SqlCommand cmd = new SqlCommand(sqlAddFamily, conn))
+                {
+                    cmd.Parameters.AddWithValue("@family_name", familyName);
+                }
             }
 
             return GetUser(username);
