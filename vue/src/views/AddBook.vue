@@ -1,5 +1,5 @@
 <template>
-<section>
+<section class="container">
     <form v-on:submit.prevent="addedBook">
         <div>
         <label for="title" class="form-label">Title</label>

@@ -2,39 +2,42 @@
      Note that you have classes from bootstrap available to you.
      See https://getbootstrap.com/docs/4.5/getting-started/introduction/ for reference on bootstrap -->
 <template>
-  <div id="app" class="container"> <!-- If you start to get random styling you don't like, remove container from this div -->
+  <div id="app"> <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
       <router-link class="nav-item" v-bind:to="{ name: 'home' }">
-        <i class="fas fa-home"></i> <!-- This is a font awesome icon -->
-        Home 
+        <img id="logo" src="../public/logo-textonly.png" />
+        <!--
+          <i class="fas fa-home"></i>
+          Home
+        --> 
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'register' }"
-        v-if="!$store.state.token">&nbsp;|&nbsp;Register</router-link>
+        v-if="!$store.state.token">Register</router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'login' }"
         v-if="!$store.state.token">
-        &nbsp;|&nbsp;Login
+        Login
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token">
-        &nbsp;|&nbsp;Logout
+        Logout
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'book' }"
         v-if="$store.state.token">
-        &nbsp;|&nbsp;AddBook
+        AddBook
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'userLibrary' }"
         v-if="$store.state.token">
-        &nbsp;|&nbsp;UserLibrary
+        UserLibrary
       </router-link>
     </div>
     
@@ -53,6 +56,7 @@ export default {
 <style lang="scss">
 
 @import './styles/colors.scss';
+@import './styles/style.scss';
 
 // Import the bootstrap styles. If you want to override Bootstrap colors, it needs to happen above this line
 @import '../node_modules/bootstrap/scss/bootstrap';
