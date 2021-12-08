@@ -30,6 +30,12 @@
         v-if="$store.state.token">
         &nbsp;|&nbsp;AddBook
       </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'userLibrary' }"
+        v-if="$store.state.token">
+        &nbsp;|&nbsp;UserLibrary
+      </router-link>
     </div>
     
     <router-view />

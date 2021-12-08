@@ -1,7 +1,7 @@
 <template>
 <section>
     <form v-on:submit.prevent="addedBook">
-        <div >
+        <div>
         <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" 
                 v-model.trim="addBook.title"
@@ -63,8 +63,7 @@ export default {
                     console.error("Could not add book", response);
                     this.errorMessage = 'This book either already exists or is invalid. Check user books list';
                 });
-        }
-            
+        }      
     },
 } 
 </script>
