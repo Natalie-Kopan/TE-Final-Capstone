@@ -33,6 +33,14 @@
           v-model="user.confirmPassword"
           required />
       </div>
+      
+      <!--div class="form-group">
+        <input
+          type="checkbox"
+          required />
+          <label for="userRole">I am a Parent.</label>
+      </div-->
+
       <div class="form-group">
         <router-link :to="{ name: 'login' }">Have an account?</router-link>
       </div>
