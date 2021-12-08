@@ -21,7 +21,7 @@ namespace CapstoneTest
             book.ISBN = 0;
 
             //Act
-            Book addedBook = input.AddBook(book);
+            Book addedBook = input.AddBook(book, 1);
 
             //Assert
             Assert.IsNotNull(addedBook);
