@@ -9,7 +9,7 @@
 import Library from '../components/Library.vue'
 
 export default {
-    name: 'userLibrary',
+    name: 'UserLibrary',
     components:{
         Library,
     },

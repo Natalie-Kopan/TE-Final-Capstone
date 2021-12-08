@@ -5,7 +5,7 @@
       <h2>{{book.title}}</h2>
       <img class= "bookcover" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="book.title" />
       <!--h3 class="book-author">{{ book.author }}</h3-->
-      <button class="button" v-on:click="UserProgress">
+      <button class="button">
           <router-link v-bind:to="{name: 'UserProgress', params: {id: book.isbn}}">
               View Book Activity
           </router-link>
@@ -19,7 +19,7 @@
 import AuthService from '../services/AuthService'
 
 export default {
-    name: 'userLibrary',
+    name: 'Library',
     computed: {
       allBooks() {
           return this.$store.state.books;
