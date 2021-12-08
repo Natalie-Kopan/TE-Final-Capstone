@@ -9,6 +9,13 @@ namespace Capstone.DAO
 {
     public class BookDAO : IBookDAO
     {
+        private readonly string connectionString;
+
+        public BookDAO(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         private const string AddBooksSql = "INSERT INTO books (isbn, title, author) VALUES (@isbn, @title, @author)";
         private const string AddUserBookSql = "INSERT INTO user_books(isbn, user_id) VALUES(@isbn, @user_id)";
         private const string getUserBooks = "SELECT b.isbn, b.title, b.author FROM books b " +
@@ -17,12 +24,6 @@ namespace Capstone.DAO
         private const string getBookByIsbn = "SELECT b.isbn, b.title, b.author FROM books b " +
             "WHERE b.isbn = @isbn";
 
-        private readonly string connectionString;
-
-        public BookDAO(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
 
         public Book AddBook(Book bookToAdd, int user_id)
         {
@@ -59,7 +60,7 @@ namespace Capstone.DAO
                 conn.Open();
                 using (SqlCommand command = new SqlCommand(getUserBooks, conn))
                 {
-                    command.Parameters.AddWithValue("user_id", userId);
+                    command.Parameters.AddWithValue("@user_id", userId);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

@@ -50,7 +50,7 @@ CREATE TABLE user_books (
 CREATE TABLE reading_log (
 	log_id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
-	minutes_read int NOT NULL,
+	minutes_read int NOT NULL DEFAULT 0,
 	book_format nvarchar(200) NOT NULL,
 	isbn int NOT NULL,
 	notes nvarchar(1024),
@@ -72,6 +72,13 @@ CREATE TABLE prizes (
 	end_date date NOT NULL,
 	CONSTRAINT PK_prize_id PRIMARY KEY (prize_id),
 	CONSTRAINT FK_prizes_family_id FOREIGN KEY (family_id) REFERENCES family(family_id),
+)
+
+CREATE TABLE user_prizes (
+	user_id int NOT NULL,
+	prize_id int NOT NULL,
+	CONSTRAINT FK_user_prizes_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_user_prizes_prize_id FOREIGN KEY (prize_id) REFERENCES prizes(prize_id)
 )
 
 -- Populate default data for testing: user and admin with password of 'password'
