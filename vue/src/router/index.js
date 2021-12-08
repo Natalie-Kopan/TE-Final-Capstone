@@ -57,7 +57,7 @@ const router = new Router({
     },
    {
       path: '/book',
-      name: 'addBook',
+      name: 'book',
       component: AddBook,
       meta: {
         requiresAuth: false,

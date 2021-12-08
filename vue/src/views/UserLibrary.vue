@@ -1,6 +1,8 @@
 <template>
   <section>
-    <h1>User's Books</h1>
+      <div v-for="book of allBooks" v-bind:key="book.isbn">
+          {{book}} 
+      </div>
   </section>
 </template>
 
@@ -9,25 +11,30 @@ import AuthService from '../services/AuthService';
 
 export default {
     name: 'userLibrary',
-    data(){
-      return{  
-      }
-    },
-    methods:{
-      displayBooks(){
-          AuthService.displayUserBookLibrary(this.userId)
-              .then(response => {
-                    return response.data;
-                    
-                    //this.errorMessage = '';
-                })
-                .catch(response => {
-                    console.error("Could not add book", response);
-                    this.errorMessage = 'This book either already exists or is invalid. Check user books list';
-                });
-    }}
-
+    computed: {
+      allBooks() {
+          return this.$store.state.books;
+      },
+   },
+     created() {
+          // Make a HTTP GET request and return a promise representing the operation
+          const booksPromise = AuthService.displayUserBookLibrary();
+          booksPromise
+          // 200 Status Codes
+          .then(response => {
+          console.log("GET Completed", response);
+          const books = response.data;
+          this.$store.state.books.push(books);
+          this.$store.commit('BOOKS_LOADED', books);
+          })
+          // 400, 500, network issues, no internet, etc.
+          .catch(response => {
+            console.error("Could not load books.", response);
+            alert("Issue loading books");
+          });
+  }
 }
+
 </script>
 
 <style>
