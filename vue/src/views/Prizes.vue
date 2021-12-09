@@ -33,17 +33,19 @@
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>
-                <input type="date" class="form-control" id="start_date" 
+                <DatePicker type="date" class="form-control" id="start_date" 
                 v-model.trim.number="addPrize.start_date"
                 required 
                 placeholder="Enter a Start Date">
+                </DatePicker>
             </div>
-            <div class="form-part">
+                <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
-                <input type="date" class="form-control" id="end_date" 
+                <DatePicker type="date" class="form-control" id="end_date" 
                 v-model.trim.number="addPrize.end_date"
                 required 
                 placeholder="Enter a End Date">
+                </DatePicker>
             </div>
             <div>
                 <button type="submit" class="submit"> Add</button>
@@ -58,6 +60,7 @@
 
 <script>
 import AuthService from '../services/AuthService'
+import DatePicker from 'vuejs-datepicker';
 
 export default {
     name: 'Prizes',
@@ -74,6 +77,9 @@ export default {
             prizes:[],
             errorMessage: ''
         }
+    },
+    components:{
+        DatePicker
     },
     methods: {
         addedPrize() {
@@ -107,6 +113,6 @@ export default {
     width: 450px;
     height: 650px;
     margin: 20px;
-
 }
+
 </style>
