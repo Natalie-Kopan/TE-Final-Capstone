@@ -18,9 +18,9 @@ export default {
     return axios.get('/book', userId)
   },
 
-  /*displayReadingActivityLog(userId) {
-    return axios.get('/readingactivitylog', userId)
-  }*/
+  displayReadingActivityLog(isbn) {
+    return axios.get(`/Activity/${isbn}`)
+  },
 
   addFamilyMember(user){
     return axios.post('/Login/addFamily', user)

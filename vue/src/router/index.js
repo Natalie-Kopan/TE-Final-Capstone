@@ -6,7 +6,8 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import AddBook from "../views/AddBook.vue";
 import UserLibrary from "../views/UserLibrary.vue";
-/*import ReadingActivityLog from "../views/ReadingActivityLog.vue";*/
+import ReadingActivityLog from "../views/ReadingActivityLog.vue";
+import AddFamilyMember from "../views/AddFamilyMember.vue";
 import store from "../store/index";
 
 Vue.use(Router);
@@ -26,7 +27,7 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: Home,
       meta: {
         requiresAuth: false,
@@ -34,7 +35,7 @@ const router = new Router({
     },
     {
       path: "/login",
-      name: "login",
+      name: "Login",
       component: Login,
       meta: {
         requiresAuth: false,
@@ -42,7 +43,7 @@ const router = new Router({
     },
     {
       path: "/logout",
-      name: "logout",
+      name: "Logout",
       component: Logout,
       meta: {
         requiresAuth: false,
@@ -50,7 +51,7 @@ const router = new Router({
     },
     {
       path: "/register",
-      name: "register",
+      name: "Register",
       component: Register,
       meta: {
         requiresAuth: false,
@@ -58,25 +59,24 @@ const router = new Router({
     },
    {
       path: '/book',
-      name: 'addBook',
+      name: 'AddBook',
       component: AddBook,
-      meta: {
-        requiresAuth: false,
-      },
     },
     {
       path: '/book',
-      name: 'userLibrary',
+      name: 'UserLibrary',
       component: UserLibrary
     },
-    /*{
-      path: '/readingactivitylog',
-      name: 'readingactivitylog',
+    {
+      path: '/Activity/:isbn',
+      name: 'ReadingActivityLog',
       component: ReadingActivityLog,
-      meta: {
-        requireAuth: true
-      }
-    },*/
+    },
+    {
+      path: '/Login/addFamily',
+      name: 'AddFamilyMember',
+      component: AddFamilyMember,
+    },
     {
       path: "*",
       redirect: "/",

@@ -32,10 +32,14 @@
         </div>
         <div class="log" id="blank-log" v-if="logs.length % 2 == 1">
     </div>
+    </div>
+    </div>
   
 </template>
 
 <script>
+//import AuthService from '../services/AuthService';
+
 export default {
 
 }

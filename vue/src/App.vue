@@ -29,7 +29,7 @@
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'Book' }"
+        v-bind:to="{ name: 'AddBook' }"
         v-if="$store.state.token">
         Add Book
       </router-link>
