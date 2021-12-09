@@ -18,4 +18,8 @@ export default {
     return axios.get('/book')
   },
 
+  addFamilyMember(user){
+    return axios.post('/Login/addFamily', user)
+  },
+
 }

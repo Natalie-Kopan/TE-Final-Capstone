@@ -39,6 +39,12 @@
         v-if="$store.state.token">
         User Library
       </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'AddFamilyMember' }"
+        v-if="$store.state.token">
+        Add Family Member
+      </router-link>
     </div>
     
     <router-view />

@@ -17,7 +17,7 @@ GO
 -- Create Tables
 CREATE TABLE family (
 	family_id int IDENTITY(1,1) NOT NULL,
-	family_name varchar(200) NOT NULL UNIQUE,
+	family_name varchar(200) NOT NULL,
 	CONSTRAINT PK_family_id PRIMARY KEY (family_id)
 )
 

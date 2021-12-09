@@ -14,6 +14,7 @@ namespace Capstone.DAO
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_id, user_role) VALUES " +
             "(@username, @password_hash, @salt, @family_id, @user_role)";
+        private string sqlGetFamilyId = "SELECT family_id FROM users WHERE user_id = @user_id";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -78,7 +79,7 @@ namespace Capstone.DAO
         /// <param name="familyName"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        public User RegisterUser(string username, string password, string familyName, string role)
+        public User RegisterUserAndFamily(string username, string password, string familyName)
         {
             int familyId;
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -90,7 +91,7 @@ namespace Capstone.DAO
                 familyId = Convert.ToInt32(cmd.ExecuteScalar());
             }
 
-            return AddUser(username, password, familyId, role);
+            return AddUser(username, password, familyId, "parent");
         }
 
         private User GetUserFromReader(SqlDataReader reader)
@@ -105,6 +106,21 @@ namespace Capstone.DAO
             };
 
             return u;
+        }
+
+        public int GetUserFamilyId(int userId)
+        {
+            int familyId;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlGetFamilyId, conn);
+                cmd.Parameters.AddWithValue("@user_id", userId);
+                familyId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            return familyId;
         }
     }
 }

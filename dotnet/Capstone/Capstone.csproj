@@ -16,6 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\RegisterUser - Copy.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Capstone.xml" />
   </ItemGroup>
 

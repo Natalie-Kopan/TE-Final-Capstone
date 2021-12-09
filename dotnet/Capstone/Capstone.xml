@@ -47,7 +47,7 @@
             <param name="role"></param>
             <returns></returns>
         </member>
-        <member name="M:Capstone.DAO.UserSqlDAO.RegisterUser(System.String,System.String,System.String,System.String)">
+        <member name="M:Capstone.DAO.UserSqlDAO.RegisterUserAndFamily(System.String,System.String,System.String)">
             <summary>
             This method creates a family and then adds the user (using the AddUser method) with the family ID
             </summary>
@@ -65,6 +65,11 @@
         <member name="T:Capstone.Models.LoginUser">
             <summary>
             Model to accept login parameters
+            </summary>
+        </member>
+        <member name="T:Capstone.Models.RegisterFamily">
+            <summary>
+            Model to accept registration parameters
             </summary>
         </member>
         <member name="T:Capstone.Models.RegisterUser">

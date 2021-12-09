@@ -55,7 +55,7 @@ namespace CapstoneTest
         {
             UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-            User user = access.RegisterUser("john", "password", "Doe", "user");
+            User user = access.RegisterUserAndFamily("john", "password", "Doe");
 
             Assert.AreEqual("john", user.Username);
         }

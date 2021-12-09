@@ -104,7 +104,7 @@ namespace Capstone.Controllers
                 return Conflict(new { message = "Username already taken. Please choose a different username." });
             }
 
-            User user = userDAO.RegisterUser(userParam.Username, userParam.Password, userParam.FamilyName, userParam.Role);
+            User user = userDAO.RegisterUserAndFamily(userParam.Username, userParam.Password, userParam.FamilyName);
             if (user != null)
             {
                 result = Created(user.Username, null); //values aren't read on client
@@ -116,5 +116,16 @@ namespace Capstone.Controllers
 
             return result;
         }
+        [HttpPost("addFamily")]
+        public IActionResult AddFamilyMember(RegisterFamily familyMem)
+        {
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            int familyId = userDAO.GetUserFamilyId(userId);
+
+            User newMember = userDAO.AddUser(familyMem.Username, familyMem.Password, familyId, familyMem.Role);
+
+            return Created("/" , newMember);
+        }
+
     }
 }
