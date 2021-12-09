@@ -23,6 +23,7 @@ if(currentToken && currentToken != 'undefined') {
 export default new Vuex.Store({
   state: {
     books:[],
+    prizes:[],
     token: currentToken || '',
     user: currentUser || {} // If a user is an parent, their user.role will be 'role'
   },

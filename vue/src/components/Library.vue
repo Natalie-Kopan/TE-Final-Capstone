@@ -1,5 +1,5 @@
 <template>
-  <section id="container">
+  <section class="container" id = "app">
     <div v-for="book of allBooks" v-bind:key="book.isbn">
       <div class = "card">
       <h2>{{book.title}}</h2>
