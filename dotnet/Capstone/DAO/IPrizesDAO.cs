@@ -9,6 +9,6 @@ namespace Capstone.DAO
     public interface IPrizesDAO
     {
         Prizes AddPrize(Prizes prizeToAdd);
-
+        List<Prizes> GetPrizes(int family_id);
     }
 }

@@ -41,6 +41,37 @@ namespace Capstone.DAO
             return prizeToAdd;
         }
 
+        
+        const string GetPrizesByFamilyIDsql = "SELECT family_id, description, prize_title, milestone, max_prize, start_date, end_date FROM prizes WHERE family_id = @family_id";
+
+        public List<Prizes> GetPrizes(int family_id)
+        {
+            List<Prizes> prizes = new List<Prizes>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(GetPrizesByFamilyIDsql, conn))
+                {
+                    command.Parameters.AddWithValue("@family_id", family_id);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Prizes prize = new Prizes();
+                            prize.decription = Convert.ToString(reader["description"]);
+                            prize.prizeTitle = Convert.ToString(reader["prize_title"]);
+                            prize.mileStone = Convert.ToInt32(reader["milestone"]);
+                            prize.maxPrize = Convert.ToInt32(reader["max_prize"]);
+                            prize.startDate = Convert.ToDateTime(reader["start_date"]);
+                            prize.endDate = Convert.ToDateTime(reader["end_date"]);
+                            prizes.Add(prize);
+                        }
+                    }
+                }
+            }
+            return prizes;
+        }
+
 
     }
 }
