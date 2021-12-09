@@ -14,8 +14,16 @@ export default {
     return axios.post('/book', book)
   },
 
-  displayUserBookLibrary(){
-    return axios.get('/book')
+  displayUserBookLibrary(userId){
+    return axios.get('/book', userId)
+  },
+
+  /*displayReadingActivityLog(userId) {
+    return axios.get('/readingactivitylog', userId)
+  }*/
+
+  addFamilyMember(user){
+    return axios.post('/Login/addFamily', user)
   },
 
 }

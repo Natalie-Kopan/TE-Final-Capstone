@@ -14,11 +14,11 @@ namespace CapstoneTest
         {
             UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-            User user = access.GetUser("user");
+            User user = access.GetUser("child");
 
             Assert.IsNotNull(user);
 
-            Assert.AreEqual("user", user.Role);
+            Assert.AreEqual("child", user.Role);
         }
 
         [TestMethod]
@@ -26,17 +26,17 @@ namespace CapstoneTest
         {
             UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-            User user = access.AddUser("anotheruser", "password", 1, "admin");
+            User user = access.AddUser("anotheruser", "password", 1, "parent");
 
             Assert.IsNotNull(user);
 
-            Assert.AreEqual("admin", user.Role);
+            Assert.AreEqual("parent", user.Role);
 
             user = access.GetUser("anotheruser");
 
             Assert.IsNotNull(user);
 
-            Assert.AreEqual("admin", user.Role);
+            Assert.AreEqual("parent", user.Role);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace CapstoneTest
         {
             UserSqlDAO access = new UserSqlDAO(ConnectionString);
 
-            User user = access.RegisterUser("john", "password", "Doe", "user");
+            User user = access.RegisterUserAndFamily("john", "password", "Doe");
 
             Assert.AreEqual("john", user.Username);
         }

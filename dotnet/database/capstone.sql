@@ -17,7 +17,7 @@ GO
 -- Create Tables
 CREATE TABLE family (
 	family_id int IDENTITY(1,1) NOT NULL,
-	family_name varchar(200) NOT NULL UNIQUE,
+	family_name varchar(200) NOT NULL,
 	CONSTRAINT PK_family_id PRIMARY KEY (family_id)
 )
 
@@ -34,14 +34,14 @@ CREATE TABLE users (
 )
 
 CREATE TABLE books (
-	isbn int NOT NULL,
+	isbn bigint NOT NULL,
 	title nvarchar(200) NOT NULL,
 	author nvarchar(200) NOT NULL,
 	CONSTRAINT PK_isbn PRIMARY KEY (isbn)
 )
 
 CREATE TABLE user_books (
-	isbn int NOT NULL,
+	isbn bigint NOT NULL,
 	user_id int NOT NULL,
 	CONSTRAINT FK_user_books_isbn FOREIGN KEY (isbn) REFERENCES books(isbn),
 	CONSTRAINT FK_user_books_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -52,7 +52,7 @@ CREATE TABLE reading_log (
 	user_id int NOT NULL,
 	minutes_read int NOT NULL DEFAULT 0,
 	book_format nvarchar(200) NOT NULL,
-	isbn int NOT NULL,
+	isbn bigint NOT NULL,
 	notes nvarchar(1024),
 	CONSTRAINT PK_log_id PRIMARY KEY (log_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
@@ -84,7 +84,7 @@ CREATE TABLE user_prizes (
 -- Populate default data for testing: user and admin with password of 'password'
 -- These values should not be kept when going to Production
 INSERT INTO family (family_name) VALUES ('test');
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('child','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('parent','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('child','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','child', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('parent','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','parent', 1);
 GO
 

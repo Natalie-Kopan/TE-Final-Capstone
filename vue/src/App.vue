@@ -4,7 +4,7 @@
 <template>
   <div id="app"> <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
-      <router-link class="nav-item" v-bind:to="{ name: 'home' }">
+      <router-link class="nav-item" v-bind:to="{ name: 'Home' }">
         <img id="logo" src="../public/logo-textonly.png" />
         <!--
           <i class="fas fa-home"></i>
@@ -13,31 +13,37 @@
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'register' }"
+        v-bind:to="{ name: 'Register' }"
         v-if="!$store.state.token">Register</router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'login' }"
+        v-bind:to="{ name: 'Login' }"
         v-if="!$store.state.token">
         Login
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'logout' }"
+        v-bind:to="{ name: 'Logout' }"
         v-if="$store.state.token">
         Logout
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'book' }"
+        v-bind:to="{ name: 'Book' }"
         v-if="$store.state.token">
         Add Book
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'userLibrary' }"
+        v-bind:to="{ name: 'UserLibrary' }"
         v-if="$store.state.token">
         User Library
+      </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'AddFamilyMember' }"
+        v-if="$store.state.user.role == 'parent'">
+        Add Family Member
       </router-link>
     </div>
     
@@ -47,7 +53,6 @@
 
 <script>
 export default {
-  
 }
 </script>
 

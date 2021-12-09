@@ -24,7 +24,7 @@ export default new Vuex.Store({
   state: {
     books:[],
     token: currentToken || '',
-    user: currentUser || {} // If a user is an admin, their user.role will be 'admin'
+    user: currentUser || {} // If a user is an parent, their user.role will be 'role'
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
