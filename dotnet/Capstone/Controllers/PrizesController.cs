@@ -41,5 +41,18 @@ namespace Capstone.Controllers
             return Created("/prize/" + prizeToAdd.familyId, prizeToAdd);
         }
 
+
+        //Getting the FamilyID from Prizes
+        [HttpGet]
+        public ActionResult GetAllFamilyPrizes()
+        {
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            int familyId = userDAO.GetUserFamilyId(userId);
+
+            IEnumerable<Prizes> allFamilyPrizes = prizesDAO.GetPrizes(familyId);
+            return Ok(allFamilyPrizes);
+            
+        }
+
     }
 }
