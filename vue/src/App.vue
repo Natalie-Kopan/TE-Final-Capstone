@@ -35,6 +35,12 @@
       </router-link>
       <router-link
         class="nav-item"
+        v-bind:to="{ name: 'Prizes' }"
+        v-if="$store.state.token">
+        Prizes
+      </router-link>
+      <router-link
+        class="nav-item"
         v-bind:to="{ name: 'UserLibrary' }"
         v-if="$store.state.token">
         User Library
