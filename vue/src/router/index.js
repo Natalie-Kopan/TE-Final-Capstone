@@ -6,6 +6,7 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import AddBook from "../views/AddBook.vue";
 import UserLibrary from "../views/UserLibrary.vue";
+/*import ReadingActivityLog from "../views/ReadingActivityLog.vue";*/
 import store from "../store/index";
 
 Vue.use(Router);
@@ -68,6 +69,14 @@ const router = new Router({
       name: 'userLibrary',
       component: UserLibrary
     },
+    /*{
+      path: '/readingactivitylog',
+      name: 'readingactivitylog',
+      component: ReadingActivityLog,
+      meta: {
+        requireAuth: true
+      }
+    },*/
     {
       path: "*",
       redirect: "/",

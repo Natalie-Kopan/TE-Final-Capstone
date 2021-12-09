@@ -10,9 +10,11 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
+        private string sqlAddFamily = "INSERT INTO family (family_name) VALUES (@family_name); SELECT @@IDENTITY";
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_id, user_role) VALUES " +
             "(@username, @password_hash, @salt, @family_id, @user_role)";
+        private string sqlGetFamilyId = "SELECT family_id FROM users WHERE user_id = @user_id";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -40,7 +42,14 @@ namespace Capstone.DAO
             return returnUser;
         }
 
-
+        /// <summary>
+        ///  RegisterUser Calls this method to create a user and add it to the database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="family_id"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public User AddUser(string username, string password, int family_id, string role)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
@@ -62,6 +71,29 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
+        /// <summary>
+        /// This method creates a family and then adds the user (using the AddUser method) with the family ID
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="familyName"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public User RegisterUserAndFamily(string username, string password, string familyName)
+        {
+            int familyId;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlAddFamily, conn);
+                cmd.Parameters.AddWithValue("@family_name", familyName);
+                familyId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            return AddUser(username, password, familyId, "parent");
+        }
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
@@ -74,6 +106,21 @@ namespace Capstone.DAO
             };
 
             return u;
+        }
+
+        public int GetUserFamilyId(int userId)
+        {
+            int familyId;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlGetFamilyId, conn);
+                cmd.Parameters.AddWithValue("@user_id", userId);
+                familyId = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            return familyId;
         }
     }
 }

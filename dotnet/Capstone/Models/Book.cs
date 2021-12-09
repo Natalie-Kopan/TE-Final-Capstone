@@ -7,7 +7,7 @@ namespace Capstone.Models
 {
     public class Book
     {
-        public int ISBN { get; set; }
+        public long ISBN { get; set; }
 
         public string Title { get; set; }
 

@@ -1,7 +1,7 @@
 <template>
-  <div id="register" class="text-center container">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+  <div id="addFamilyMember" class="text-center container">
+    <form class="form-add-family-member" @submit.prevent="addFamilyMember">
+      <h1 class="h3 mb-3 font-weight-normal">Add Family Member</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -12,16 +12,6 @@
           class="form-control"
           placeholder="Username"
           v-model="user.username"
-          required
-          autofocus />
-      </div>
-      <div class="form-group">
-        <input
-          type="text"
-          id="familyName"
-          class="form-control"
-          placeholder="Family Name"
-          v-model="user.familyName"
           required
           autofocus />
       </div>
@@ -42,6 +32,14 @@
           placeholder="Confirm Password"
           v-model="user.confirmPassword"
           required />
+      </div>
+      <div class="form-group">
+        <select
+          id="role"
+          class="form-select">
+          <option value="parent">Parent</option>
+          <option value="child">Child</option>
+        </select>
       </div>
       
       <!--div class="form-group">
@@ -65,7 +63,7 @@
 import authService from '../services/AuthService';
 
 export default {
-  name: 'Register',
+  name: 'AddFamilyMember',
   data() {
     return {
       user: {
@@ -79,18 +77,19 @@ export default {
     };
   },
   methods: {
-    register() {
+    addFamilyMember() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
         authService
-          .register(this.user)
+          .addFamilyMember(this.user)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({
-                name: 'login',
-                query: { registration: 'success' },
+              this.$router.push({ name:
+                'Home'
+                // name: 'login',
+                // query: { registration: 'success' },
               });
             }
           })

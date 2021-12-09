@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center container">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -36,7 +36,7 @@
           required />
       </div>
       <div class="form-group">
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+        <router-link :to="{ name: 'Register' }">Need an account?</router-link>
       </div>
       <button class="btn btn-primary" type="submit">Sign in</button>
     </form>
@@ -47,7 +47,7 @@
 import authService from "../services/AuthService";
 
 export default {
-  name: "login",
+  name: "Login",
   components: {},
   data() {
     return {

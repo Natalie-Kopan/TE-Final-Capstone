@@ -22,7 +22,7 @@ if(currentToken && currentToken != 'undefined') {
 
 export default new Vuex.Store({
   state: {
-    book:[],
+    books:[],
     token: currentToken || '',
     user: currentUser || {} // If a user is an admin, their user.role will be 'admin'
   },
@@ -43,7 +43,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    
-
+    BOOKS_LOADED(state, books) {
+      state.books = books;
+    },
   }
 })

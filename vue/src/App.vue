@@ -2,39 +2,48 @@
      Note that you have classes from bootstrap available to you.
      See https://getbootstrap.com/docs/4.5/getting-started/introduction/ for reference on bootstrap -->
 <template>
-  <div id="app" class="container"> <!-- If you start to get random styling you don't like, remove container from this div -->
+  <div id="app"> <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
-      <router-link class="nav-item" v-bind:to="{ name: 'home' }">
-        <i class="fas fa-home"></i> <!-- This is a font awesome icon -->
-        Home 
+      <router-link class="nav-item" v-bind:to="{ name: 'Home' }">
+        <img id="logo" src="../public/logo-textonly.png" />
+        <!--
+          <i class="fas fa-home"></i>
+          Home
+        --> 
       </router-link>
       <router-link
-        class="nav-item px-2"
-        v-bind:to="{ name: 'register' }"
-        v-if="!$store.state.token">&nbsp;|&nbsp;Register</router-link>
+        class="nav-item"
+        v-bind:to="{ name: 'Register' }"
+        v-if="!$store.state.token">Register</router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'login' }"
+        v-bind:to="{ name: 'Login' }"
         v-if="!$store.state.token">
-        &nbsp;| &nbsp;Login
+        Login
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'logout' }"
+        v-bind:to="{ name: 'Logout' }"
         v-if="$store.state.token">
-        &nbsp;| &nbsp;Logout
+        Logout
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'book' }"
+        v-bind:to="{ name: 'Book' }"
         v-if="$store.state.token">
-        &nbsp;| &nbsp;AddBook
+        Add Book
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'userLibrary' }"
+        v-bind:to="{ name: 'UserLibrary' }"
         v-if="$store.state.token">
-        &nbsp;| &nbsp;UserLibrary
+        User Library
+      </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'AddFamilyMember' }"
+        v-if="$store.state.token">
+        Add Family Member
       </router-link>
     </div>
     
@@ -52,6 +61,7 @@ export default {
      Any valid CSS or SCSS is allowable here. See https://sass-lang.com/documentation/style-rules for info on SCSS -->
 <style lang="scss">
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import './styles/colors.scss';
 @import './styles/style.scss';
 

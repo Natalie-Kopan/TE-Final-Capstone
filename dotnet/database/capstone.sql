@@ -30,18 +30,18 @@ CREATE TABLE users (
 	family_id int NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id),
 	CONSTRAINT FK_users_family_id FOREIGN KEY (family_id) REFERENCES family(family_id),
-	CONSTRAINT CHK_User CHECK (user_role IN ('user', 'admin'))
+	CONSTRAINT CHK_User CHECK (user_role IN ('parent', 'child'))
 )
 
 CREATE TABLE books (
-	isbn int NOT NULL,
+	isbn bigint NOT NULL,
 	title nvarchar(200) NOT NULL,
 	author nvarchar(200) NOT NULL,
 	CONSTRAINT PK_isbn PRIMARY KEY (isbn)
 )
 
 CREATE TABLE user_books (
-	isbn int NOT NULL,
+	isbn bigint NOT NULL,
 	user_id int NOT NULL,
 	CONSTRAINT FK_user_books_isbn FOREIGN KEY (isbn) REFERENCES books(isbn),
 	CONSTRAINT FK_user_books_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -50,9 +50,9 @@ CREATE TABLE user_books (
 CREATE TABLE reading_log (
 	log_id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
-	minutes_read int NOT NULL,
+	minutes_read int NOT NULL DEFAULT 0,
 	book_format nvarchar(200) NOT NULL,
-	isbn int NOT NULL,
+	isbn bigint NOT NULL,
 	notes nvarchar(1024),
 	CONSTRAINT PK_log_id PRIMARY KEY (log_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
@@ -74,10 +74,17 @@ CREATE TABLE prizes (
 	CONSTRAINT FK_prizes_family_id FOREIGN KEY (family_id) REFERENCES family(family_id),
 )
 
+CREATE TABLE user_prizes (
+	user_id int NOT NULL,
+	prize_id int NOT NULL,
+	CONSTRAINT FK_user_prizes_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_user_prizes_prize_id FOREIGN KEY (prize_id) REFERENCES prizes(prize_id)
+)
+
 -- Populate default data for testing: user and admin with password of 'password'
 -- These values should not be kept when going to Production
 INSERT INTO family (family_name) VALUES ('test');
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('child','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','child', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('parent','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','parent', 1);
 GO
 

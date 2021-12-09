@@ -49,5 +49,15 @@ namespace CapstoneTest
                 User user = access.AddUser("anotheruser", "password", 1, "notarole");
             });
         }
+
+        [TestMethod]
+        public void AddUserAndAssignToFamilyTest()
+        {
+            UserSqlDAO access = new UserSqlDAO(ConnectionString);
+
+            User user = access.RegisterUserAndFamily("john", "password", "Doe");
+
+            Assert.AreEqual("john", user.Username);
+        }
     }
 }

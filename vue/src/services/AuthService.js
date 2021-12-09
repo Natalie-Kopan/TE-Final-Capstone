@@ -18,4 +18,12 @@ export default {
     return axios.get('/book', userId)
   },
 
+  /*displayReadingActivityLog(userId) {
+    return axios.get('/readingactivitylog', userId)
+  }*/
+
+  addFamilyMember(user){
+    return axios.post('/Login/addFamily', user)
+  },
+
 }
