@@ -16,11 +16,10 @@ namespace Capstone.DAO
             this.connectionString = connectionString;
         }
 
-        private const string AddBooksSql = "INSERT INTO books (isbn, title, author) VALUES (@isbn, @title, @author)";
-        private const string AddUserBookSql = "INSERT INTO user_books(isbn, user_id) VALUES(@isbn, @user_id)";
-        private const string getUserBooks = "SELECT b.isbn, b.title, b.author FROM books b " +
-            "INNER JOIN user_books ub ON ub.isbn = b.isbn " +
-            "WHERE ub.user_id = @user_id";
+        private const string AddBooksSql = "INSERT INTO books (isbn, title, author, user_id) VALUES (@isbn, @title, @author, @user_id)";
+        //private const string AddUserBookSql = "INSERT INTO user_books(isbn, user_id) VALUES(@isbn, @user_id)";
+        private const string getUserBooks = "SELECT isbn, title, author FROM books " +
+            "WHERE user_id = @user_id";
         private const string getBookByIsbn = "SELECT b.isbn, b.title, b.author FROM books b " +
             "WHERE b.isbn = @isbn";
 
@@ -37,15 +36,8 @@ namespace Capstone.DAO
                     command.Parameters.AddWithValue("@isbn", bookToAdd.ISBN);
                     command.Parameters.AddWithValue("@title", bookToAdd.Title);
                     command.Parameters.AddWithValue("@author", bookToAdd.Author);
-
-                    command.ExecuteNonQuery();
-                }
-
-                using (SqlCommand command = new SqlCommand(AddUserBookSql, conn))
-                {
-
-                    command.Parameters.AddWithValue("@isbn", bookToAdd.ISBN);
                     command.Parameters.AddWithValue("@user_id", user_id);
+
                     command.ExecuteNonQuery();
                 }
             }
