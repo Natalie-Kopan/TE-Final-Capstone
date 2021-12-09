@@ -26,7 +26,7 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: Home,
       meta: {
         requiresAuth: false,
@@ -34,7 +34,7 @@ const router = new Router({
     },
     {
       path: "/login",
-      name: "login",
+      name: "Login",
       component: Login,
       meta: {
         requiresAuth: false,
@@ -42,7 +42,7 @@ const router = new Router({
     },
     {
       path: "/logout",
-      name: "logout",
+      name: "Logout",
       component: Logout,
       meta: {
         requiresAuth: false,
@@ -50,7 +50,7 @@ const router = new Router({
     },
     {
       path: "/register",
-      name: "register",
+      name: "Register",
       component: Register,
       meta: {
         requiresAuth: false,
@@ -58,7 +58,7 @@ const router = new Router({
     },
    {
       path: '/book',
-      name: 'addBook',
+      name: 'AddBook',
       component: AddBook,
       meta: {
         requiresAuth: false,
@@ -66,7 +66,7 @@ const router = new Router({
     },
     {
       path: '/book',
-      name: 'userLibrary',
+      name: 'UserLibrary',
       component: UserLibrary
     },
     /*{
