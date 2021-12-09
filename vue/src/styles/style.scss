@@ -1,0 +1,19 @@
+h1 {
+    background-color: red;
+    font-family: Arial, Helvitica, sans-serif;
+  }
+
+ p {
+   color: black;
+ }
+
+/* .nav-item {
+  color: blue;
+  padding-left: 50px;
+  justify-content: center;
+  align-items: center;
+ } */
+
+#nav > a:nth-child(2) {
+  padding: 30px;
+}

@@ -9,32 +9,32 @@
         Home 
       </router-link>
       <router-link
-        class="nav-item"
+        class="nav-item px-2"
         v-bind:to="{ name: 'register' }"
         v-if="!$store.state.token">&nbsp;|&nbsp;Register</router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'login' }"
         v-if="!$store.state.token">
-        &nbsp;|&nbsp;Login
+        &nbsp;| &nbsp;Login
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token">
-        &nbsp;|&nbsp;Logout
+        &nbsp;| &nbsp;Logout
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'book' }"
         v-if="$store.state.token">
-        &nbsp;|&nbsp;AddBook
+        &nbsp;| &nbsp;AddBook
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'userLibrary' }"
         v-if="$store.state.token">
-        &nbsp;|&nbsp;UserLibrary
+        &nbsp;| &nbsp;UserLibrary
       </router-link>
     </div>
     
@@ -53,6 +53,7 @@ export default {
 <style lang="scss">
 
 @import './styles/colors.scss';
+@import './styles/style.scss';
 
 // Import the bootstrap styles. If you want to override Bootstrap colors, it needs to happen above this line
 @import '../node_modules/bootstrap/scss/bootstrap';
