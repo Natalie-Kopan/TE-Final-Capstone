@@ -5,10 +5,9 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import AddBook from "../views/AddBook.vue";
-import AddFamilyMember from "../views/AddFamilyMember.vue";
 import UserLibrary from "../views/UserLibrary.vue";
+/*import ReadingActivityLog from "../views/ReadingActivityLog.vue";*/
 import store from "../store/index";
-import UserProgress from "../views/UserProgress.vue";
 
 Vue.use(Router);
 
@@ -27,7 +26,7 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      name: "Home",
+      name: "home",
       component: Home,
       meta: {
         requiresAuth: false,
@@ -35,7 +34,7 @@ const router = new Router({
     },
     {
       path: "/login",
-      name: "Login",
+      name: "login",
       component: Login,
       meta: {
         requiresAuth: false,
@@ -43,7 +42,7 @@ const router = new Router({
     },
     {
       path: "/logout",
-      name: "Logout",
+      name: "logout",
       component: Logout,
       meta: {
         requiresAuth: false,
@@ -51,7 +50,7 @@ const router = new Router({
     },
     {
       path: "/register",
-      name: "Register",
+      name: "register",
       component: Register,
       meta: {
         requiresAuth: false,
@@ -59,27 +58,25 @@ const router = new Router({
     },
    {
       path: '/book',
-      name: 'Book',
+      name: 'addBook',
       component: AddBook,
       meta: {
         requiresAuth: false,
       },
     },
     {
-      path: '/addFamilyMember',
-      name: 'AddFamilyMember',
-      component: AddFamilyMember
-    },
-    {
       path: '/book',
-      name: 'UserLibrary',
+      name: 'userLibrary',
       component: UserLibrary
     },
-    {
-      path: '/activity',
-      name: 'UserProgress',
-      component: UserProgress
-    },
+    /*{
+      path: '/readingactivitylog',
+      name: 'readingactivitylog',
+      component: ReadingActivityLog,
+      meta: {
+        requireAuth: true
+      }
+    },*/
     {
       path: "*",
       redirect: "/",
