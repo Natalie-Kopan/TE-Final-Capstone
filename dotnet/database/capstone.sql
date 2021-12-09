@@ -37,14 +37,9 @@ CREATE TABLE books (
 	isbn bigint NOT NULL,
 	title nvarchar(200) NOT NULL,
 	author nvarchar(200) NOT NULL,
-	CONSTRAINT PK_isbn PRIMARY KEY (isbn)
-)
-
-CREATE TABLE user_books (
-	isbn bigint NOT NULL,
 	user_id int NOT NULL,
-	CONSTRAINT FK_user_books_isbn FOREIGN KEY (isbn) REFERENCES books(isbn),
-	CONSTRAINT FK_user_books_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT PK_isbn_user_id PRIMARY KEY(isbn, user_id),
+	CONSTRAINT FK_books_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 )
 
 CREATE TABLE reading_log (
@@ -56,7 +51,7 @@ CREATE TABLE reading_log (
 	notes nvarchar(1024),
 	CONSTRAINT PK_log_id PRIMARY KEY (log_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
-	CONSTRAINT FK_isbn FOREIGN KEY (isbn) REFERENCES books(isbn),
+	CONSTRAINT FK_isbn FOREIGN KEY (isbn, user_id) REFERENCES books(isbn, user_id),
 	CONSTRAINT CHK_Format CHECK (book_format IN (
 		'Paper', 'Digital', 'Audiobook', 'Read-Aloud (Reader)', 'Read-Aloud (Listener)', 'Other'))
 )
