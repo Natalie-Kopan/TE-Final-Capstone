@@ -52,7 +52,7 @@
       </div-->
 
       <div class="form-group">
-        <router-link :to="{ name: 'login' }">Have an account?</router-link>
+        <router-link :to="{ name: 'Login' }">Have an account?</router-link>
       </div>
       <button class="btn btn-primary" type="submit">
         Create Account
