@@ -1,9 +1,27 @@
 <template>
 
 <section>
+    <!--This is a set up for an extra feature to connect with outside API
+    DELETE IF NOT ABLE TO GET TO THIS FEATURE-->
+    <div class="container">
+    <form>
+        <h4> Search for Book To Add</h4>
+        <label for="titleSearch" class="form-label">Title</label>
+        <input type="text" class="form-control" id="titleSearch"
+            placeholder="Search Book Title">
+        <label for="authorSearch" class="form-label">Author</label>
+        <input type="text" class="form-control" id="authorSearch"
+            placeholder="Search Book Author">
+        <label for="isbnSearch" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbnSearch"
+            placeholder="Search Book ISBN">
+        <button type="submit" class="submit">Search</button>
+    </form>
+    </div>
     <div class="container">
     <form v-on:submit.prevent="addedBook">
         <div class="form-part">
+        <h4> Add A Book </h4>
         <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" 
                 v-model.trim="addBook.title"
@@ -25,7 +43,7 @@
                 placeholder="Enter a Book ISBN">
         </div>
         <div>
-        <button type="submit" class="submitBook"> Add</button>
+        <button type="submit" class="submit"> Add</button>
         </div>
     </form>
     <p v-if="errorMessage">
@@ -78,12 +96,12 @@ form{
     border: 2px solid black;
     border-radius: 10px;
     width: 450px;
-    height: 280px;
+    height: 380px;
     margin: 20px;
     align-self: center;
 }
 
- .submitBook{
+ .submit{
     border-radius: 10px;
     bottom: 0;
 }

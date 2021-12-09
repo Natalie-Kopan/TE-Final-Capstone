@@ -42,7 +42,7 @@
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'AddFamilyMember' }"
-        v-if="$store.state.token">
+        v-if="$store.state.user.role == 'parent'">
         Add Family Member
       </router-link>
     </div>
@@ -53,7 +53,6 @@
 
 <script>
 export default {
-  
 }
 </script>
 
