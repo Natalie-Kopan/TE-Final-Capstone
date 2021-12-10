@@ -1,5 +1,5 @@
 <template>
-  <section class="container" id = "app">
+  <section class="library-container" id = "app">
     <div v-for="book of allBooks" v-bind:key="book.isbn">
       <div class = "card">
       <h2>{{book.title}}</h2>
@@ -54,7 +54,7 @@ export default {
     height: 410px;
     margin: 20px;
 }
-section{
+.library-container{
     display: flex;  
     flex-wrap: wrap;
     justify-content: space-evenly;

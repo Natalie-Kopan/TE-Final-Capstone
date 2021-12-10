@@ -1,9 +1,9 @@
 <template>
-  <section  class="prizesform">
+  <section>
         <div>
-            <form v-on:submit.prevent="addedPrize">
+            <form v-on:submit.prevent="addedPrize" class="prizesform" >
+                <h1 class="h3 mb-3 font-weight-normal" id="center"> Add A Prize </h1>
             <div class="form-part">
-                <h4> Add A Prize </h4>
                 <label for="prizeTitle" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" 
                     v-model.trim="addPrize.prizeTitle"
@@ -48,8 +48,9 @@
                 </datepicker>
             </div>
             <div>
-                <button type="submit" class="submit"> Add</button>
+                <button class="btn btn-primary" type="submit"> Add Prize</button>
             </div>
+            
     </form>
     <p v-if="errorMessage">
         {{errorMessage}}
@@ -115,6 +116,9 @@ export default {
 }
 form div > div {
     margin: 0;
+}
+#center{
+    text-align: center;
 }
 
 </style>
