@@ -96,7 +96,6 @@ form{
     border: 2px solid black;
     border-radius: 10px;
     width: 450px;
-    height: 380px;
     margin: 20px;
     align-self: center;
 }

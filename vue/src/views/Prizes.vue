@@ -1,7 +1,7 @@
 <template>
-  <section class="prizesform">
+  <section >
         <div>
-            <form v-on:submit.prevent="addedPrize">
+            <form class="prizesform" v-on:submit.prevent="addedPrize">
             <div class="form-part">
                 <h4> Add A Prize </h4>
                 <label for="prizeTitle" class="form-label">Title</label>
@@ -111,7 +111,6 @@ export default {
     border: 2px solid black;
     border-radius: 10px;
     width: 450px;
-    height: 650px;
     margin: 20px;
 }
 
