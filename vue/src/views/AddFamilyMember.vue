@@ -36,7 +36,8 @@
       <div class="form-group">
         <select
           id="role"
-          class="form-select">
+          class="form-select"
+          v-model="user.role">
           <option value="parent">Parent</option>
           <option value="child">Child</option>
         </select>
