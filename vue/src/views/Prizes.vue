@@ -20,32 +20,32 @@
             <div class="form-part">
                 <label for="milestone" class="form-label">Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
-                v-model.trim.number="addPrize.milestone"
+                v-model.trim.number="addPrize.mileStone"
                 required 
                 placeholder="Enter a Prize milestone">
             </div>
             <div class="form-part">
                 <label for="max_prize" class="form-label">Max Prize</label>
                 <input type="text" class="form-control" id="max_prize" 
-                v-model.trim.number="addPrize.max_prize"
+                v-model.trim.number="addPrize.maxPrize"
                 required 
                 placeholder="Enter a Max Prize">
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>
-                <DatePicker type="date" class="form-control" id="start_date" 
-                v-model="addPrize.start_date"
+                <datepicker type="date" class="form-control" id="start-date"
+                v-model="addPrize.startDate"
                 required 
                 placeholder="Enter a Start Date">
-                </DatePicker>
+                </datepicker>
             </div>
                 <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
-                <DatePicker type="date" class="form-control" id="end_date" 
-                v-model="addPrize.end_date"
+                <datepicker type="date" class="form-control" id="start-date"
+                v-model="addPrize.endDate"
                 required 
                 placeholder="Enter a End Date">
-                </DatePicker>
+                </datepicker>
             </div>
             <div>
                 <button type="submit" class="submit"> Add</button>
@@ -60,7 +60,7 @@
 
 <script>
 import AuthService from '../services/AuthService'
-import DatePicker from 'vuejs-datepicker';
+import Datepicker from 'vuejs-datepicker';
 
 export default {
     name: 'Prizes',
@@ -68,19 +68,18 @@ export default {
         return {
             addPrize: {
                 description: '',
-                prize_title: '',
-                user_group: '',
-                milestone: '',
-                max_prize: '',
-                start_date: '',
-                end_date: '',
+                prizeTitle: '',
+                mileStone: '',
+                maxPrize: '',
+                startDate: '',
+                endDate: ''
             },
             prizes:[],
             errorMessage: ''
         }
     },
     components:{
-        DatePicker
+        Datepicker
     },
     methods: {
         addedPrize() {
@@ -89,22 +88,20 @@ export default {
                     const newItem = response.data;
                     this.prizes.push(newItem);
                     this.addPrize={
-                        family_id: '',
                         description: '',
-                        prize_title: '',
-                        user_group: '',
-                        milestone: '',
-                        max_prize: '',
-                        start_date: '',
-                        end_date: '',
-                        };
+                        prizeTitle: '',
+                        mileStone: '',
+                        maxPrize: '',
+                        startDate: '',
+                        endDate: ''
+                    };
                     this.errorMessage = '';
                 })
                 .catch(response => {
                     console.error("Could not add a Prize", response);
                     this.errorMessage = 'This prize either already exists or is invalid. Check user books list';
                 });
-        }      
+        }
     },
   }
 </script>

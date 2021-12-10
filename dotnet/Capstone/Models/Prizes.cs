@@ -9,7 +9,7 @@ namespace Capstone.Models
     {
         public int prizeId { get; set; }
         public int familyId { get; set; }
-        public string decription { get; set; }
+        public string description { get; set; }
         public string prizeTitle { get; set; }
         public string userGroup { get; set; }
         public int mileStone { get; set; }

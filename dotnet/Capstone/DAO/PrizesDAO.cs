@@ -28,7 +28,7 @@ namespace Capstone.DAO
                 {
 
                     command.Parameters.AddWithValue("@family_id", prizeToAdd.familyId);
-                    command.Parameters.AddWithValue("@description", prizeToAdd.decription);
+                    command.Parameters.AddWithValue("@description", prizeToAdd.description);
                     command.Parameters.AddWithValue("@prize_title", prizeToAdd.prizeTitle);
                     command.Parameters.AddWithValue("@milestone", prizeToAdd.mileStone);
                     command.Parameters.AddWithValue("@max_prize", prizeToAdd.maxPrize);
@@ -58,7 +58,7 @@ namespace Capstone.DAO
                         while (reader.Read())
                         {
                             Prizes prize = new Prizes();
-                            prize.decription = Convert.ToString(reader["description"]);
+                            prize.description = Convert.ToString(reader["description"]);
                             prize.prizeTitle = Convert.ToString(reader["prize_title"]);
                             prize.mileStone = Convert.ToInt32(reader["milestone"]);
                             prize.maxPrize = Convert.ToInt32(reader["max_prize"]);
