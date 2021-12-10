@@ -23,17 +23,19 @@ namespace Capstone.Controllers
             this.userDAO = user;
         }
 
-        [HttpPost("{familyId}")]
+        [HttpPost()]
         [Authorize]
         public ActionResult AddNewPrize(Prizes prizeToAdd)
         {
             int userId = int.Parse(this.User.FindFirst("sub").Value);
+            int familyId = userDAO.GetUserFamilyId(userId);
+            prizeToAdd.familyId = familyId;
             Prizes newPrize = new Prizes();
             try
             {
                 newPrize = prizesDAO.AddPrize(prizeToAdd);
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 return BadRequest(new { message = "The prize entered is invalid" });
             }

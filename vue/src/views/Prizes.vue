@@ -4,9 +4,9 @@
             <form v-on:submit.prevent="addedPrize">
             <div class="form-part">
                 <h4> Add A Prize </h4>
-                <label for="title" class="form-label">Title</label>
+                <label for="prizeTitle" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" 
-                    v-model.trim="addPrize.title"
+                    v-model.trim="addPrize.prizeTitle"
                     required 
                     placeholder="Enter a Prize title">
             </div>
@@ -20,7 +20,7 @@
             <div class="form-part">
                 <label for="milestone" class="form-label">Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
-                v-model.trim="addPrize.milestone"
+                v-model.trim.number="addPrize.milestone"
                 required 
                 placeholder="Enter a Prize milestone">
             </div>
@@ -34,7 +34,7 @@
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>
                 <DatePicker type="date" class="form-control" id="start_date" 
-                v-model.trim.number="addPrize.start_date"
+                v-model="addPrize.start_date"
                 required 
                 placeholder="Enter a Start Date">
                 </DatePicker>
@@ -42,7 +42,7 @@
                 <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
                 <DatePicker type="date" class="form-control" id="end_date" 
-                v-model.trim.number="addPrize.end_date"
+                v-model="addPrize.end_date"
                 required 
                 placeholder="Enter a End Date">
                 </DatePicker>
@@ -68,7 +68,8 @@ export default {
         return {
             addPrize: {
                 description: '',
-                title: '',
+                prize_title: '',
+                user_group: '',
                 milestone: '',
                 max_prize: '',
                 start_date: '',
@@ -83,13 +84,15 @@ export default {
     },
     methods: {
         addedPrize() {
-            AuthService.addedPrize(this.addPrize)
+            AuthService.addNewPrize(this.addPrize)
                 .then(response => {
                     const newItem = response.data;
-                    this.books.push(newItem);
+                    this.prizes.push(newItem);
                     this.addPrize={
+                        family_id: '',
                         description: '',
-                        title: '',
+                        prize_title: '',
+                        user_group: '',
                         milestone: '',
                         max_prize: '',
                         start_date: '',

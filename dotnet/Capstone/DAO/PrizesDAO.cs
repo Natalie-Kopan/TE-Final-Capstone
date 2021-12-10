@@ -17,7 +17,7 @@ namespace Capstone.DAO
         }
 
         private const string AddPrizeSql = "INSERT INTO prizes(family_id, description, prize_title, milestone, max_prize, start_date, end_date) " +
-            "VALUES(@family_id, @description, @prize_title', @milestone, @max_prize, @start_date, @end_date) ";
+            "VALUES(@family_id, @description, @prize_title, @milestone, @max_prize, @start_date, @end_date) ";
         public Prizes AddPrize(Prizes prizeToAdd)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
