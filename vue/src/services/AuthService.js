@@ -18,8 +18,8 @@ export default {
     return axios.get('/book', userId)
   },
 
-  displayReadingActivityLog(isbn) {
-    return axios.get(`/Activity/${isbn}`)
+  displayActivityLog() {
+    return axios.get('/Activity')
   },
 
   addFamilyMember(user){

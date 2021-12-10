@@ -24,6 +24,7 @@ export default new Vuex.Store({
   state: {
     books:[],
     prizes:[],
+    activityLog:[],
     token: currentToken || '',
     user: currentUser || {} // If a user is an parent, their user.role will be 'role'
   },
@@ -47,5 +48,8 @@ export default new Vuex.Store({
     BOOKS_LOADED(state, books) {
       state.books = books;
     },
+    ACTIVITY_LOADED(state, activityLog) {
+      state.activityLog = activityLog;
+    }
   }
 })
