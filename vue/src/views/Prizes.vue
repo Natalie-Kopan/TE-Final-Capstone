@@ -1,7 +1,7 @@
 <template>
-  <section >
+  <section  class="prizesform">
         <div>
-            <form class="prizesform" v-on:submit.prevent="addedPrize">
+            <form v-on:submit.prevent="addedPrize">
             <div class="form-part">
                 <h4> Add A Prize </h4>
                 <label for="prizeTitle" class="form-label">Title</label>
@@ -33,16 +33,16 @@
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>
-                <datepicker type="date" class="form-control" id="start-date"
-                v-model="addPrize.startDate"
+                <datepicker  :bootstrap-styling="true" 
+                v-model="addPrize.startDate"  name="start-date"
                 required 
                 placeholder="Enter a Start Date">
                 </datepicker>
             </div>
-                <div class="form-part">
+            <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
-                <datepicker type="date" class="form-control" id="start-date"
-                v-model="addPrize.endDate"
+                <datepicker name="end-date" :bootstrap-styling="true"
+                v-model="addPrize.endDate" 
                 required 
                 placeholder="Enter a End Date">
                 </datepicker>
@@ -112,6 +112,9 @@ export default {
     border-radius: 10px;
     width: 450px;
     margin: 20px;
+}
+form div > div {
+    margin: 0;
 }
 
 </style>
