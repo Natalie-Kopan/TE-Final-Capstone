@@ -36,24 +36,27 @@
                 <datepicker  :bootstrap-styling="true" 
                 v-model="addPrize.startDate"  name="start-date"
                 required 
-                placeholder="Enter a Start Date">
+                placeholder="Enter a Start Date" is-range>
                 </datepicker>
             </div>
             <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
                 <datepicker name="end-date" :bootstrap-styling="true"
-                v-model="addPrize.endDate" 
+                v-model="addPrize.endDate"
+                :min="start-date"
                 required 
-                placeholder="Enter a End Date">
+                placeholder="Enter a End Date" is-range>
                 </datepicker>
             </div>
             <div>
                 <button class="btn btn-primary" type="submit"> Add Prize</button>
             </div>
-            
     </form>
-    <p v-if="errorMessage">
+    <p v-if="errorMessage" class="prize-error">
         {{errorMessage}}
+    </p>
+    <p v-if="successMessage" class="prize-added">
+        {{successMessage}}
     </p>
     </div>
   </section>
@@ -76,7 +79,9 @@ export default {
                 endDate: ''
             },
             prizes:[],
-            errorMessage: ''
+            errorMessage: '',
+            successMessage:'',
+         
         }
     },
     components:{
@@ -96,11 +101,15 @@ export default {
                         startDate: '',
                         endDate: ''
                     };
+                    if (response.status == 201) {
+                        this.successMessage='Prize was successfully added.'
+                    }
                     this.errorMessage = '';
                 })
                 .catch(response => {
                     console.error("Could not add a Prize", response);
                     this.errorMessage = 'This prize either already exists or is invalid. Check user books list';
+                    this.successMessage = '';
                 });
         }
     },
@@ -120,5 +129,16 @@ form div > div {
 #center{
     text-align: center;
 }
-
+.prize-added{
+    font-family: "Roboto";
+    font-weight: bold;
+    color:#459d49;
+    margin: 1rem;
+}
+.prize-error{
+    font-family: "Roboto";
+    font-weight: bold;
+    color:#E63946;
+    margin: 1rem;
+}
 </style>
