@@ -18,8 +18,12 @@ export default {
     return axios.get('/book', userId)
   },
 
-  displayActivityLog() {
-    return axios.get('/Activity')
+  displayActivityLog(isbn) {
+    return axios.get(`/Activity/${isbn}`)
+  },
+
+  addActivity(activityLog) {
+    return axios.post(`/Activity/${activityLog.isbn}`, activityLog)
   },
 
   addFamilyMember(user){

@@ -50,6 +50,6 @@ export default new Vuex.Store({
     },
     ACTIVITY_LOADED(state, activityLog) {
       state.activityLog = activityLog;
-    }
+    },
   }
 })

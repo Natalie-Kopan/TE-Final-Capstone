@@ -1,19 +1,30 @@
 <template>
 <section class="activityLog">
-  <h1>Activity Log</h1>
-  <ActivityLog />
+  <h1>Activity Dashboard</h1>
+  <AddActivity v-bind:isbn="isbn"/>
+  <ViewActivity v-bind:isbn="isbn"/>
 </section>
 </template>
 
 <script>
-import ActivityLog from '../components/ViewActivity.vue'
+import ViewActivity from '../components/ViewActivity.vue'
+import AddActivity from '../components/AddActivity.vue'
 
 
 export default {
     name: 'Activity',
+        data(){
+            return {
+                isbn: '',
+            }
+        },    
     components:{
-        ActivityLog,
+        ViewActivity,
+        AddActivity
     },
+    created() {
+        this.isbn = +this.$route.params.isbn
+    }
 }
 </script>
 

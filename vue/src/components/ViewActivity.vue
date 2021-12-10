@@ -1,8 +1,8 @@
 <template>
   <section class="container" id = "app">
-    <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.isbn">
+    <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.logId">
       <div class = "card">
-      <h2>{{activityLog.title}}</h2>
+      <h2>{{activityLog.bookTitle}}</h2>
       
       <!--h3 class="book-author">{{ book.author }}</h3-->
     </div>
@@ -14,7 +14,10 @@
 import AuthService from '../services/AuthService';
 
 export default {
-    name: 'ReadingActivityLog',
+    props: {
+        isbn: Number
+    },
+    name: 'ActivityLog',
     computed: {
       allActivityLog() {
           return this.$store.state.activityLog;
@@ -22,13 +25,12 @@ export default {
    },
      created() {
           // Make a HTTP GET request and return a promise representing the operation
-          const activityLogPromise = AuthService.displayActivityLog()
+          const activityLogPromise = AuthService.displayActivityLog(this.isbn)
           activityLogPromise
           // 200 Status Codes
           .then(response => {
           console.log("GET Completed", response);
           const activityLog = response.data;
-          this.$store.state.activityLog.push(activityLog);
           this.$store.commit('ACTIVITY_LOADED', activityLog);
           })
           // 400, 500, network issues, no internet, etc.

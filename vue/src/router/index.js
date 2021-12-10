@@ -79,7 +79,7 @@ const router = new Router({
       component: Prizes,
     },
     {
-      path: '/Activity',
+      path: '/ActivityLog/:isbn',
       name: 'ActivityLog',
       component: ActivityLog,
     },
