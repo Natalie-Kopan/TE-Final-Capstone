@@ -35,21 +35,22 @@
                 <label for="start_date" class="form-label">Start Date </label>
                 <datepicker  :bootstrap-styling="true" 
                 v-model="addPrize.startDate"  name="start-date"
+                :disabledDates="disabledDates"
                 required 
                 placeholder="Enter a Start Date" is-range>
                 </datepicker>
             </div>
             <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
-                <datepicker name="end-date" :bootstrap-styling="true"
+                <datepicker  name="end-date" :bootstrap-styling="true"
                 v-model="addPrize.endDate"
-                :min="start-date"
+                :disabledDates="disabledDates"
                 required 
                 placeholder="Enter a End Date" is-range>
                 </datepicker>
             </div>
             <div>
-                <button class="btn btn-primary" type="submit"> Add Prize</button>
+                <button class="btn btn-primary" type="submit" style="margin:0rem; width:100%"> Add Prize</button>
             </div>
     </form>
     <p v-if="errorMessage" class="prize-error">
@@ -78,10 +79,12 @@ export default {
                 startDate: '',
                 endDate: ''
             },
+            disabledDates: {
+                to: new Date(Date.now())
+            },
             prizes:[],
             errorMessage: '',
             successMessage:'',
-         
         }
     },
     components:{
@@ -140,5 +143,9 @@ form div > div {
     font-weight: bold;
     color:#E63946;
     margin: 1rem;
+}
+.prizesform > .prize-button{
+    margin: 0rem;
+    width:100%,
 }
 </style>
