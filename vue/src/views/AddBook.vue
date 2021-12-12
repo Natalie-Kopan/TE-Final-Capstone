@@ -18,6 +18,7 @@
         <button type="submit" class="submit">Search</button>
     </form>
     </div>
+    
     <div class="container">
     <form v-on:submit.prevent="addedBook">
         <div class="form-part">

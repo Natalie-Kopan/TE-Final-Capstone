@@ -41,9 +41,9 @@ namespace Capstone.DAO
             return activity;
         }
 
-        public ActivityLog ViewActivityLogByBook(int userId, int isbn)
+        public List<ActivityLog> ViewActivityLogByBook(int userId, int isbn)
         {
-            ActivityLog log = new ActivityLog();
+            List<ActivityLog> logs = new List<ActivityLog>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -56,6 +56,7 @@ namespace Capstone.DAO
                     {
                         while (reader.Read())
                         {
+                            ActivityLog log = new ActivityLog();
                             log.bookTitle = Convert.ToString(reader["title"]);
                             log.bookAuthor = Convert.ToString(reader["author"]);
                             log.logId = Convert.ToInt32(reader["log_id"]);
@@ -64,11 +65,12 @@ namespace Capstone.DAO
                             log.bookFormat = Convert.ToString(reader["book_format"]);
                             log.notes = Convert.ToString(reader["notes"]);
                             log.userId = userId;
+                            logs.Add(log);
                         }
                     }
                 }
             }
-            return log;
+            return logs;
         }
 
     }

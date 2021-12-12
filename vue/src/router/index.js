@@ -6,9 +6,9 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import AddBook from "../views/AddBook.vue";
 import UserLibrary from "../views/UserLibrary.vue";
-import ReadingActivityLog from "../views/ReadingActivityLog.vue";
 import AddFamilyMember from "../views/AddFamilyMember.vue";
 import Prizes from "../views/Prizes.vue";
+import ActivityLog from "../views/ActivityLog.vue";
 import store from "../store/index";
 
 Vue.use(Router);
@@ -69,11 +69,6 @@ const router = new Router({
       component: UserLibrary
     },
     {
-      path: '/Activity/:isbn',
-      name: 'ReadingActivityLog',
-      component: ReadingActivityLog,
-    },
-    {
       path: '/Login/addFamily',
       name: 'AddFamilyMember',
       component: AddFamilyMember,
@@ -82,6 +77,11 @@ const router = new Router({
       path: '/Prizes',
       name: 'Prizes',
       component: Prizes,
+    },
+    {
+      path: '/ActivityLog/:isbn',
+      name: 'ActivityLog',
+      component: ActivityLog,
     },
     {
       path: "*",
