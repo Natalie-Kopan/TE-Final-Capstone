@@ -5,6 +5,9 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      <div class="alert alert-success" role="alert" v-if="successMessage && !registrationErrors">
+        {{ successMessage }}
+      </div>
       <div class="form-group">
         <input
           type="text"
@@ -75,6 +78,7 @@ export default {
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
+      successMessage: '',
     };
   },
   methods: {
@@ -87,16 +91,15 @@ export default {
           .addFamilyMember(this.user)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({ name:
-                'Home'
-                // name: 'login',
-                // query: { registration: 'success' },
-              });
+              this.registrationErrors = false;
+              this.registrationErrorMsg = '';
+              this.successMessage = this.user.username + ' was succesfully added.'
             }
           })
           .catch((error) => {
             const response = error.response;
             this.registrationErrors = true;
+            this.successMessage = '';
             if (response.status === 400) {
               this.registrationErrorMsg = 'Bad Request: Validation Errors';
             }

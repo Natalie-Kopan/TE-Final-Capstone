@@ -3,6 +3,12 @@
         <div>
             <form v-on:submit.prevent="addedPrize" class="prizesform" >
                 <h1 class="h3 mb-3 font-weight-normal" id="center"> Add A Prize </h1>
+                <div v-if="errorMessage" class="alert alert-danger">
+                    {{errorMessage}}
+                </div>
+                <div v-if="successMessage" class="alert alert-success">
+                    {{successMessage}}
+                </div>
             <div class="form-part">
                 <label for="prizeTitle" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" 
@@ -53,12 +59,6 @@
                 <button class="btn btn-primary" type="submit" style="margin:0rem; width:100%"> Add Prize</button>
             </div>
     </form>
-    <p v-if="errorMessage" class="prize-error">
-        {{errorMessage}}
-    </p>
-    <p v-if="successMessage" class="prize-added">
-        {{successMessage}}
-    </p>
     </div>
   </section>
 </template>
@@ -132,17 +132,5 @@ form div > div {
 }
 #center{
     text-align: center;
-}
-.prize-added{
-    font-family: "Roboto";
-    font-weight: bold;
-    color:#459d49;
-    margin: 1rem;
-}
-.prize-error{
-    font-family: "Roboto";
-    font-weight: bold;
-    color:#E63946;
-    margin: 1rem;
 }
 </style>

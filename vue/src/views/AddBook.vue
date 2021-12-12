@@ -23,6 +23,9 @@
     <form v-on:submit.prevent="addedBook">
         <div class="form-part">
         <h4> Add A Book </h4>
+        <p v-if="errorMessage" class="alert alert-danger">
+            {{errorMessage}}
+        </p>
         <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" 
                 v-model.trim="addBook.title"
@@ -47,9 +50,6 @@
         <button type="submit" class="submit"> Add</button>
         </div>
     </form>
-    <p v-if="errorMessage">
-        {{errorMessage}}
-    </p>
     </div>
 </section>
 </template>
@@ -82,6 +82,9 @@ export default {
                         isbn: '',
                         };
                     this.errorMessage = '';
+                    if (response.status == 201) {
+                        this.$router.push({ name: 'UserLibrary' });
+                    }
                 })
                 .catch(response => {
                     console.error("Could not add book", response);
