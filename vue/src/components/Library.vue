@@ -7,7 +7,7 @@
       <!--h3 class="book-author">{{ book.author }}</h3-->
       <button class="button">
           <router-link v-bind:to="{name: 'ActivityLog', params: {isbn: book.isbn}}">
-              View Book Activity
+              Add/View Book Activity
           </router-link>
         </button>
     </div>

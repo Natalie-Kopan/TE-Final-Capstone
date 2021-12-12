@@ -6,7 +6,7 @@
         <h4> Minutes Read </h4>
         <label for="minutesRead" class="form-label">Mintues Read</label>
             <input type="text" class="form-control" id="minutesRead" 
-                v-model.trim="addedActivity.minutesRead"
+                v-model.trim.number="addedActivity.minutesRead"
                 required 
                 placeholder="Enter Minutes Read">
         </div>
@@ -35,6 +35,9 @@
     <p v-if="errorMessage">
         {{errorMessage}}
     </p>
+    <p v-if="successMessage">
+        {{successMessage}}
+    </p>
     </div>
   </section>
 </template>
@@ -56,7 +59,8 @@ export default {
                     notes: '',
                 },
                 activityLog:[],
-                errorMessage: ''
+                errorMessage: '',
+                successMessage: ''
 
             }
         },
@@ -73,10 +77,12 @@ export default {
                         notes: '',
                     };
                     this.errorMessage = '';
+                    this.successMessage = 'Awesome reading! Your activity has been added!';
                 })
                 .catch(response => {
                     console.error("Could not add activity", response);
                     this.errorMessage = 'This activity either already exists or is invalid. Check user books list';
+                    this.successMessage = '';
                 });
         }      
     },
