@@ -82,6 +82,9 @@ export default {
                         isbn: '',
                         };
                     this.errorMessage = '';
+                    if (response.status == 201) {
+                        this.$router.push({ name: 'UserLibrary' });
+                    }
                 })
                 .catch(response => {
                     console.error("Could not add book", response);
