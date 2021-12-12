@@ -25,9 +25,9 @@ namespace Capstone.Controllers
         public ActionResult ViewActivityByBook(int isbn)
         {
             int userId = int.Parse(this.User.FindFirst("sub").Value);
-            ActivityLog log = activityDAO.ViewActivityLogByBook(userId, isbn);
+            List<ActivityLog> logs = activityDAO.ViewActivityLogByBook(userId, isbn);
             
-            return Ok(log);
+            return Ok(logs);
         }
 
         [HttpPost("{isbn}")]
