@@ -3,7 +3,7 @@
     <h1> Previous Activity</h1>
     <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.logId">
       <div class = "card">
-      <h2>Date: {{activityLog.dateOfActivity}} </h2>
+      <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
       <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
     </div>
     </div>
@@ -12,8 +12,6 @@
 
 <script>
 import AuthService from '../services/AuthService';
-//import moment from 'moment';
-
 
 export default {
   name: 'ActivityLog',
@@ -22,11 +20,6 @@ export default {
       dateOfActivity: '',
     }
   },
-  // Vue.filter('formatDate', dateOfActivity){
-  //      if (dateOfActivity){
-  //      return moment(String(dateOfActivity).format('MM/DD/YYYY'))
-  //      }
-  // },
   props: {
       isbn: Number
   },
