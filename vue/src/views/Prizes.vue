@@ -37,16 +37,16 @@
                 v-model="addPrize.startDate"  name="start-date"
                 :disabledDates="disabledDates"
                 required 
-                placeholder="Enter a Start Date" is-range>
+                placeholder="Enter a Start Date">
                 </datepicker>
             </div>
             <div class="form-part">
                 <label for="end_date" class="form-label">End Date </label>
                 <datepicker  name="end-date" :bootstrap-styling="true"
-                v-model="addPrize.endDate"
+                v-model="addPrize.endDate"  
                 :disabledDates="disabledDates"
                 required 
-                placeholder="Enter a End Date" is-range>
+                placeholder="Enter a End Date">
                 </datepicker>
             </div>
             <div>
@@ -77,7 +77,7 @@ export default {
                 mileStone: '',
                 maxPrize: '',
                 startDate: '',
-                endDate: ''
+                endDate: '',
             },
             disabledDates: {
                 to: new Date(Date.now())
@@ -102,7 +102,7 @@ export default {
                         mileStone: '',
                         maxPrize: '',
                         startDate: '',
-                        endDate: ''
+                        endDate: '',
                     };
                     if (response.status == 201) {
                         this.successMessage='Prize was successfully added.'
@@ -110,8 +110,9 @@ export default {
                     this.errorMessage = '';
                 })
                 .catch(response => {
+                    console.log(response);
                     console.error("Could not add a Prize", response);
-                    this.errorMessage = 'This prize either already exists or is invalid. Check user books list';
+                    this.errorMessage = 'This prize is invalid. Please check entered information. ';
                     this.successMessage = '';
                 });
         }
@@ -143,9 +144,5 @@ form div > div {
     font-weight: bold;
     color:#E63946;
     margin: 1rem;
-}
-.prizesform > .prize-button{
-    margin: 0rem;
-    width:100%,
 }
 </style>

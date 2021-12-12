@@ -27,6 +27,11 @@ namespace Capstone.Controllers
         [Authorize]
         public ActionResult AddNewPrize(Prizes prizeToAdd)
         {
+
+            if(prizeToAdd.startDate >= prizeToAdd.endDate)
+            {
+                return BadRequest();
+            }
             int userId = int.Parse(this.User.FindFirst("sub").Value);
             int familyId = userDAO.GetUserFamilyId(userId);
             prizeToAdd.familyId = familyId;
@@ -40,7 +45,7 @@ namespace Capstone.Controllers
                 return BadRequest(new { message = "The prize entered is invalid" });
             }
 
-            return Created("/prize/" + prizeToAdd.familyId, prizeToAdd);
+            return Created("/Prizes", prizeToAdd);
         }
 
 
