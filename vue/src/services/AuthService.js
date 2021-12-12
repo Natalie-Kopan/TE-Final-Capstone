@@ -32,8 +32,8 @@ export default {
   addNewPrize(prize){
     return axios.post('/Prizes', prize);
   },
-  /*displayPrizes(familyId){
+  displayPrizes(familyId){
     return axios.get('/Prizes', familyId);
-  }*/
+  }
 
 }

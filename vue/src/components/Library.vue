@@ -2,14 +2,16 @@
   <section class="library-container" id = "app">
     <div v-for="book of allBooks" v-bind:key="book.isbn">
       <div class = "card">
-      <h2>{{book.title}}</h2>
-      <img class= "bookcover" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="book.title" />
-      <!--h3 class="book-author">{{ book.author }}</h3-->
-      <button class="button">
-          <router-link v-bind:to="{name: 'ActivityLog', params: {isbn: book.isbn}}">
-              Add/View Book Activity
+      <div class="card-contents">
+        <h2>{{book.title}}</h2>
+        <img class= "bookcover" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="book.title" />
+        <!--h3 class="book-author">{{ book.author }}</h3-->
+        <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
+          <router-link v-bind:to="{name: 'ActivityLog', params: {isbn: book.isbn}}" style="color:white">
+              View Book Activity
           </router-link>
         </button>
+    </div>
     </div>
     </div>
   </section>
@@ -52,23 +54,24 @@ export default {
     border-radius: 10px;
     width: 250px;
     height: 410px;
-    margin: 20px;
+    margin: 1rem;
+
+}
+.card-contents{
+  margin: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .library-container{
     display: flex;  
     flex-wrap: wrap;
     justify-content: space-evenly;
+
 }
 .bookcover{
     border-radius: 10px;
 
-}
-.button{
-  position: absolute;
-  bottom: 0;
-  align-self: center;
-  border-radius: 10px;
-  width: 100%;
 }
 
 </style>

@@ -51,6 +51,12 @@
         v-if="$store.state.user.role == 'parent'">
         Add Family Member
       </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'ViewPrizes' }"
+        v-if="$store.state.token">
+        View Prizes
+      </router-link>
     </div>
     
     <router-view />
