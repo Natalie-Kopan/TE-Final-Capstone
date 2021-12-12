@@ -8,6 +8,7 @@ import AddBook from "../views/AddBook.vue";
 import UserLibrary from "../views/UserLibrary.vue";
 import AddFamilyMember from "../views/AddFamilyMember.vue";
 import Prizes from "../views/Prizes.vue";
+import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
 import store from "../store/index";
 
@@ -82,6 +83,11 @@ const router = new Router({
       path: '/ActivityLog/:isbn',
       name: 'ActivityLog',
       component: ActivityLog,
+    },
+    {
+      path: '/Prizes',
+      name: 'ViewPrizes',
+      component: ViewPrizes,
     },
     {
       path: "*",
