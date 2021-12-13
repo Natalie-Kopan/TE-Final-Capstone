@@ -8,8 +8,8 @@ import AddBook from "../views/AddBook.vue";
 import UserLibrary from "../views/UserLibrary.vue";
 import FamilyAdd from "../views/FamilyAdd.vue";
 import FamilyDisplay from "../views/FamilyDisplay";
-import Prizes from "../views/Prizes.vue";
-import ViewPrizes from "../views/ViewPrizes.vue";
+import PrizeDashboard from "../views/PrizeDashboard.vue";
+//import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
 import PrizeDetails from "../views/PrizeDetails.vue";
 import ViewUserActivity from "../views/ViewUserActivity.vue";
@@ -89,11 +89,6 @@ const router = new Router({
       component: FamilyDisplay,
     },
     {
-      path: '/Prizes',
-      name: 'Prizes',
-      component: Prizes,
-    },
-    {
       path: '/ActivityLog/:isbn',
       name: 'ActivityLog',
       component: ActivityLog,
@@ -105,13 +100,13 @@ const router = new Router({
     },
     {
       path: '/Prizes',
-      name: 'ViewPrizes',
-      component: ViewPrizes,
+      name:'PrizeDashboard',
+      component: PrizeDashboard
     },
     {
-      path: '/Prizes',
-      name:'PrizeDetails',
-      component: PrizeDetails
+      path: '/PrizeDetails',
+      name: 'PrizeDetails',
+      component: PrizeDetails,
     },
     {
       path: "*",

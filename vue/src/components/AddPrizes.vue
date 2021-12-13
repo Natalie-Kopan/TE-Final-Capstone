@@ -68,7 +68,7 @@ import AuthService from '../services/AuthService'
 import Datepicker from 'vuejs-datepicker';
 
 export default {
-    name: 'Prizes',
+    name: 'AddPrizes',
         data() {
         return {
             addPrize: {

@@ -1,5 +1,6 @@
 <template>
     <section id = "app" class="library-container">
+      <h1>Here are your available prizes!</h1>
         <div v-for="prize of allPrizes" v-bind:key="prize.prizeId">
             <div class = "card">
                 <div class="card-contents">
