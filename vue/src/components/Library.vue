@@ -50,6 +50,7 @@ export default {
 
 <style>
 .card {
+    display: inline-block;
     border: 2px solid black;
     border-radius: 10px;
     width: 250px;
