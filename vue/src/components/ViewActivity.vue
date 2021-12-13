@@ -1,28 +1,37 @@
 <template>
-  <section class="activity" id = "app">
-    <h1> Previous Activity</h1>
+  <section class="container" id = "app">
+    <h1> Your Previous Activity</h1>
+    <!--
     <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
-      <div class = "card"
-        v-bind:style="{
-            background: colors[index % colors.length],
-            color: '#111111'
-        }">
+      <div class = "card" :color="colorChange">,
       <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
       <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
+    </div>
+    </div> -->
+
+    <div class="card-deck">
+      <div class="activity-card" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
+      <!--<img src="..." class="card-img-top" alt="...">-->
+      <div class="card-body">
+        <h5 class="card-title">You Read for {{activityLog.minutesRead}} minutes on {{activityLog.dateOfActivity | formatDate}} </h5>
+        <p class="card-text">Here's some things you noted during this read: {{activityLog.notes}}</p>
+        <p class="card-text"><small class="text-muted">{{activityLog.dateOfActivity | formatDate}}</small></p>
+    </div>
     </div>
     </div>
   </section>
 </template>
 
 <script>
-import AuthService from '../services/AuthService';
+import AuthService from '../services/AuthService.js';
 
 export default {
   name: 'ActivityLog',
   data(){
     return {
       dateOfActivity: '',
-      colors: ['#ef2e35', '#ffca3a', '#8ac926', '#1982c4', '#92d5f2']
+      activityLog: '',
+      colors: ['#EF2E35', '#FFCA3A', '#8AC926', '#1982C4'],
     }
   },
   props: {
@@ -32,11 +41,17 @@ export default {
       allActivityLog() {
           return this.$store.state.activityLog;
       },
-      // colorChange() {
-      //   if(this.activityLog.minutesRead <= 15){
-      //     return 
-      //   }
-      //}
+      colorChange() {
+         if(this.activityLog.minutesRead <= 15){
+          return '#1982C4'
+         }
+         else if (this.activityLog.minutesRead > 15 && this.activityLog.minutesRead <=30){
+           return '#FFCA3A'
+         }
+         else {
+           return '#8AC926'
+         }
+      }
    },
      created() {
           // Make a HTTP GET request and return a promise representing the operation
@@ -59,7 +74,12 @@ export default {
 
 <style>
 
-.card {
+.activity-card {
   padding: 5px;
+  width: 300px;
+  height: 250px;
+  margin: 20px;
+  border: solid 5px #8AC926
+  
 }
 </style>

@@ -2,15 +2,15 @@
     <section id = "app" class="library-container">
         <div v-for="prize of allPrizes" v-bind:key="prize.prizeId">
             <div class = "card">
-                        <div class="card-contents">
-
-                <h2 id="center">{{prize.prizeTitle}}</h2>
-
-
-
-
-                <p>First {{prize.maxPrize}} member(s) of your family to read {{prize.milestone}} minutes.</p>
-                <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">View Prize Details</button>
+                <div class="card-contents">
+                    <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
+                      <p>Start Date: {{prize.startDate | formatDate}}</p>
+                      <p>End Date: {{prize.endDate | formatDate}}</p>
+                        <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
+                           <router-link v-bind:to="{name: 'PrizeDetails', params: {id: prize.prizeId}}" style="color:white">
+                                View Prize Details
+                            </router-link>
+                        </button>
             </div>
         </div>
         </div>
@@ -23,11 +23,11 @@ import AuthService from '../services/AuthService'
 export default {
     name: 'FamilyPrizes',
     computed: {
-      allPrizes() {
+    allPrizes() {
           return this.$store.state.prizes;
         },
-      },
-      created() {
+    },
+    created() {
           // Make a HTTP GET request and return a promise representing the operation
           const prizesPromise = AuthService.displayPrizes();
           prizesPromise
@@ -43,8 +43,10 @@ export default {
             console.error("Could not load prizes.", response);
             alert("Issue loading prizes");
           });
-      
-    }
+    },
+   
+  
+    
 }
 </script>
 

@@ -60,6 +60,21 @@ namespace Capstone.Controllers
             return Ok(allFamilyPrizes);
             
         }
-
+        [HttpDelete("{prizeIdToDelete}")]
+        public ActionResult DeletePrize(int prizeIdToDelete)
+        {
+            int prizeId = prizesDAO.DeletePrize(prizeIdToDelete);
+            return NoContent();
+        }
+        [HttpPut]
+        public ActionResult EditPrize(Prizes prize)
+        {
+            if (prize.startDate >= prize.endDate)
+            {
+                return BadRequest();
+            }
+            Prizes editedPrize = prizesDAO.EditPrize(prize);
+            return Created("/Prizes", editedPrize);
+        }
     }
 }
