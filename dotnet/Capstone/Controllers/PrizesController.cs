@@ -60,13 +60,10 @@ namespace Capstone.Controllers
             return Ok(allFamilyPrizes);
             
         }
-        [HttpDelete]
-        public ActionResult DeletePrize(Prizes prizeToDelete)
+        [HttpDelete("{id:int}")]
+        public ActionResult DeletePrize(int prizeIdToDelete)
         {
-            int userId = int.Parse(this.User.FindFirst("sub").Value);
-            prizeToDelete.familyId = userDAO.GetUserFamilyId(userId);
-
-            Prizes deletedPrize = prizesDAO.DeletePrize(prizeToDelete);
+            int prizeId = prizesDAO.DeletePrize(prizeIdToDelete);
             return NoContent();
         }
         [HttpPut]

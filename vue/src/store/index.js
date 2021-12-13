@@ -54,8 +54,10 @@ export default new Vuex.Store({
     PRIZES_LOADED(state, prizes) {
       state.prizes = prizes;
     },
-    DELETE_PRIZE(state, prize){
-        state.prizes.splice(prize);
+    DELETE_PRIZE(state, prizeId){
+        let index = state.prizes.findIndex(prize =>prize.id === prizeId);
+        state.prizes.splice(index, 1);
+        console.log(state.prizes);
     },
     EDIT_PRIZE(state, payload){
       let index = state.prizes.findIndex(prize => prize.id === payload.id);

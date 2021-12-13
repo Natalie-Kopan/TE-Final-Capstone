@@ -73,18 +73,18 @@ namespace Capstone.DAO
             }
             return prizes;
         }
-        public Prizes DeletePrize(Prizes prize)
+        public int DeletePrize(int prizeId)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 using (SqlCommand command = new SqlCommand(DeletePrizeSql, conn))
                 {
-                    command.Parameters.AddWithValue("@prize_id", prize.prizeId);
+                    command.Parameters.AddWithValue("@prize_id", prizeId);
                     command.ExecuteNonQuery();
                 }
             }
-            return prize;
+            return prizeId;
         }
 
         public Prizes EditPrize(Prizes prize)

@@ -91,7 +91,7 @@ const router = new Router({
       component: ViewPrizes,
     },
     {
-      path: '/PrizeDetails',
+      path: '/Prizes',
       name:'PrizeDetails',
       component: PrizeDetails
     },

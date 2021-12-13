@@ -35,10 +35,10 @@ export default {
   displayPrizes(familyId){
     return axios.get('/Prizes', familyId);
   },
-  deletedPrize(prize){
-    return axios.delete('/Prize', prize);
+  deletedPrize(prizeId){
+    return axios.delete(`/Prizes/${prizeId}`);
   },
   editPrize(prize){
-    return axios.put('/Prize', prize);
+    return axios.put('/Prizes', prize);
   } 
 }

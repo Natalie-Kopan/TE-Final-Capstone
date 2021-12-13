@@ -2,8 +2,8 @@
     <section id = "app" class="card">
         <div class="card-contents">
             <h2 id="center">{{prize.prizeTitle}}</h2>
-            <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize(prize)" style="width:100%; bottom:0; margin-top:auto">Delete Prize</button>
-            <button class="btn btn-primary" type ="submit" v-on:click.prevent="editPrize(prize)">Edit Prize</button>   
+            <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-top:auto">Delete Prize</button>
+            <button class="btn btn-primary" type ="submit" v-on:click.prevent="editPrize()">Edit Prize</button>   
         </div> 
   </section>
 </template>
@@ -36,12 +36,15 @@ data() {
         id: Number
     },
    methods: {
-    deletedPrize(prize) {
+    deletedPrize() {
         let confirmed = confirm('Are you sure you want to delete this prize? This cannot be undone.');
         if (confirmed) {
-                AuthService.deletedPrize(prize)
+                AuthService.deletedPrize(this.prize.prizeId)
                 .then(() => {
-                    this.$store.commit('DELETE_PRIZE', prize);
+                    console.log(this.prize.prizeId);
+                    this.$store.commit('DELETE_PRIZE', this.prize.prizeId);
+                    console.log()
+                    this.$router.push({name: 'ViewPrizes'});
                 })
                 .catch(response => {
                     console.error("Could not delete prize", response);
@@ -49,10 +52,10 @@ data() {
                 });
             }
         },
-        editPrize(prize) {
-            AuthService.deletedPrize(prize)
+        editPrize() {
+            AuthService.deletedPrize(this.prize.prizeId)
             .then(() => {
-                this.$store.commit('EDIT_PRIZE', prize);
+                this.$store.commit('EDIT_PRIZE', this.prize);
                 })
                 .catch(response => {
                     console.error("Could not edit prize", response);

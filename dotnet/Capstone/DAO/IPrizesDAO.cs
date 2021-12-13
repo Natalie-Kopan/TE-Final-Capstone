@@ -10,8 +10,7 @@ namespace Capstone.DAO
     {
         Prizes AddPrize(Prizes prizeToAdd);
         List<Prizes> GetPrizes(int family_id);
-        Prizes DeletePrize(Prizes prize);
-        public Prizes EditPrize(Prizes prize);
-
+        int DeletePrize(int prize);
+        Prizes EditPrize(Prizes prize);
     }
 }
