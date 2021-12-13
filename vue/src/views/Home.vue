@@ -1,7 +1,7 @@
 <template>
   <div class="home container">
     <div>
-      <h1> Welcome {{this.user.username}} To The Breakfast Book Club </h1>
+      <h1> Welcome {{this.user.username}} </h1>
     <Library v-if="$store.state.token" v-bind:isbn="isbn"/>
     <ViewActivity v-if="$store.state.token" v-bind:isbn="isbn"/>
     <FamilyPrizes v-if="$store.state.token"/>
