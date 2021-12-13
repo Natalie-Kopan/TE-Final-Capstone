@@ -1,9 +1,9 @@
 <template>
 <div >
-    <section id ="app" style="display:flex">
+    <section id ="app" style="display:flex; justify-content:space-evenly">
         <div class="card">
         <div class="card-contents">
-            <h2 id="center">Title: {{prize.prizeTitle}}</h2>
+            <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
             <p>Prize Description: {{prize.description}}</p>
             <p>Prize Milestone: {{prize.mileStone}}</p>
             <p>Max Prize: {{prize.maxPrize}}</p>
@@ -140,7 +140,7 @@ data() {
                 })
                 .catch(response => {
                     console.error("Could not edit prize", response);
-                    alert("Prize can not be edited, please try again later.");
+                    alert("Prize can not be edited, please check entered information.");
                 });
             }
         }

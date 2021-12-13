@@ -69,6 +69,10 @@ namespace Capstone.Controllers
         [HttpPut]
         public ActionResult EditPrize(Prizes prize)
         {
+            if (prize.startDate >= prize.endDate)
+            {
+                return BadRequest();
+            }
             Prizes editedPrize = prizesDAO.EditPrize(prize);
             return Created("/Prizes", editedPrize);
         }
