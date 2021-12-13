@@ -2,9 +2,9 @@
   <div class="home container">
     <div>
       <h1> Welcome {{this.user.username}} To The Breakfast Book Club </h1>
-    <Library />
-    <ViewActivity />
-    <FamilyPrizes />
+    <Library v-if="$store.state.token" v-bind:isbn="isbn"/>
+    <ViewActivity v-if="$store.state.token" v-bind:isbn="isbn"/>
+    <FamilyPrizes v-if="$store.state.token"/>
      <p>
       Launched in 1984, <em>The Breakfast Book Club</em> became an inclusive
       book club amongst aspiring Tech Elevator classmates. While the concept of
@@ -25,6 +25,11 @@ import Library from "../components/Library.vue";
 
 export default {
   name: "Home",
+    data() {
+      return {
+        isbn: '',
+      }
+    },
   computed: {
     user() {
       return this.$store.state.user;
@@ -51,5 +56,8 @@ export default {
         });
     },
   },
+  created() {
+    this.isbn = +this.$route.params.isbn
+  }
 };
 </script>
