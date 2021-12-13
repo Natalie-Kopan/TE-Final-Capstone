@@ -115,7 +115,10 @@ export default {
                     this.errorMessage = 'This prize is invalid. Please check entered information. ';
                     this.successMessage = '';
                 });
-        }
+        },
+
+        
+    
     },
   }
 </script>

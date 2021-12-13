@@ -60,6 +60,14 @@ namespace Capstone.Controllers
             return Ok(allFamilyPrizes);
             
         }
+        [HttpDelete]
+        public ActionResult DeletePrize(Prizes prizeToDelete)
+        {
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            prizeToDelete.familyId = userDAO.GetUserFamilyId(userId);
 
+            Prizes deletedPrize = prizesDAO.DeletePrize(prizeToDelete);
+            return NoContent();
+        }
     }
 }

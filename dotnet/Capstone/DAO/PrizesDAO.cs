@@ -18,6 +18,9 @@ namespace Capstone.DAO
 
         private const string AddPrizeSql = "INSERT INTO prizes(family_id, description, prize_title, milestone, max_prize, start_date, end_date) " +
             "VALUES(@family_id, @description, @prize_title, @milestone, @max_prize, @start_date, @end_date) ";
+        const string GetPrizesByFamilyIDsql = "SELECT prize_id, family_id, description, prize_title, milestone, max_prize, start_date, end_date FROM prizes WHERE family_id = @family_id";
+        private const string DeletePrizeSql = "DELETE FROM prizes WHERE prize_id = @prize_id";
+
         public Prizes AddPrize(Prizes prizeToAdd)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -40,10 +43,6 @@ namespace Capstone.DAO
             }
             return prizeToAdd;
         }
-
-        
-        const string GetPrizesByFamilyIDsql = "SELECT family_id, description, prize_title, milestone, max_prize, start_date, end_date FROM prizes WHERE family_id = @family_id";
-
         public List<Prizes> GetPrizes(int family_id)
         {
             List<Prizes> prizes = new List<Prizes>();
@@ -58,6 +57,7 @@ namespace Capstone.DAO
                         while (reader.Read())
                         {
                             Prizes prize = new Prizes();
+                            prize.prizeId = Convert.ToInt32(reader["prize_id"]);
                             prize.description = Convert.ToString(reader["description"]);
                             prize.prizeTitle = Convert.ToString(reader["prize_title"]);
                             prize.mileStone = Convert.ToInt32(reader["milestone"]);
@@ -71,7 +71,18 @@ namespace Capstone.DAO
             }
             return prizes;
         }
-
-
+        public Prizes DeletePrize(Prizes prize)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(DeletePrizeSql, conn))
+                {
+                    command.Parameters.AddWithValue("@prize_id", prize.prizeId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            return prize;
+        }
     }
 }
