@@ -11,6 +11,7 @@ import Prizes from "../views/Prizes.vue";
 import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
 import PrizeDetails from "../views/PrizeDetails.vue";
+import Dashboard from "../views/Dashboard.vue";
 import store from "../store/index";
 
 Vue.use(Router);
@@ -35,6 +36,11 @@ const router = new Router({
       meta: {
         requiresAuth: false,
       },
+    },
+    {
+      path: "/Dashboard",
+      name: "Dashboard",
+      component: Dashboard,
     },
     {
       path: "/login",

@@ -1,10 +1,19 @@
 <template>
-    <section id = "app" class="card">
+<div >
+    <section id ="app" style="display:flex">
+        <div class="card">
         <div class="card-contents">
-            <h2 id="center">{{prize.prizeTitle}}</h2>
-            <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-top:auto">Delete Prize</button>
-            <button class="btn btn-primary"  v-on:click="edit=true">Edit Prize</button>   
-            <div >
+            <h2 id="center">Title: {{prize.prizeTitle}}</h2>
+            <p>Prize Description: {{prize.description}}</p>
+            <p>Prize Milestone: {{prize.mileStone}}</p>
+            <p>Max Prize: {{prize.maxPrize}}</p>
+            <p>Start Date: {{prize.startDate}}</p>
+            <p>End Date: {{prize.endDate}}</p>
+                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-bottom:1rem; color:white">Delete Prize</button>
+                <button class="btn btn-primary"  v-on:click="edit=true" style="width:100%">Edit Prize</button> 
+        </div>  
+        </div>
+            <div v-if="edit">
                 <form class="prizesform" v-on:submit.prevent="editPrize()">
                     <h1 class="h3 mb-3 font-weight-normal" id="center"> Edit Prize </h1>
                     <div v-if="errorMessage" class="alert alert-danger">
@@ -13,13 +22,14 @@
                     <div v-if="successMessage" class="alert alert-success">
                         {{successMessage}}
                     </div>
+                    
                 <div class="form-part">
                     <label for="prizeTitle" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" 
                         v-model.trim="prize.prizeTitle"
                         required 
                         placeholder="Enter a Prize title">
-            </div>
+                </div>
             <div>
                 <label for="description" class="form-label">Description</label>
                 <input type="text" class="form-control" id="description" 
@@ -63,9 +73,9 @@
                 <button class="btn btn-primary" type="submit" style="margin:0rem; width:100%" >Save Prize</button>
             </div>
             </form>
-            </div>
         </div> 
   </section>
+</div>
 </template>
 
 <script>
