@@ -7,11 +7,22 @@
       <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
     </div>
     </div>
+
+    <div class="card-deck">
+      <div class="card">
+      <!--<img src="..." class="card-img-top" alt="...">-->
+      <div class="card-body">
+        <h5 class="card-title">You Read for {{activityLog.minutesRead}} minutes on {{activityLog.dateOfActivity | formatDate}} </h5>
+        <p class="card-text">Here's some things you noted during this read: {{activityLog.notes}}</p>
+        <p class="card-text"><small class="text-muted">{{activityLog.dateOfActivity | formatDate}}</small></p>
+    </div>
+    </div>
+    </div>
   </section>
 </template>
 
 <script>
-import AuthService from '../services/AuthService';
+import AuthService from '../services/AuthService.js';
 
 export default {
   name: 'ActivityLog',
