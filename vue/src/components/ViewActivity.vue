@@ -1,10 +1,10 @@
 <template>
   <section class="container" id = "app">
+    <h1> Previous Activity</h1>
     <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.logId">
       <div class = "card">
-      <h2>{{activityLog.bookTitle}}</h2>
-      
-      <!--h3 class="book-author">{{ book.author }}</h3-->
+      <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
+      <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
     </div>
     </div>
   </section>
@@ -14,11 +14,16 @@
 import AuthService from '../services/AuthService';
 
 export default {
-    props: {
-        isbn: Number
-    },
-    name: 'ActivityLog',
-    computed: {
+  name: 'ActivityLog',
+  data(){
+    return {
+      dateOfActivity: '',
+    }
+  },
+  props: {
+      isbn: Number
+  },
+  computed: {
       allActivityLog() {
           return this.$store.state.activityLog;
       },

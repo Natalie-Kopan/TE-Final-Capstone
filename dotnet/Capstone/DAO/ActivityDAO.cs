@@ -16,9 +16,9 @@ namespace Capstone.DAO
             this.connectionString = connectionString;
         }
 
-        private const string AddActivityLogSql = "INSERT INTO reading_log (user_id, book_format, minutes_read, isbn) " +
-            "VALUES(@user_id, @book_format, @minutes_read, @isbn)";
-        private const string ViewActivityLogByBookSql = "SELECT b.title, b.author, rl.log_id, rl.minutes_read, " +
+        private const string AddActivityLogSql = "INSERT INTO reading_log (user_id, book_format, minutes_read, isbn, notes) " +
+            "VALUES(@user_id, @book_format, @minutes_read, @isbn, @notes)";
+        private const string ViewActivityLogByBookSql = "SELECT b.title, b.author, rl.log_id, rl.minutes_read, rl.date_of_activity, " +
             "rl.isbn, rl.book_format, rl.notes FROM reading_log rl INNER JOIN books b ON rl.isbn = b.isbn " +
             "WHERE rl.user_id = @user_id AND rl.isbn = @isbn";
 
@@ -33,6 +33,7 @@ namespace Capstone.DAO
                     command.Parameters.AddWithValue("@user_id", userId);
                     command.Parameters.AddWithValue("@book_format", activity.bookFormat);
                     command.Parameters.AddWithValue("@minutes_read", activity.minutesRead);
+                    command.Parameters.AddWithValue("@notes", activity.notes);
                     command.Parameters.AddWithValue("@isbn", isbn);
 
                     command.ExecuteNonQuery();
@@ -64,6 +65,7 @@ namespace Capstone.DAO
                             log.isbn = Convert.ToInt32(reader["isbn"]);
                             log.bookFormat = Convert.ToString(reader["book_format"]);
                             log.notes = Convert.ToString(reader["notes"]);
+                            log.dateOfActivity = Convert.ToDateTime(reader["date_of_activity"]);
                             log.userId = userId;
                             logs.Add(log);
                         }

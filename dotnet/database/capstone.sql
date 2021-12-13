@@ -23,7 +23,7 @@ CREATE TABLE family (
 
 CREATE TABLE users (
 	user_id int IDENTITY(1,1) NOT NULL,
-	username varchar(50) NOT NULL,
+	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL,
@@ -47,6 +47,7 @@ CREATE TABLE reading_log (
 	user_id int NOT NULL,
 	minutes_read int NOT NULL DEFAULT 0,
 	book_format nvarchar(200) NOT NULL,
+	date_of_activity date NOT NULL DEFAULT getdate(),
 	isbn bigint NOT NULL,
 	notes nvarchar(1024),
 	CONSTRAINT PK_log_id PRIMARY KEY (log_id),
