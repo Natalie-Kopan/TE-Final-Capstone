@@ -60,7 +60,11 @@ export default new Vuex.Store({
         console.log(state.prizes);
     },
     EDIT_PRIZE(state, payload){
-      let index = state.prizes.findIndex(prize => prize.id === payload.id);
+      console.log(payload.prizeId);
+      
+      let index = state.prizes.findIndex(prize => prize.prizeId === payload.prizeId);
+      console.log(index);
+      console.log(state.prizes);
       if (index >= 0) {
         state.prizes.splice(index, 1, payload);
       }

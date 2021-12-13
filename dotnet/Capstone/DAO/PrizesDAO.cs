@@ -21,7 +21,7 @@ namespace Capstone.DAO
         private const string GetPrizesByFamilyIDsql = "SELECT prize_id, family_id, description, prize_title, milestone, max_prize, start_date, end_date FROM prizes WHERE family_id = @family_id";
         private const string DeletePrizeSql = "DELETE FROM prizes WHERE prize_id = @prize_id ";
         private const string EditPrizeSql = "UPDATE prizes SET description = @description, prize_title = @prize_title, max_prize = @max_prize, " +
-            "milestone = @milestone, start_date = @start_date, end_date = @end_date WHERE prize_id = 2 ";
+            "milestone = @milestone, start_date = @start_date, end_date = @end_date WHERE prize_id = @prize_id ";
 
         public Prizes AddPrize(Prizes prizeToAdd)
         {
@@ -101,7 +101,7 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@max_prize", prize.maxPrize);
                 cmd.Parameters.AddWithValue("@start_date", prize.startDate);
                 cmd.Parameters.AddWithValue("@end_date", prize.endDate);
-                cmd.ExecuteScalar();
+                cmd.ExecuteNonQuery();
             }
             return prize;
         }

@@ -39,6 +39,7 @@ export default {
     return axios.delete(`/Prizes/${prizeId}`);
   },
   editPrize(prize){
+    console.log(prize);
     return axios.put('/Prizes', prize);
   } 
 }
