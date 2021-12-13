@@ -37,9 +37,9 @@ export default {
           }
         })
         .catch((response) => {
-          console.error("Could not add book", response);
+          console.error("Could not add user", response);
           this.errorMessage =
-            "This book either already exists or is invalid. Check user books list";
+            "This user either already exists or is invalid. Check user credentials";
         });
     },
   },
