@@ -10,6 +10,7 @@ import AddFamilyMember from "../views/AddFamilyMember.vue";
 import Prizes from "../views/Prizes.vue";
 import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
+import PrizeDetails from "../views/PrizeDetails.vue";
 import store from "../store/index";
 
 Vue.use(Router);
@@ -88,6 +89,11 @@ const router = new Router({
       path: '/Prizes',
       name: 'ViewPrizes',
       component: ViewPrizes,
+    },
+    {
+      path: '/Prizes',
+      name:'PrizeDetails',
+      component: PrizeDetails
     },
     {
       path: "*",
