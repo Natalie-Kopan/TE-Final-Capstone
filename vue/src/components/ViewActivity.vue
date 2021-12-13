@@ -74,12 +74,5 @@ export default {
 
 <style>
 
-.activity-card {
-  padding: 5px;
-  width: 300px;
-  height: 250px;
-  margin: 20px;
-  border: solid 5px #8AC926
-  
-}
+
 </style>
