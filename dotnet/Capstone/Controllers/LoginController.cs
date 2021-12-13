@@ -116,7 +116,7 @@ namespace Capstone.Controllers
 
             return result;
         }
-        [HttpPost("addFamily")]
+        [HttpPost("family")]
         public IActionResult AddFamilyMember(RegisterFamily familyMem)
         {
             int userId = int.Parse(this.User.FindFirst("sub").Value);
