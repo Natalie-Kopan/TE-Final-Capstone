@@ -41,9 +41,8 @@
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'Prizes' }"
-        v-if="$store.state.user.role == 'parent'">
-        Prizes
+        v-bind:to="{ name: 'PrizeDashboard' }">
+       Prizes Dashboard
       </router-link>
       <router-link
         class="nav-item"
@@ -63,12 +62,12 @@
         v-if="$store.state.token">
         View Family
       </router-link>
-      <router-link
+      <!-- <router-link
         class="nav-item"
         v-bind:to="{ name: 'ViewPrizes' }"
         v-if="$store.state.token">
         View Prizes
-      </router-link>
+      </router-link> -->
     </div>
     
     <router-view />

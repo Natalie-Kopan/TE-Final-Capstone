@@ -30,6 +30,15 @@ namespace Capstone.Controllers
             return Ok(logs);
         }
 
+        [HttpGet("user/{userId}")]
+        [Authorize]
+        public ActionResult ViewActivityByUser(int userId)
+        {
+            List<ActivityLog> logs = activityDAO.ViewActivityLogByUser(userId);
+
+            return Ok(logs);
+        }
+
         [HttpPost("{isbn}")]
         [Authorize]
         public ActionResult AddActivityToBook(ActivityLog activity, int isbn)

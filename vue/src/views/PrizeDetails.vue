@@ -9,8 +9,11 @@
             <p>Max Prize: {{prize.maxPrize}}</p>
             <p>Start Date: {{prize.startDate | formatDate}}</p>
             <p>End Date: {{prize.endDate | formatDate}}</p>
-                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-bottom:1rem; color:white">Delete Prize</button>
+    <!--This is a 'mark complete' button for prizes, it does nothing yet
+                <button class="btn btn-success"  v-on:click="edit=true" style="width:100%; color:white;">Mark Prize Complete</button> 
+    -->            
                 <button class="btn btn-primary"  v-on:click="edit=true" style="width:100%">Edit Prize</button> 
+                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-bottom:1rem; color:white">Delete Prize</button>
         </div>  
         </div>
             <div v-if="edit">

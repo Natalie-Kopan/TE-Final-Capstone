@@ -22,6 +22,10 @@ export default {
     return axios.get(`/Activity/${isbn}`)
   },
 
+  displayUserActivityLog(userId) {
+    return axios.get(`/Activity/user/${userId}`)
+  },
+
   addActivity(activityLog) {
     return axios.post(`/Activity/${activityLog.isbn}`, activityLog)
   },
