@@ -63,6 +63,12 @@
         v-if="$store.state.token">
         View Prizes
       </router-link>
+        <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'ReadingTimerview' }"
+        v-if="$store.state.token">
+        Reading Timer
+      </router-link>
     </div>
     
     <router-view />
