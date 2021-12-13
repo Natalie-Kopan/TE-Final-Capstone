@@ -23,6 +23,12 @@
       </router-link>
       <router-link
         class="nav-item"
+        v-bind:to="{ name: 'UserDashboard'}"
+        v-if="$store.state.token">
+        User Dashboard
+      </router-link>
+      <router-link
+        class="nav-item"
         v-bind:to="{ name: 'Logout' }"
         v-if="$store.state.token">
         Logout

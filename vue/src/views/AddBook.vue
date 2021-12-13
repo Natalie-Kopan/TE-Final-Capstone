@@ -96,18 +96,7 @@ export default {
 </script>
 
 <style>
-form{
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 450px;
-    margin: 20px;
-    align-self: center;
-}
 
- .submit{
-    border-radius: 10px;
-    bottom: 0;
-}
 
 
 </style>
