@@ -1,7 +1,7 @@
 <template>
   <section>
-      <div class="container">
-    <form v-on:submit.prevent="addingActivity">
+    <div class="container">
+    <form class="add-activity" v-on:submit.prevent="addingActivity">
         <div class="form-part">
         <h4> Minutes Read </h4>
         <label for="minutesRead" class="form-label">Mintues Read</label>
@@ -91,5 +91,13 @@ export default {
 
 <style>
 
+.add-activity {
+  padding: 5px;
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  border: solid 5px #FFCA3A
+  
+}
 
 </style>
