@@ -69,9 +69,8 @@ namespace Capstone.Controllers
         [HttpPut]
         public ActionResult EditPrize(Prizes prize)
         {
-
             Prizes editedPrize = prizesDAO.EditPrize(prize);
-            return Ok();
+            return Created("/Prizes", editedPrize);
         }
     }
 }

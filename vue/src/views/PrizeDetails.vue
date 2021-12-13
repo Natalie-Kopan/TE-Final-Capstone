@@ -3,20 +3,91 @@
         <div class="card-contents">
             <h2 id="center">{{prize.prizeTitle}}</h2>
             <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-top:auto">Delete Prize</button>
-            <button class="btn btn-primary" type ="submit" v-on:click.prevent="editPrize()">Edit Prize</button>   
+            <button class="btn btn-primary"  v-on:click="edit=true">Edit Prize</button>   
+            <div >
+                <form class="prizesform" v-on:submit.prevent="editPrize()">
+                    <h1 class="h3 mb-3 font-weight-normal" id="center"> Edit Prize </h1>
+                    <div v-if="errorMessage" class="alert alert-danger">
+                        {{errorMessage}}
+                    </div>
+                    <div v-if="successMessage" class="alert alert-success">
+                        {{successMessage}}
+                    </div>
+                <div class="form-part">
+                    <label for="prizeTitle" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" 
+                        v-model.trim="prize.prizeTitle"
+                        required 
+                        placeholder="Enter a Prize title">
+            </div>
+            <div>
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" 
+                v-model.trim="prize.description"
+                required 
+                placeholder="Enter a Prize descriptiom">
+            </div>
+            <div class="form-part">
+                <label for="milestone" class="form-label">Milestone</label>
+                <input type="text" class="form-control" id="milestone" 
+                v-model.trim.number="prize.mileStone"
+                required 
+                placeholder="Enter a Prize milestone">
+            </div>
+            <div class="form-part">
+                <label for="max_prize" class="form-label">Max Prize</label>
+                <input type="text" class="form-control" id="max_prize" 
+                v-model.trim.number="prize.maxPrize"
+                required 
+                placeholder="Enter a Max Prize">
+            </div>
+            <div class="form-part">
+                <label for="start_date" class="form-label">Start Date </label>
+                <datepicker  :bootstrap-styling="true" 
+                v-model="prize.startDate"  name="start-date"
+                :disabledDates="disabledDates"
+                required 
+                placeholder="Enter a Start Date">
+                </datepicker>
+            </div>
+            <div class="form-part">
+                <label for="end_date" class="form-label">End Date </label>
+                <datepicker  name="end-date" :bootstrap-styling="true"
+                v-model="prize.endDate"  
+                :disabledDates="disabledDates"
+                required 
+                placeholder="Enter a End Date">
+                </datepicker>
+            </div>
+            <div>
+                <button class="btn btn-primary" type="submit" style="margin:0rem; width:100%" >Save Prize</button>
+            </div>
+            </form>
+            </div>
         </div> 
   </section>
 </template>
 
 <script>
 import AuthService from '../services/AuthService'
+import Datepicker from 'vuejs-datepicker';
 
 export default {
 name: 'PrizeDetails',
 data() {
         return {
-            prize: {}
+            prize: {},
+            prizes: [],
+            edit: false,
+             disabledDates: {
+                to: new Date(Date.now())
+            },
+            errorMessage: '',
+            successMessage:'',
         }
+    },
+    components:{
+        Datepicker
     },
     created() {
         let prizeparamId = parseInt(this.$route.params.id);
@@ -41,9 +112,7 @@ data() {
         if (confirmed) {
                 AuthService.deletedPrize(this.prize.prizeId)
                 .then(() => {
-                    console.log(this.prize.prizeId);
                     this.$store.commit('DELETE_PRIZE', this.prize.prizeId);
-                    console.log()
                     this.$router.push({name: 'ViewPrizes'});
                 })
                 .catch(response => {
@@ -52,14 +121,16 @@ data() {
                 });
             }
         },
+
         editPrize() {
-            AuthService.deletedPrize(this.prize.prizeId)
-            .then(() => {
-                this.$store.commit('EDIT_PRIZE', this.prize);
+            AuthService.editPrize(this.prize)
+            .then(response => {
+                console.log(response.data);
+                this.$store.commit('EDIT_PRIZE', response.data);
                 })
                 .catch(response => {
                     console.error("Could not edit prize", response);
-                    alert("Prize can not be editted, please try again later.");
+                    alert("Prize can not be edited, please try again later.");
                 });
             }
         }
