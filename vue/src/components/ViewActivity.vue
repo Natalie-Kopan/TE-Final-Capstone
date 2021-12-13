@@ -67,7 +67,4 @@ export default {
 .card {
   padding: 5px;
 }
-.lowMinutes {
-  background: ;
-}
 </style>
