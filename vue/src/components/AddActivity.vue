@@ -24,7 +24,7 @@
         <div class="form-part">
         <label for="notes" class="form-label">Notes</label>
             <input type="text" class="form-control" id="notes" 
-                v-model.trim.number="addedActivity.notes"
+                v-model.trim="addedActivity.notes"
                 required 
                 placeholder="Enter Notes">
         </div>

@@ -1,8 +1,12 @@
 <template>
-  <section class="container" id = "app">
+  <section class="activity" id = "app">
     <h1> Previous Activity</h1>
-    <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.logId">
-      <div class = "card">
+    <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
+      <div class = "card"
+        v-bind:style="{
+            background: colors[index % colors.length],
+            color: '#111111'
+        }">
       <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
       <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
     </div>
@@ -18,6 +22,7 @@ export default {
   data(){
     return {
       dateOfActivity: '',
+      colors: ['#ef2e35', '#ffca3a', '#8ac926', '#1982c4', '#92d5f2']
     }
   },
   props: {
@@ -27,6 +32,11 @@ export default {
       allActivityLog() {
           return this.$store.state.activityLog;
       },
+      // colorChange() {
+      //   if(this.activityLog.minutesRead <= 15){
+      //     return 
+      //   }
+      //}
    },
      created() {
           // Make a HTTP GET request and return a promise representing the operation
@@ -49,4 +59,7 @@ export default {
 
 <style>
 
+.card {
+  padding: 5px;
+}
 </style>
