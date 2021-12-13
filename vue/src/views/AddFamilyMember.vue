@@ -53,11 +53,11 @@
           <label for="userRole">I am a Parent.</label>
       </div-->
 
-      <div class="form-group">
+      <!--<div class="form-group">
         <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      </div>
+      </div>-->
       <button class="btn btn-primary" type="submit">
-        Create Account
+        Add Family Member
       </button>
     </form>
   </div>

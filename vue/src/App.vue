@@ -72,13 +72,14 @@ export default {
      Any valid CSS or SCSS is allowable here. See https://sass-lang.com/documentation/style-rules for info on SCSS -->
 <style lang="scss">
 
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import './styles/colors.scss';
 @import './styles/style.scss';
+
 
 // Import the bootstrap styles. If you want to override Bootstrap colors, it needs to happen above this line
 @import '../node_modules/bootstrap/scss/bootstrap';
 
 // Your custom styles go below this point
-
 </style>
