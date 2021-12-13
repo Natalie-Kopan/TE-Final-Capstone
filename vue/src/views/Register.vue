@@ -5,9 +5,6 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div v-if="registrationSuccessMsg">
-        {{registrationSuccessMsg}}
-      </div>
       <div class="form-group">
         <input
           type="text"
@@ -79,7 +76,6 @@ export default {
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
-      registrationSuccessMsg: '',
     };
   },
   methods: {
@@ -93,10 +89,9 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                name: 'login',
+                name: 'Login',
                 query: { registration: 'success' },
               });
-                this.registrationSuccessMsg = 'Success! You are now registered. Please Login!';
             }
           })
           .catch((error) => {

@@ -66,7 +66,6 @@ export default {
           // 400, 500, network issues, no internet, etc.
           .catch(response => {
             console.error("Could not load books.", response);
-            alert("Issue loading books");
           });
   }
 }
