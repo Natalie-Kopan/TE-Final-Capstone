@@ -3,6 +3,11 @@
     <div v-for="familyMember of allFamily" v-bind:key="familyMember.username" class="card">
         <div class="card-contents">
           <h2>{{familyMember.username}}</h2>
+          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
+            <router-link v-bind:to="{name: 'ViewUserActivity', params: {userId: familyMember.userId}}" style="color:white">
+              View User Activity
+            </router-link>
+        </button>
         </div>
     </div>
   </section>
@@ -20,7 +25,7 @@ export default {
     },
     created() {
       // Make a HTTP GET request and return a promise representing the operation
-      const familyMembersPromise = AuthService.displayFamilyMembers();
+      const familyMembersPromise = AuthService.displayFamilyMembers(this.$route.params.userId);
       familyMembersPromise
         // 200 Status Codes
         .then(response => {

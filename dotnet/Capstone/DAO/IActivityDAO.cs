@@ -10,5 +10,6 @@ namespace Capstone.DAO
     {
         ActivityLog AddActivity(ActivityLog activity, int userId, int isbn);
         List<ActivityLog> ViewActivityLogByBook(int userId, int isbn);
+        List<ActivityLog> ViewActivityLogByUser(int userId);
     }
 }

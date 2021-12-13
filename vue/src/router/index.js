@@ -13,6 +13,7 @@ import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
 import PrizeDetails from "../views/PrizeDetails.vue";
 import Dashboard from "../views/Dashboard.vue";
+import ViewUserActivity from "../views/ViewUserActivity.vue";
 import store from "../store/index";
 
 Vue.use(Router);
@@ -96,6 +97,11 @@ const router = new Router({
       path: '/ActivityLog/:isbn',
       name: 'ActivityLog',
       component: ActivityLog,
+    },
+    {
+      path: '/Family/:userId',
+      name: 'ViewUserActivity',
+      component: ViewUserActivity,
     },
     {
       path: '/Prizes',
