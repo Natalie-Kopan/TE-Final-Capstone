@@ -60,7 +60,7 @@ namespace Capstone.Controllers
             return Ok(allFamilyPrizes);
             
         }
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{prizeIdToDelete}")]
         public ActionResult DeletePrize(int prizeIdToDelete)
         {
             int prizeId = prizesDAO.DeletePrize(prizeIdToDelete);
