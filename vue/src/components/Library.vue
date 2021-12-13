@@ -52,8 +52,6 @@ export default {
 .card {
     border: 2px solid black;
     border-radius: 10px;
-    width: 250px;
-    height: 410px;
     margin: 1rem;
 
 }
