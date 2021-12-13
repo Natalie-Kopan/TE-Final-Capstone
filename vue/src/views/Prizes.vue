@@ -56,7 +56,7 @@
                 </datepicker>
             </div>
             <div>
-                <button class="btn btn-primary" type="submit" style="margin:0rem; width:100%"> Add Prize</button>
+                <button class="btn btn-primary" type="submit" style="margin:0rem; width:100%">Add Prize</button>
             </div>
     </form>
     </div>
@@ -115,10 +115,7 @@ export default {
                     this.errorMessage = 'This prize is invalid. Please check entered information. ';
                     this.successMessage = '';
                 });
-        },
-
-        
-    
+        }
     },
   }
 </script>

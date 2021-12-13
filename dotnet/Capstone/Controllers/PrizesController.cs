@@ -69,5 +69,12 @@ namespace Capstone.Controllers
             Prizes deletedPrize = prizesDAO.DeletePrize(prizeToDelete);
             return NoContent();
         }
+        [HttpPut]
+        public ActionResult EditPrize(Prizes prize)
+        {
+
+            Prizes editedPrize = prizesDAO.EditPrize(prize);
+            return Ok();
+        }
     }
 }

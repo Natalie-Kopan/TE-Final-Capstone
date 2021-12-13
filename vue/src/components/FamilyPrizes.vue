@@ -4,9 +4,12 @@
             <div class = "card">
                 <div class="card-contents">
                     <h2 id="center">{{prize.prizeTitle}}</h2>
-                <p>First {{prize.maxPrize}} member(s) of your family to read {{prize.milestone}} minutes.</p>
-                <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">View Prize Details</button>
-                <button class="btn btn-danger" type ="submit" style="width:100%" v-on:click.prevent="deletedPrize(prize)">Delete Prize</button>
+                    <p>First {{prize.maxPrize}} member(s) of your family to read {{prize.milestone}} minutes.</p>
+                        <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
+                           <router-link v-bind:to="{name: 'PrizeDetails', params: {id: prize.prizeId}}" style="color:white">
+                                View Prize Details
+                            </router-link>
+                        </button>
             </div>
         </div>
         </div>

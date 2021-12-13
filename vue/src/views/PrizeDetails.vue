@@ -1,53 +1,65 @@
 <template>
-    <section id = "app">
-        <div v-bind:key="prize.prizeId">
-                <h2 id="center">{{prize.prizeTitle}}</h2>
-                <p>First {{prize.maxPrize}} member(s) of your family to read {{prize.milestone}} minutes.</p>
-                <button class="btn btn-primary" type ="submit">Edit Prize</button>
-                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize(prize)">Delete Prize</button>
-        </div>
+    <section id = "app" class="card">
+        <div class="card-contents">
+            <h2 id="center">{{prize.prizeTitle}}</h2>
+            <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize(prize)" style="width:100%; bottom:0; margin-top:auto">Delete Prize</button>
+            <button class="btn btn-primary" type ="submit" v-on:click.prevent="editPrize(prize)">Edit Prize</button>   
+        </div> 
   </section>
 </template>
 
 <script>
+import AuthService from '../services/AuthService'
+
 export default {
 name: 'PrizeDetails',
-        data() {
+data() {
         return {
-            addPrize: {
-                description: '',
-                prizeTitle: '',
-                mileStone: '',
-                maxPrize: '',
-                startDate: '',
-                endDate: '',
-            },
-            disabledDates: {
-                to: new Date(Date.now())
-            },
-            prizes:[],
-            errorMessage: '',
-            successMessage:'',
+            prize: {}
         }
     },
+    created() {
+        let prizeparamId = parseInt(this.$route.params.id);
+        let vuexPrize = this.$store.state.prizes.find(prize => prize.prizeId === prizeparamId);
+        this.prize = {
+            description:vuexPrize.description,
+            endDate:vuexPrize.endDate,
+            familyId:vuexPrize.familyId,
+            maxPrize:vuexPrize.maxPrize,
+            mileStone:vuexPrize.mileStone,
+            prizeId:vuexPrize.prizeId,
+            prizeTitle:vuexPrize.prizeTitle,    
+            startDate:vuexPrize.startDate
+            }
+        },
+    params:{
+        id: Number
+    },
    methods: {
-    deletedPrize(selectedPrize) {
+    deletedPrize(prize) {
         let confirmed = confirm('Are you sure you want to delete this prize? This cannot be undone.');
         if (confirmed) {
-                AuthService.deletedPrize(selectedPrize)
+                AuthService.deletedPrize(prize)
                 .then(() => {
-                    this.$store.commit('DELETE_PRIZE', selectedPrize);
-                    //this.$router.push({name: 'Prizes'});
+                    this.$store.commit('DELETE_PRIZE', prize);
                 })
                 .catch(response => {
                     console.error("Could not delete prize", response);
                     alert("Prize can not be deleted, please try again later.");
                 });
             }
+        },
+        editPrize(prize) {
+            AuthService.deletedPrize(prize)
+            .then(() => {
+                this.$store.commit('EDIT_PRIZE', prize);
+                })
+                .catch(response => {
+                    console.error("Could not edit prize", response);
+                    alert("Prize can not be editted, please try again later.");
+                });
+            }
         }
-    },
-  
-    
 }
 </script>
 
