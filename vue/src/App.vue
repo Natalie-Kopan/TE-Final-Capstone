@@ -4,7 +4,7 @@
 <template>
   <div id="app"> <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
-      <router-link class="nav-item" v-bind:to="{ name: 'Home' }">
+      <router-link class="logo" v-bind:to="{ name: 'Home' }">
         <img id="logo" src="../public/logo-textonly.png" />
         <!--
           <i class="fas fa-home"></i>
@@ -47,9 +47,15 @@
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'AddFamilyMember' }"
+        v-bind:to="{ name: 'FamilyAdd' }"
         v-if="$store.state.user.role == 'parent'">
         Add Family Member
+      </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'FamilyDisplay' }"
+        v-if="$store.state.token">
+        View Family
       </router-link>
       <router-link
         class="nav-item"

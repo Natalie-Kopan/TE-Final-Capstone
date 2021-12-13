@@ -3,6 +3,7 @@ using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
 
 namespace Capstone.Controllers
 {
@@ -116,16 +117,5 @@ namespace Capstone.Controllers
 
             return result;
         }
-        [HttpPost("addFamily")]
-        public IActionResult AddFamilyMember(RegisterFamily familyMem)
-        {
-            int userId = int.Parse(this.User.FindFirst("sub").Value);
-            int familyId = userDAO.GetUserFamilyId(userId);
-
-            User newMember = userDAO.AddUser(familyMem.Username, familyMem.Password, familyId, familyMem.Role);
-
-            return Created("/" , newMember);
-        }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
@@ -15,6 +16,7 @@ namespace Capstone.DAO
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, family_id, user_role) VALUES " +
             "(@username, @password_hash, @salt, @family_id, @user_role)";
         private string sqlGetFamilyId = "SELECT family_id FROM users WHERE user_id = @user_id";
+        private string sqlGetFamilyMembers = "SELECT user_id, username, user_role FROM users WHERE family_id = @family_id";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -121,6 +123,30 @@ namespace Capstone.DAO
             }
 
             return familyId;
+        }
+        public List<ReturnUser> GetUserFamilyMembers(int familyId)
+        {
+            List<ReturnUser> familyMembers = new List<ReturnUser>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(sqlGetFamilyMembers, conn))
+                {
+                    command.Parameters.AddWithValue("@family_id", familyId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ReturnUser familyMember = new ReturnUser();
+                            familyMember.UserId = (int)Convert.ToInt32(reader["user_id"]);
+                            familyMember.Username = Convert.ToString(reader["username"]);
+                            familyMember.Role = Convert.ToString(reader["user_role"]);
+                            familyMembers.Add(familyMember);
+                        }
+                    }
+                }
+            }
+            return familyMembers;
         }
     }
 }

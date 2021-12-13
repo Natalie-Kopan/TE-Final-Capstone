@@ -1,7 +1,7 @@
 <template>
   <div class="home container">
-    <div v-for="user of addFamilyMember" v-bind:key="user.username">
-      <h1> Welcome {{user.username}} To The Breakfast Book Club </h1>
+    <div>
+      <h1> Welcome {{this.user.username}} To The Breakfast Book Club </h1>
     <Library />
     <ViewActivity />
     <FamilyPrizes />
@@ -26,8 +26,8 @@ import Library from "../components/Library.vue";
 export default {
   name: "Home",
   computed: {
-    addFamilyMember() {
-      return this.$store.state.addFamilyMember;
+    user() {
+      return this.$store.state.user;
     }
   },
   components: {

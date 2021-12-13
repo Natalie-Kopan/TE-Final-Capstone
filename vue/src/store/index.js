@@ -25,7 +25,7 @@ export default new Vuex.Store({
     books:[],
     prizes:[],
     activityLog:[],
-    addFamilyMember:[],
+    familyMembers:[],
     token: currentToken || '',
     user: currentUser || {} // If a user is an parent, their user.role will be 'role'
   },
@@ -56,9 +56,9 @@ export default new Vuex.Store({
       state.prizes = prizes;
     },
     DELETE_PRIZE(state, prizeId){
-        let index = state.prizes.findIndex(prize =>prize.id === prizeId);
-        state.prizes.splice(index, 1);
-        console.log(state.prizes);
+      let index = state.prizes.findIndex(prize =>prize.id === prizeId);
+      state.prizes.splice(index, 1);
+      console.log(state.prizes);
     },
     EDIT_PRIZE(state, payload){
       console.log(payload.prizeId);
@@ -69,6 +69,9 @@ export default new Vuex.Store({
       if (index >= 0) {
         state.prizes.splice(index, 1, payload);
       }
-    }
+    },
+    FAMILY_MEMBERS_LOADED(state, familyMembers) {
+      state.familyMembers = familyMembers;
+    },
   }
 })

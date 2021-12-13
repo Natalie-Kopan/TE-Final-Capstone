@@ -35,7 +35,7 @@ namespace Capstone.DAO
                     command.Parameters.AddWithValue("@family_id", prizeToAdd.familyId);
                     command.Parameters.AddWithValue("@description", prizeToAdd.description);
                     command.Parameters.AddWithValue("@prize_title", prizeToAdd.prizeTitle);
-                    command.Parameters.AddWithValue("@milestone", prizeToAdd.mileStone);
+                    command.Parameters.AddWithValue("@milestone", prizeToAdd.milestone);
                     command.Parameters.AddWithValue("@max_prize", prizeToAdd.maxPrize);
                     command.Parameters.AddWithValue("@start_date", prizeToAdd.startDate);
                     command.Parameters.AddWithValue("@end_date", prizeToAdd.endDate);
@@ -62,7 +62,7 @@ namespace Capstone.DAO
                             prize.prizeId = Convert.ToInt32(reader["prize_id"]);
                             prize.description = Convert.ToString(reader["description"]);
                             prize.prizeTitle = Convert.ToString(reader["prize_title"]);
-                            prize.mileStone = Convert.ToInt32(reader["milestone"]);
+                            prize.milestone = Convert.ToInt32(reader["milestone"]);
                             prize.maxPrize = Convert.ToInt32(reader["max_prize"]);
                             prize.startDate = Convert.ToDateTime(reader["start_date"]);
                             prize.endDate = Convert.ToDateTime(reader["end_date"]);
@@ -97,7 +97,7 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@prize_id", prize.prizeId);
                 cmd.Parameters.AddWithValue("@description", prize.description);
                 cmd.Parameters.AddWithValue("@prize_title", prize.prizeTitle);
-                cmd.Parameters.AddWithValue("@milestone", prize.mileStone);
+                cmd.Parameters.AddWithValue("@milestone", prize.milestone);
                 cmd.Parameters.AddWithValue("@max_prize", prize.maxPrize);
                 cmd.Parameters.AddWithValue("@start_date", prize.startDate);
                 cmd.Parameters.AddWithValue("@end_date", prize.endDate);
