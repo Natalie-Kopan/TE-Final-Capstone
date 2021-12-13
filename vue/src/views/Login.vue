@@ -67,7 +67,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push({ name: "home" });
+            this.$router.push({ name: "Home" });
           }
         })
         .catch((error) => {
@@ -82,6 +82,19 @@ export default {
           }
         });
     },
+    /*home() {
+      ome(this.user)
+        .then((response) => {
+          if (response.status == 200) {
+            this.$router.push({ name: "home" });
+          }
+        })
+        .catch((response) => {
+          console.error("Could not add book", response);
+          this.errorMessage =
+            "This book either already exists or is invalid. Check user books list";
+        });
+    },*/
   },
 };
 </script>
