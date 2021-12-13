@@ -1,15 +1,16 @@
 <template>
   <section class="container" id = "app">
-    <h1> Previous Activity</h1>
+    <h1> Your Previous Activity</h1>
+    <!--
     <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
       <div class = "card" :color="colorChange">,
       <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
       <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
     </div>
-    </div>
+    </div> -->
 
     <div class="card-deck">
-      <div class="card">
+      <div class="activity-card" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
       <!--<img src="..." class="card-img-top" alt="...">-->
       <div class="card-body">
         <h5 class="card-title">You Read for {{activityLog.minutesRead}} minutes on {{activityLog.dateOfActivity | formatDate}} </h5>
@@ -30,9 +31,7 @@ export default {
     return {
       dateOfActivity: '',
       activityLog: '',
-      lowminutes: false,
-      medMinutes: false,
-      highMinutes: true,
+      colors: ['#EF2E35', '#FFCA3A', '#8AC926', '#1982C4'],
     }
   },
   props: {
@@ -75,7 +74,12 @@ export default {
 
 <style>
 
-.card {
+.activity-card {
   padding: 5px;
+  width: 300px;
+  height: 250px;
+  margin: 20px;
+  border: solid 5px #8AC926
+  
 }
 </style>
