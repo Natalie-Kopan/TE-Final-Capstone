@@ -2,7 +2,7 @@
 
 <section>
     <!--This is a set up for an extra feature to connect with outside API
-    DELETE IF NOT ABLE TO GET TO THIS FEATURE-->
+    DELETE IF NOT ABLE TO GET TO THIS FEATURE
     <div class="container">
     <form>
         <h4> Search for Book To Add</h4>
@@ -17,7 +17,7 @@
             placeholder="Search Book ISBN">
         <button type="submit" class="submit">Search</button>
     </form>
-    </div>
+    </div> -->
     
     <div class="container">
     <form v-on:submit.prevent="addedBook">
