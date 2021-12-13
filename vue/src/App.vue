@@ -47,9 +47,15 @@
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'AddFamilyMember' }"
+        v-bind:to="{ name: 'FamilyAdd' }"
         v-if="$store.state.user.role == 'parent'">
         Add Family Member
+      </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'FamilyDisplay' }"
+        v-if="$store.state.token">
+        View Family
       </router-link>
       <router-link
         class="nav-item"

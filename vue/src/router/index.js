@@ -6,7 +6,8 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import AddBook from "../views/AddBook.vue";
 import UserLibrary from "../views/UserLibrary.vue";
-import AddFamilyMember from "../views/AddFamilyMember.vue";
+import FamilyAdd from "../views/FamilyAdd.vue";
+import FamilyDisplay from "../views/FamilyDisplay";
 import Prizes from "../views/Prizes.vue";
 import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
@@ -77,9 +78,14 @@ const router = new Router({
       component: UserLibrary
     },
     {
-      path: '/Login/addFamily',
-      name: 'AddFamilyMember',
-      component: AddFamilyMember,
+      path: '/Family/add',
+      name: 'FamilyAdd',
+      component: FamilyAdd,
+    },
+    {
+      path: '/Family/display',
+      name: 'FamilyDisplay',
+      component: FamilyDisplay,
     },
     {
       path: '/Prizes',

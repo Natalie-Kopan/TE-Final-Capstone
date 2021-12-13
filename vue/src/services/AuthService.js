@@ -27,7 +27,10 @@ export default {
   },
 
   addFamilyMember(user){
-    return axios.post('/Login/addFamily', user)
+    return axios.post('/Family', user)
+  },
+  displayFamilyMembers(user){
+    return axios.get('/Family', user)
   },
   addNewPrize(prize){
     return axios.post('/Prizes', prize);
