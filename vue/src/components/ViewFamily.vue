@@ -36,7 +36,6 @@ export default {
         // 400, 500, network issues, no internet, etc.
         .catch(response => {
           console.error("Could not load family members.", response);
-          alert("Issue loading family members");
         });
     }
 }

@@ -12,8 +12,8 @@ import Prizes from "../views/Prizes.vue";
 import ViewPrizes from "../views/ViewPrizes.vue";
 import ActivityLog from "../views/ActivityLog.vue";
 import PrizeDetails from "../views/PrizeDetails.vue";
-import Dashboard from "../views/Dashboard.vue";
 import ViewUserActivity from "../views/ViewUserActivity.vue";
+import UserDashboard from "../views/UserDashboard.vue";
 import store from "../store/index";
 
 Vue.use(Router);
@@ -41,8 +41,8 @@ const router = new Router({
     },
     {
       path: "/Dashboard",
-      name: "Dashboard",
-      component: Dashboard,
+      name: "UserDashboard",
+      component: UserDashboard,
     },
     {
       path: "/login",

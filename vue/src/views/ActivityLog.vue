@@ -16,7 +16,6 @@ export default {
         data(){
             return {
                 isbn: '',
-                minutedRead: '',
             }
         },    
     components:{
@@ -30,7 +29,7 @@ export default {
 </script>
 
 <style>
-.library{
+.activityLog{
   justify-content: space-evenly;
 
 }

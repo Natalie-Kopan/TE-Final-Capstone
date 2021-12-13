@@ -4,7 +4,7 @@
 <template>
   <div id="app"> <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
-      <router-link class="nav-item" v-bind:to="{ name: 'Home' }">
+      <router-link class="logo" v-bind:to="{ name: 'Home' }">
         <img id="logo" src="../public/logo-textonly.png" />
         <!--
           <i class="fas fa-home"></i>
@@ -20,6 +20,12 @@
         v-bind:to="{ name: 'Login' }"
         v-if="!$store.state.token">
         Login
+      </router-link>
+      <router-link
+        class="nav-item"
+        v-bind:to="{ name: 'UserDashboard'}"
+        v-if="$store.state.token">
+        User Dashboard
       </router-link>
       <router-link
         class="nav-item"

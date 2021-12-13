@@ -66,7 +66,6 @@ export default {
           // 400, 500, network issues, no internet, etc.
           .catch(response => {
             console.error("Could not load books.", response);
-            alert("Issue loading books");
           });
   }
 }
@@ -74,12 +73,5 @@ export default {
 
 <style>
 
-.activity-card {
-  padding: 5px;
-  width: 300px;
-  height: 250px;
-  margin: 20px;
-  border: solid 5px #8AC926
-  
-}
+
 </style>
