@@ -25,6 +25,7 @@ export default new Vuex.Store({
     books:[],
     prizes:[],
     activityLog:[],
+    addFamilyMember:[],
     token: currentToken || '',
     user: currentUser || {} // If a user is an parent, their user.role will be 'role'
   },

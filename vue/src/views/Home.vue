@@ -1,10 +1,11 @@
 <template>
   <div class="home container">
-    <h1> Welcome To The Breakfast Book Club </h1>
+    <div v-for="user of addFamilyMember" v-bind:key="user.username">
+      <h1> Welcome {{user.username}} To The Breakfast Book Club </h1>
     <Library />
     <ViewActivity />
     <FamilyPrizes />
-    <p>
+     <p>
       Launched in 1984, <em>The Breakfast Book Club</em> became an inclusive
       book club amongst aspiring Tech Elevator classmates. While the concept of
       <em>The Breakfast Club</em> began as a study hall, it quickly grew into a
@@ -12,6 +13,7 @@
       their kids where they can track daily reading, compete with friends and
       family to get prizes and continue the traditon of the club.
     </p>
+    </div>   
   </div>
 </template>
 
@@ -23,11 +25,11 @@ import Library from "../components/Library.vue";
 
 export default {
   name: "Home",
-  //computed: {
-    //addFamilyMember() {
-     // return this.$store.state.addFamilyMember;
-   // }
-  //},
+  computed: {
+    addFamilyMember() {
+      return this.$store.state.addFamilyMember;
+    }
+  },
   components: {
     Library,
     ViewActivity,
@@ -35,7 +37,8 @@ export default {
   },
   methods: {
     home() {
-      AuthService.home(this.user)
+      AuthService
+      .home(this.user)
         .then((response) => {
           if (response.status == 201) {
             this.$router.push({ name: "Home" });
