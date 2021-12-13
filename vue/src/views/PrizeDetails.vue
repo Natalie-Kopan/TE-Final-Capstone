@@ -137,10 +137,14 @@ data() {
             .then(response => {
                 console.log(response.data);
                 this.$store.commit('EDIT_PRIZE', response.data);
+                    if (response.status == 201) {
+                        this.successMessage='Prize was successfully edited.'
+                    }
+                    this.errorMessage = '';
                 })
                 .catch(response => {
                     console.error("Could not edit prize", response);
-                    alert("Prize can not be edited, please check entered information.");
+                    this.errorMessage='Prize can not be edited, please check entered information.';
                 });
             }
         }
