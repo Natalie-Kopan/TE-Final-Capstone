@@ -7,8 +7,8 @@
             <p>Prize Description: {{prize.description}}</p>
             <p>Prize Milestone: {{prize.mileStone}}</p>
             <p>Max Prize: {{prize.maxPrize}}</p>
-            <p>Start Date: {{prize.startDate}}</p>
-            <p>End Date: {{prize.endDate}}</p>
+            <p>Start Date: {{prize.startDate | formatDate}}</p>
+            <p>End Date: {{prize.endDate | formatDate}}</p>
                 <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-bottom:1rem; color:white">Delete Prize</button>
                 <button class="btn btn-primary"  v-on:click="edit=true" style="width:100%">Edit Prize</button> 
         </div>  
