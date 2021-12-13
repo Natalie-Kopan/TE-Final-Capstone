@@ -49,27 +49,7 @@ export default {
 </script>
 
 <style>
-.card {
-    border: 2px solid black;
-    border-radius: 10px;
-    margin: 1rem;
-
-}
-.card-contents{
-  margin: 1rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.library-container{
-    display: flex;  
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-
-}
 .bookcover{
     border-radius: 10px;
-
 }
-
 </style>
