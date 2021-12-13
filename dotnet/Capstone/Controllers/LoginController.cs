@@ -117,23 +117,5 @@ namespace Capstone.Controllers
 
             return result;
         }
-        [HttpPost("family")]
-        public IActionResult AddFamilyMember(RegisterFamily familyMem)
-        {
-            int userId = int.Parse(this.User.FindFirst("sub").Value);
-            int familyId = userDAO.GetUserFamilyId(userId);
-
-            User newMember = userDAO.AddUser(familyMem.Username, familyMem.Password, familyId, familyMem.Role);
-
-            return Created("/" , newMember);
-        }
-        [HttpGet("family")]
-        public IActionResult GetFamilyMembers()
-        {
-            int userId = int.Parse(this.User.FindFirst("sub").Value);
-            int familyId = userDAO.GetUserFamilyId(userId);
-            IEnumerable<ReturnUser> familyMembers = userDAO.GetUserFamilyMembers(familyId);
-            return Ok(familyMembers);
-        }
     }
 }
