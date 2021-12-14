@@ -92,13 +92,4 @@ export default {
 
 <style>
 
-.add-activity {
-  padding: 5px;
-  width: 300px;
-  height: 400px;
-  margin: 20px;
-  border: solid 5px #FFCA3A
-  
-}
-
 </style>

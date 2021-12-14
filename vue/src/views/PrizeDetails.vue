@@ -5,7 +5,7 @@
         <div class="card-contents">
             <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
             <p>Prize Description: {{prize.description}}</p>
-            <p>Prize Milestone: {{prize.mileStone}}</p>
+            <p>Prize Milestone: {{prize.milestone}}</p>
             <p>Max Prize: {{prize.maxPrize}}</p>
             <p>Start Date: {{prize.startDate | formatDate}}</p>
             <p>End Date: {{prize.endDate | formatDate}}</p>
@@ -110,7 +110,7 @@ data() {
             endDate:vuexPrize.endDate,
             familyId:vuexPrize.familyId,
             maxPrize:vuexPrize.maxPrize,
-            mileStone:vuexPrize.mileStone,
+            milestone:vuexPrize.milestone,
             prizeId:vuexPrize.prizeId,
             prizeTitle:vuexPrize.prizeTitle,    
             startDate:vuexPrize.startDate

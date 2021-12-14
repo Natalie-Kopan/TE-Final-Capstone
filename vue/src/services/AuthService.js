@@ -23,7 +23,6 @@ export default {
   displayActivityLog(isbn) {
     return axios.get(`/Activity/${isbn}`)
   },
-
   displayUserActivityLog(userId) {
     return axios.get(`/Activity/user/${userId}`)
   },

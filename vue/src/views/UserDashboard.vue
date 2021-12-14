@@ -2,9 +2,9 @@
   <div class="home container">
     <div>
       <h1> Welcome {{this.user.username}} </h1>
-      <div class="logged-in-dash" v-if="$store.state.token">
-        <Library  v-bind:isbn="isbn"/>
-        <ViewActivity v-bind:isbn="isbn"/>
+      <div>
+        <Library  />
+        <!--<ViewActivityByUserId v-bind:userId="userId"/>-->
         <FamilyPrizes/>
       </div>
     </div>   
@@ -13,7 +13,7 @@
 
 <script>
 //import AuthService from "../services/AuthService";
-import ViewActivity from "../components/ViewActivity.vue";
+//import ViewActivityByUserId from "../components/ViewActivityByUserId.vue";
 import FamilyPrizes from "../components/FamilyPrizes.vue";
 import Library from "../components/Library.vue";
 
@@ -21,7 +21,7 @@ export default {
   name: "Home",
     data() {
       return {
-        isbn: '',
+        //userId: '',
       }
     },
   computed: {
@@ -31,27 +31,11 @@ export default {
   },
   components: {
     Library,
-    ViewActivity,
+    //ViewActivityByUserId,
     FamilyPrizes,
   },
-  methods: {
-    // home() {
-    //   AuthService
-    //   .home(this.user)
-    //     .then((response) => {
-    //       if (response.status == 201) {
-    //         this.$router.push({ name: "Home" });
-    //       }
-    //     })
-    //     .catch((response) => {
-    //       console.error("Could not add user", response);
-    //       this.errorMessage =
-    //         "This user either already exists or is invalid. Check user credentials";
-    //     });
-    // },
-  },
   created() {
-    this.isbn = +this.$route.params.isbn
+    //this.userId = +this.$route.params.userId
   }
 };
 </script>

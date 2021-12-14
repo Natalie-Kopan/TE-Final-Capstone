@@ -145,6 +145,7 @@ export default {
         .then((response) => {
 
           const newItem = response.data;
+          this.$store.commit('ACTIVITY_ADDED', this.addedActivity);
           this.activityLog.push(newItem);
           this.addedActivity = {
             minutesRead: "",

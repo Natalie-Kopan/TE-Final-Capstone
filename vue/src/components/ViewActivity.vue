@@ -1,17 +1,8 @@
 <template>
   <section class="container" id = "app">
     <h1> Your Previous Activity</h1>
-    <!--
-    <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
-      <div class = "card" :color="colorChange">,
-      <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
-      <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
-    </div>
-    </div> -->
-
     <div class="card-deck">
       <div class="activity-card" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
-      <!--<img src="..." class="card-img-top" alt="...">-->
       <div class="card-body">
         <h5 class="card-title">You Read for {{activityLog.minutesRead}} minutes on {{activityLog.dateOfActivity | formatDate}} </h5>
         <p class="card-text">Here's some things you noted during this read: {{activityLog.notes}}</p>
@@ -53,7 +44,7 @@ export default {
           })
           // 400, 500, network issues, no internet, etc.
           .catch(response => {
-            console.error("Could not load books.", response);
+            console.error("Could not load activity.", response);
           });
   }
 }

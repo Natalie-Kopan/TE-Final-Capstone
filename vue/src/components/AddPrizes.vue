@@ -95,6 +95,7 @@ export default {
             AuthService.addNewPrize(this.addPrize)
                 .then(response => {
                     const newItem = response.data;
+                    this.$store.commit('PRIZES_ADDED', this.addPrize);
                     this.prizes.push(newItem);
                     this.addPrize={
                         description: '',
