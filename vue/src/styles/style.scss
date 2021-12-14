@@ -24,6 +24,11 @@
     border-radius: 25%;
 }
 
+#logo {
+    height: 3rem;
+    margin: 1.5rem;
+}
+
 #nav {
     grid-area: nav;
     display: flex;
@@ -34,13 +39,7 @@
     align-content: center;
     background-color: #92d5f2;
     font-family: 'Gochi Hand', cursive;
-    font-size: 2rem;
-    background-image: url("../img/silos.jpg"); 
-}
-
-#logo {
-    height: 3rem;
-    margin: 1.5rem;
+    font-size: 2rem; 
 }
 
 section {

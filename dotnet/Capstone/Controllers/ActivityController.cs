@@ -30,6 +30,15 @@ namespace Capstone.Controllers
             return Ok(logs);
         }
 
+        [HttpGet("{userId}/{isbn}")]
+        [Authorize]
+        public ActionResult ViewActivityByBookAndUserId(int isbn, int userId)
+        {
+            List<ActivityLog> logs = activityDAO.ViewActivityLogByBook(userId, isbn);
+
+            return Ok(logs);
+        }
+
         [HttpGet("user/{userId}")]
         [Authorize]
         public ActionResult ViewActivityByUser(int userId)
@@ -44,6 +53,15 @@ namespace Capstone.Controllers
         public ActionResult AddActivityToBook(ActivityLog activity, int isbn)
         {
             int userId = int.Parse(this.User.FindFirst("sub").Value);
+            ActivityLog log = activityDAO.AddActivity(activity, userId, isbn);
+
+            return Created("/activity/" + log.isbn, log);
+        }
+
+        [HttpPost("{userId}/{isbn}")]
+        [Authorize]
+        public ActionResult AddActivityToBookByUserId(ActivityLog activity, int isbn, int userId)
+        {
             ActivityLog log = activityDAO.AddActivity(activity, userId, isbn);
 
             return Created("/activity/" + log.isbn, log);

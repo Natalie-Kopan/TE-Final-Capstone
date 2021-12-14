@@ -25,8 +25,8 @@ namespace Capstone.Controllers
         [Authorize]
         public ActionResult AddNewBook(Book bookToAdd)
         {
-          int userId = int.Parse(this.User.FindFirst("sub").Value);
-          Book addBook = new Book();
+            int userId = int.Parse(this.User.FindFirst("sub").Value);
+            Book addBook = new Book();
 
             try
             {
@@ -36,7 +36,7 @@ namespace Capstone.Controllers
             {
                 return BadRequest(new { message = "This book either already exists or is invalid" });
             }
-            
+
             return Created("/book/" + addBook.ISBN, addBook);
         }
 
@@ -49,6 +49,14 @@ namespace Capstone.Controllers
         public ActionResult GetAllUserBooks()
         {
             int userId = int.Parse(this.User.FindFirst("sub").Value);
+            IEnumerable<Book> allBooks = bookDAO.GetBooks(userId);
+            return Ok(allBooks);
+        }
+
+        [HttpGet("{userId}")]
+        [Authorize]
+        public ActionResult GetAllUserBooksByUserId(int userId)
+        {
             IEnumerable<Book> allBooks = bookDAO.GetBooks(userId);
             return Ok(allBooks);
         }

@@ -5,7 +5,7 @@
   <div id="app"> <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
       <router-link class="logo" v-bind:to="{ name: 'Home' }">
-        <img id="logo" src="../public/logo-textonly.png" />
+        <img id="logo nav-item" src="../public/logo-textonly.png" />
         <!--
           <i class="fas fa-home"></i>
           Home
@@ -41,7 +41,8 @@
       </router-link>
       <router-link
         class="nav-item"
-        v-bind:to="{ name: 'PrizeDashboard' }">
+        v-bind:to="{ name: 'PrizeDashboard' }"
+        v-if="$store.state.token">
        Prizes Dashboard
       </router-link>
       <router-link
@@ -59,7 +60,7 @@
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'FamilyDisplay' }"
-        v-if="$store.state.token">
+        v-if="$store.state.user.role == 'parent'">
         View Family
       </router-link>
       <!-- <router-link

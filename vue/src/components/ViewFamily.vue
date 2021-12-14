@@ -3,11 +3,22 @@
     <div v-for="familyMember of allFamily" v-bind:key="familyMember.username" class="card">
         <div class="card-contents">
           <h2>{{familyMember.username}}</h2>
-          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
-            <router-link v-bind:to="{name: 'ViewUserActivity', params: {userId: familyMember.userId}}" style="color:white">
-              View User Activity
+          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:2px; margin-top:auto">
+            <router-link v-bind:to="{name: 'LibraryByUserIdView', params: {userId: familyMember.userId}}" style="color:white">
+              View User Library/Activity 
             </router-link>
-        </button>
+          </button>
+          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:2px; margin-top:10px">
+            <router-link v-bind:to="{name: 'ViewUserActivity', params: {userId: familyMember.userId}}" style="color:white">
+              View All User Activity
+            </router-link>
+          </button>
+          <!-- 
+          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:2px; margin-top:10px">
+            <router-link v-bind:to="{name: 'AddActivityByUserId', params: {userId: familyMember.userId}}" style="color:white">
+              Add Activity for this User
+            </router-link>
+          </button> -->
         </div>
     </div>
   </section>
