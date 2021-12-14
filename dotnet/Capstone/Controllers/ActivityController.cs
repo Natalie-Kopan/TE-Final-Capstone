@@ -32,7 +32,7 @@ namespace Capstone.Controllers
 
         [HttpGet("{userId}/{isbn}")]
         [Authorize]
-        public ActionResult ViewActivityByBookAndUserId(int isbn, int userId)
+        public ActionResult ViewActivityByBookAndUserId(string isbn, int userId)
         {
             List<ActivityLog> logs = activityDAO.ViewActivityLogByBook(userId, isbn);
 
@@ -60,7 +60,7 @@ namespace Capstone.Controllers
 
         [HttpPost("{userId}/{isbn}")]
         [Authorize]
-        public ActionResult AddActivityToBookByUserId(ActivityLog activity, int isbn, int userId)
+        public ActionResult AddActivityToBookByUserId(ActivityLog activity, string isbn, int userId)
         {
             ActivityLog log = activityDAO.AddActivity(activity, userId, isbn);
 
