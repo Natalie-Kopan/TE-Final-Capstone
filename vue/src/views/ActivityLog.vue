@@ -3,14 +3,12 @@
   <h1>Activity Dashboard</h1>
   <AddActivity v-bind:isbn="isbn"/>
   <ViewActivity v-bind:isbn="isbn"/>
-  <reading-timer v-bind:isbn="isbn"/>
 </section>
 </template>
 
 <script>
 import ViewActivity from '../components/ViewActivity.vue'
 import AddActivity from '../components/AddActivity.vue'
-import ReadingTimer from '../components/ReadingTimer.vue'
 
 
 export default {
@@ -22,8 +20,7 @@ export default {
         },    
     components:{
         ViewActivity,
-        AddActivity,
-        ReadingTimer
+        AddActivity
     },
     created() {
         this.isbn = +this.$route.params.isbn
