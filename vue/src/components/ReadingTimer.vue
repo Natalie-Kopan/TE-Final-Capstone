@@ -1,13 +1,13 @@
 <template>
-  <div class="card">
-    <form class="add-activity" v-on:submit.prevent="recordTime">
-      <button v-on:click="play">Play</button>
-      <button v-on:click="pause">Pause</button>
+  <div>
+    <form class="add-activity" >
+
       <!--button v-on:click="recordTime">Stop</button-->
       <div v-if="timerEnabled">
-        {{timerCount}}
       </div>
         <div class="form-group">
+            <h4>Reading Timer</h4>
+
             <label for="bookFormat" class="form-label">Book Format</label>
             <select v-model="addedActivity.bookFormat">
                 <option>Paper</option>
@@ -25,8 +25,15 @@
                 required 
                 placeholder="Enter Notes">
         </div>
+        <button class="btn btn-primary"  v-on:click="userTimer=true" style="width:100%">Use Timer</button> 
+        <div v-if="userTimer">
+            <p>Timer: {{timerCount}}</p>
+            <p>{{time}}</p>
         <div>
-        <button type="submit" class="submit"> Stop Timer</button>
+        <button v-on:click.prevent="play">Play</button>
+        <button v-on:click.prevent="pause">Pause</button>
+        <button type="submit" class="submit" v-on:submit.prevent="recordTime"> Stop Timer</button>
+        </div>
         </div>
     </form>
     <p v-if="errorMessage">
@@ -46,8 +53,11 @@ export default {
     },
     data() {
         return {
+            userTimer:false,
             timerEnabled: false,
             timerCount: "",
+            time: null,
+            interval: null,
             addedActivity: {
                 minutesRead: '',
                 bookFormat: '',
@@ -59,6 +69,21 @@ export default {
             }
             
         },
+        beforeDestroy() {
+    // prevent memory leak
+    clearInterval(this.interval)
+  },
+  created() {
+    // update the time every second
+    this.interval = setInterval(() => {
+      // Concise way to format time according to system locale.
+      // In my case this returns "3:48:00 am"
+      this.time = Intl.DateTimeFormat(navigator.language, {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+      }).format()
+    }, 1000)},
         watch: {
             timerEnabled(value) {
                 if (value) {
@@ -87,17 +112,18 @@ export default {
             },
             recordTime(){
                 this.timerEnabled = false;
-                this.addedActivity.minutesRead = this.timerCount/60;
+                this.addedActivity.minutesRead = parseInt(this.timerCount/60);
                 this.addedActivity.isbn = this.isbn
                 AuthService.addActivity(this.addedActivity)
                 .then(response => {
                     const newItem = response.data;
                     this.activityLog.push(newItem);
-                    this.addActivity={
+                    this.addedActivity={
                         minutesRead: '',
                         bookFormat: '',
                         notes: '',
                     };
+                    this.timeerCount="";
                     this.errorMessage = '';
                     this.successMessage = 'Awesome reading! Your activity has been added!';
                 })

@@ -23,6 +23,12 @@
       </router-link>
       <router-link
         class="nav-item"
+        v-bind:to="{ name: 'UserDashboard'}"
+        v-if="$store.state.token">
+        User Dashboard
+      </router-link>
+      <router-link
+        class="nav-item"
         v-bind:to="{ name: 'Logout' }"
         v-if="$store.state.token">
         Logout
@@ -62,12 +68,6 @@
         v-bind:to="{ name: 'ViewPrizes' }"
         v-if="$store.state.token">
         View Prizes
-      </router-link>
-        <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'ReadingTimerview' }"
-        v-if="$store.state.token">
-        Reading Timer
       </router-link>
     </div>
     
