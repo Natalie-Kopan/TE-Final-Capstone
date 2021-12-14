@@ -183,8 +183,8 @@ export default {
 .add-activity {
   padding: 5px;
   width: 500px;
-  /*height: 400px;*/
   margin: 20px;
+  border-radius: 10px;
   border: solid 5px #ffca3a;
 }
 </style>
