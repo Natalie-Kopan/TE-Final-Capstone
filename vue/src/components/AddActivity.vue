@@ -1,8 +1,15 @@
 <template>
-  <section>
+
+  <section class="add-activity">
+            <p v-if="errorMessage"  class="alert alert-danger">
+        {{ errorMessage }}
+      </p>
+      <p v-if="successMessage"  class="alert alert-success">
+        {{ successMessage }}
+      </p>
     <div style="display:inline-block">
               <div v-if="timerEnabled"></div>
-      <div v-if="!userTimer" style="width=100%">
+      <div v-if="!userTimer" style="margin-top:20px; margin-left:40px; padding:5px">
         <button class="btn btn-primary" v-on:click.prevent="userTimer=true">
           Use Timer
         </button>
@@ -19,7 +26,7 @@
       </div>
 
 
-      <form  v-on:submit.prevent="addingActivity">
+      <form style="border:0" v-on:submit.prevent="addingActivity">
         <div v-if="userTimer">
           <p>
             {{ minute > 9 ? minute : "0" + minute }}:{{
@@ -30,16 +37,9 @@
             <button v-on:click.prevent="play, timerEnabled=true">Start Timer</button>
             <button v-on:click.prevent="pause, timerEnabled=false">Pause Timer</button>
           </div>
-          <!--button
-            type="submit"
-            class="submit"
-            v-on:click.prevent="addingActivity"
-          >
-            Add
-          </button-->
         </div>
         <div class="form-part" v-if="!userTimer">
-          <h4>Minutes Read</h4>
+          <!--h4>Minutes Read</h4-->
           <label for="minutesRead" class="form-label">Mintues Read</label>
           <input
             type="text"
@@ -78,12 +78,7 @@
           <button type="submit" class="submit">Add</button>
         </div>
       </form>
-      <p v-if="errorMessage">
-        {{ errorMessage }}
-      </p>
-      <p v-if="successMessage">
-        {{ successMessage }}
-      </p>
+
     </div>
   </section>
 </template>
@@ -186,8 +181,8 @@ export default {
 <style>
 .add-activity {
   padding: 5px;
-  width: 300px;
-  height: 400px;
+  width: 500px;
+  /*height: 400px;*/
   margin: 20px;
   border: solid 5px #ffca3a;
 }
