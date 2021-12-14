@@ -42,7 +42,7 @@
         <div class="form-part">
         <label for="isbn" class="form-label">ISBN</label>
             <input type="text" class="form-control" id="isbn" 
-                v-model.trim.number="addBook.isbn"
+                v-model.trim="addBook.isbn"
                 required 
                 placeholder="Enter a Book ISBN">
         </div>
