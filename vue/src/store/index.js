@@ -52,8 +52,14 @@ export default new Vuex.Store({
     ACTIVITY_LOADED(state, activityLog) {
       state.activityLog = activityLog;
     },
+    ACTIVITY_ADDED(state, activityLog){
+      state.activityLog.push(activityLog);
+    },
     PRIZES_LOADED(state, prizes) {
       state.prizes = prizes;
+    },
+    PRIZES_ADDED(state, prize){
+      state.prizes.push(prize);
     },
     DELETE_PRIZE(state, prizeId){
       let index = state.prizes.findIndex(prize =>prize.id === prizeId);

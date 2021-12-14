@@ -1,19 +1,30 @@
 <template>
 <main>
     <FamilyPrizes />
-     <AddPrizes v-if="$store.state.user.role == 'parent'"/>
+    <AddPrizes />
+    <!-- <button v-on:click='false' v-if="$store.state.user.role == 'parent' ">
+        <div v-if="!click">
+        <router-link v-bind:to="{ name: 'AddPrizes' }" />
+        </div>
+        Add A Prize
+    </button> -->
 </main>
 </template>
 
 <script>
-import AddPrizes from '../components/AddPrizes.vue'
 import FamilyPrizes from '../components/FamilyPrizes.vue'
+import AddPrizes from '../components/AddPrizes.vue'
 
 export default {
-    components: {
-        AddPrizes,
-        FamilyPrizes,
+components: {
+    FamilyPrizes,
+    AddPrizes
+    },
+data() {
+    return {
+        click: true,
     }
+    },
 }
 </script>
 

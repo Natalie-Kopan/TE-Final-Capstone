@@ -13,6 +13,7 @@ import LibraryByUserIdView from "../views/LibraryByUserIdView.vue"
 import ActivityLog from "../views/ActivityLog.vue";
 import ActivityLogByUserId from "../views/ActivityLogByUserId.vue"
 import PrizeDetails from "../views/PrizeDetails.vue";
+import AddPrizes from "../components/AddPrizes.vue"
 import ViewUserActivity from "../views/ViewUserActivity.vue";
 import UserDashboard from "../views/UserDashboard.vue";
 import store from "../store/index";
@@ -108,6 +109,11 @@ const router = new Router({
       path: '/Prizes',
       name:'PrizeDashboard',
       component: PrizeDashboard
+    },
+    {
+      path: '/AddPrizes',
+      name:'AddPrizes',
+      component: AddPrizes
     },
     {
       path: '/PrizeDetails',
