@@ -5,6 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+    
       <div class="form-group">
         <input
           type="text"
@@ -57,8 +58,13 @@
       <button class="btn btn-primary" type="submit">
         Create Account
       </button>
+      <div class="container">
+        <img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" />
+      </div>
     </form>
   </div>
+
+  
 </template>
 
 <script>
@@ -111,4 +117,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+img {
+  align-items: center;
+  padding: 10px;
+  display: grid;
+}
+
+.form-group {
+  display: flexbox;
+}
+</style>
