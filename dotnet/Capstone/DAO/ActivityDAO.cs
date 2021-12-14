@@ -25,7 +25,7 @@ namespace Capstone.DAO
             "rl.isbn, rl.book_format, rl.notes FROM reading_log rl INNER JOIN books b ON rl.isbn = b.isbn " +
             "WHERE rl.user_id = @user_id";
 
-        public ActivityLog AddActivity(ActivityLog activity, int userId, int isbn)
+        public ActivityLog AddActivity(ActivityLog activity, int userId, string isbn)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -45,7 +45,7 @@ namespace Capstone.DAO
             return activity;
         }
 
-        public List<ActivityLog> ViewActivityLogByBook(int userId, int isbn)
+        public List<ActivityLog> ViewActivityLogByBook(int userId, string isbn)
         {
             List<ActivityLog> logs = new List<ActivityLog>();
 
@@ -65,7 +65,7 @@ namespace Capstone.DAO
                             log.bookAuthor = Convert.ToString(reader["author"]);
                             log.logId = Convert.ToInt32(reader["log_id"]);
                             log.minutesRead = Convert.ToInt32(reader["minutes_read"]);
-                            log.isbn = Convert.ToInt32(reader["isbn"]);
+                            log.isbn = Convert.ToString(reader["isbn"]);
                             log.bookFormat = Convert.ToString(reader["book_format"]);
                             log.notes = Convert.ToString(reader["notes"]);
                             log.dateOfActivity = Convert.ToDateTime(reader["date_of_activity"]);

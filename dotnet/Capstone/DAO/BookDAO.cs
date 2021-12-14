@@ -58,7 +58,7 @@ namespace Capstone.DAO
                         while (reader.Read())
                         {
                             Book book = new Book();
-                            book.ISBN = (int)Convert.ToInt64(reader["isbn"]);
+                            book.ISBN = Convert.ToString(reader["isbn"]);
                             book.Author = Convert.ToString(reader["author"]);
                             book.Title = Convert.ToString(reader["title"]);
                             books.Add(book);

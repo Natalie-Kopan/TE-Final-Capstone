@@ -8,8 +8,8 @@ namespace Capstone.DAO
 {
     public interface IActivityDAO
     {
-        ActivityLog AddActivity(ActivityLog activity, int userId, int isbn);
-        List<ActivityLog> ViewActivityLogByBook(int userId, int isbn);
+        ActivityLog AddActivity(ActivityLog activity, int userId, string isbn);
+        List<ActivityLog> ViewActivityLogByBook(int userId, string isbn);
         List<ActivityLog> ViewActivityLogByUser(int userId);
     }
 }

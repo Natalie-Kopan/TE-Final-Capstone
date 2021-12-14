@@ -18,7 +18,7 @@ namespace CapstoneTest
             Book book = new Book();
             book.Author = "test";
             book.Title = "test";
-            book.ISBN = 100000;
+            book.ISBN = "100000";
 
             //Act
             Book addedBook = input.AddBook(book, 1);
