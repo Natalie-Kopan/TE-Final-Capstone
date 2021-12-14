@@ -34,7 +34,7 @@ CREATE TABLE users (
 )
 
 CREATE TABLE books (
-	isbn bigint NOT NULL,
+	isbn nvarchar(20) NOT NULL,
 	title nvarchar(200) NOT NULL,
 	author nvarchar(200) NOT NULL,
 	user_id int NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE reading_log (
 	minutes_read int NOT NULL DEFAULT 0,
 	book_format nvarchar(200) NOT NULL,
 	date_of_activity date NOT NULL DEFAULT getdate(),
-	isbn bigint NOT NULL,
+	isbn nvarchar(20) NOT NULL,
 	notes nvarchar(1024),
 	CONSTRAINT PK_log_id PRIMARY KEY (log_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),

@@ -25,7 +25,7 @@ export default {
     }
   },
   props: {
-      isbn: Number
+      isbn: String
   },
   computed: {
       allActivityLog() {
