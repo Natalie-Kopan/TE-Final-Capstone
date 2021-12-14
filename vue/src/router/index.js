@@ -5,7 +5,6 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import UserLibrary from "../views/UserLibrary.vue";
-import FamilyAdd from "../views/FamilyAdd.vue";
 import FamilyDisplay from "../views/FamilyDisplay";
 import PrizeDashboard from "../views/PrizeDashboard.vue";
 import LibraryByUserIdView from "../views/LibraryByUserIdView.vue"
@@ -73,11 +72,6 @@ const router = new Router({
       path: '/book',
       name: 'UserLibrary',
       component: UserLibrary
-    },
-    {
-      path: '/Family/add',
-      name: 'FamilyAdd',
-      component: FamilyAdd,
     },
     {
       path: '/Family/display',
