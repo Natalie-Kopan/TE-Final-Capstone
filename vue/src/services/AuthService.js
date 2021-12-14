@@ -17,7 +17,9 @@ export default {
   displayUserBookLibrary(userId){
     return axios.get('/book', userId)
   },
-
+  displayUserLibraryByUserId(userId){
+    return axios.get(`/book/${userId}`)
+  },
   displayActivityLog(isbn) {
     return axios.get(`/Activity/${isbn}`)
   },
@@ -25,11 +27,15 @@ export default {
   displayUserActivityLog(userId) {
     return axios.get(`/Activity/user/${userId}`)
   },
-
+  displayBookActivityByUser(userId, isbn){
+    return axios.get(`Activity/${userId}/${isbn}`)
+  },
   addActivity(activityLog) {
     return axios.post(`/Activity/${activityLog.isbn}`, activityLog)
   },
-
+  addActivityByUserId(activityLog, userId){
+    return axios.post(`/Activity/${userId}/${activityLog.isbn}`, activityLog)
+  },
   addFamilyMember(user){
     return axios.post('/Family', user)
   },

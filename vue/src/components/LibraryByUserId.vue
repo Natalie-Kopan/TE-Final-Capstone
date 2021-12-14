@@ -7,7 +7,7 @@
         <img class= "bookcover" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="book.title" />
         <!--h3 class="book-author">{{ book.author }}</h3-->
         <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
-          <router-link v-bind:to="{name: 'ActivityLog', params: {isbn: book.isbn}}" style="color:white">
+          <router-link v-bind:to="{name: 'ActivityLogByUserId', params: {isbn: book.isbn, userId: userId}}" style="color:white">
               View/Add Activity
           </router-link>
         </button>
@@ -21,7 +21,10 @@
 import AuthService from '../services/AuthService'
 
 export default {
-    name: 'Library',
+    name: 'LibraryByUserId',
+    props: {
+      userId: Number
+    },
     computed: {
       allBooks() {
           return this.$store.state.books;
@@ -29,7 +32,8 @@ export default {
    },
      created() {
           // Make a HTTP GET request and return a promise representing the operation
-          const booksPromise = AuthService.displayUserBookLibrary();
+
+          const booksPromise = AuthService.displayUserLibraryByUserId(this.userId);
           booksPromise
           // 200 Status Codes
           .then(response => {

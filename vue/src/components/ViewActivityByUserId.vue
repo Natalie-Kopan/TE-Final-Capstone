@@ -26,7 +26,7 @@
 import AuthService from '../services/AuthService.js';
 
 export default {
-  name: 'ActivityLog',
+  name: 'ViewActivityByUserId',
   data(){
     return {
       dateOfActivity: '',
@@ -34,7 +34,8 @@ export default {
     }
   },
   props: {
-      isbn: Number
+      isbn: Number,
+      userId: Number,
   },
   computed: {
       allActivityLog() {
@@ -43,7 +44,7 @@ export default {
    },
      created() {
           // Make a HTTP GET request and return a promise representing the operation
-          const activityLogPromise = AuthService.displayActivityLog(this.isbn)
+          const activityLogPromise = AuthService.displayBookActivityByUser(this.userId, this.isbn)
           activityLogPromise
           // 200 Status Codes
           .then(response => {
