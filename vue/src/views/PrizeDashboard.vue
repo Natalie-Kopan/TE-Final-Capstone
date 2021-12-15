@@ -34,7 +34,7 @@ data() {
 
 <style>
 .prize-container{
-    margin: 1rem;
+    margin: 2rem;
     display: grid;
     align-content: center;
     grid-gap: 10px;
