@@ -1,7 +1,7 @@
 <template>
 <div >
     <section id ="app" style="display:flex; justify-content:space-evenly">
-        <div class="card">
+        <div class="library-card">
         <div class="card-contents">
             <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
             <p>Prize Description: {{prize.description}}</p>
@@ -12,8 +12,8 @@
     <!--This is a 'mark complete' button for prizes, it does nothing yet
                 <button class="btn btn-success"  v-on:click="edit=true" style="width:100%; color:white;">Mark Prize Complete</button> 
     -->            
-                <button class="btn btn-primary"  v-on:click="edit=true" style="width:100%">Edit Prize</button> 
-                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-bottom:1rem; color:white">Delete Prize</button>
+                <button class="btn btn-primary"  v-on:click="edit=true" style="margin-bottom:10px; width:100%">Edit Prize</button> 
+                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-top:10px; margin-bottom:1rem; color:white">Delete Prize</button>
         </div>  
         </div>
             <div v-if="edit">
@@ -43,7 +43,7 @@
             <div class="form-part">
                 <label for="milestone" class="form-label">Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
-                v-model.trim.number="prize.mileStone"
+                v-model.trim.number="prize.milestone"
                 required 
                 placeholder="Enter a Prize milestone">
             </div>
@@ -126,7 +126,7 @@ data() {
                 AuthService.deletedPrize(this.prize.prizeId)
                 .then(() => {
                     this.$store.commit('DELETE_PRIZE', this.prize.prizeId);
-                    this.$router.push({name: 'ViewPrizes'});
+                    this.$router.push({name: 'PrizeDashboard'});
                 })
                 .catch(response => {
                     console.error("Could not delete prize", response);

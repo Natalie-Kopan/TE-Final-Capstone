@@ -1,7 +1,7 @@
 <template>
   <section class="container">
         <div style="display:flex; flex-direction:column; align-items:center">
-        <button v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'">Add a Family Member</button> 
+        <button  v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'" class="library-btn" style="background-color: #313131">Add a Family Member</button> 
         <button v-on:click='display=false' v-show="display" v-if="$store.state.user.role == 'parent'">Hide Add a Family Member</button> 
         <div v-if="display">
             <AddFamily/>

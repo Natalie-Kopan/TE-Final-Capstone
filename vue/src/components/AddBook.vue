@@ -22,7 +22,7 @@
     <div class="container">
     <form v-on:submit.prevent="addedBook">
         <div class="form-part">
-        <h4 class="addbook"> Add A Book </h4>
+        <h4 class="addbook" id="center-title"> Add A Book </h4>
         <p v-if="errorMessage" class="alert alert-danger">
             {{errorMessage}}
         </p>
@@ -113,8 +113,6 @@ export default {
     text-align: center;
 }
 
-input {
-    ;
-}
+
 
 </style>

@@ -2,8 +2,8 @@
 <main>
         <!--AddPrizes /-->
     <div style="display:flex; flex-direction:column; align-items:center" class="prize-container">
-        <button v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'" class="prize-column-one">Add a Prize</button> 
-        <button v-on:click='display=false' v-show="display" v-if="$store.state.user.role == 'parent'" class="prize-column-one">Hide Add a Prize</button> 
+        <button v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'" class="library-btn prize-column-one">Add a Prize</button> 
+        <button v-on:click='display=false' v-show="display" v-if="$store.state.user.role == 'parent'" class="library-btn prize-column-one">Hide Add a Prize</button> 
         <div v-if="display" class="prize-column">
             <AddPrizes/>
         <!--router-link v-bind:to="{ name: 'AddPrizes' }" /-->
@@ -45,6 +45,8 @@ data() {
 }
 .prize-column-one{
     grid-area: add-prize;
+    background-color: #313131;
+
 
 }
 .prize-column-two{
