@@ -1,5 +1,5 @@
 <template>
-  <section class="activity" id = "app">
+  <section class="activity container" id = "app">
     <h1> User Activity</h1>
     <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.logId" class="activity-card">
       <!--<img src="..." class="card-img-top" alt="...">-->

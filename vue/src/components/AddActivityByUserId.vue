@@ -1,9 +1,9 @@
 <template>
   <section>
-    <div class="container">
+    <div>
     <form class="add-activity" v-on:submit.prevent="addingActivity">
         <div class="form-part">
-        <h4> Minutes Read </h4>
+        <h2> Minutes Read </h2>
         <label for="minutesRead" class="form-label">Mintues Read</label>
             <input type="text" class="form-control" id="minutesRead" 
                 v-model.trim.number="addedActivity.minutesRead"
@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="bookFormat" class="form-label">Book Format</label>
-            <select v-model="addedActivity.bookFormat">
+            <select class="form-select" v-model="addedActivity.bookFormat">
                 <option>Paper</option>
                 <option>Digital</option>
                 <option>Audiobook</option>

@@ -1,5 +1,5 @@
 <template>
-<main>
+<main class="container">
     <h1>Activity Dashboard</h1>
   <AddActivityByUserId v-bind:isbn="isbn" v-bind:userId="userId"/>
   <ViewActivityByUserId v-bind:isbn="isbn" v-bind:userId="userId"/>
