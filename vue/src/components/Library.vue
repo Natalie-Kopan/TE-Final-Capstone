@@ -1,6 +1,7 @@
 <template>
-  <section class="library-container" id = "app">
+  <section  id = "app">
     <h1 id="center"><i class="fas fa-meteor"></i>  Your Library  <i class="fas fa-meteor"></i></h1>
+    <div class="library-container">
     <div v-for="book of allBooks" v-bind:key="book.isbn">
       <div class = "library-card">
       <div class="card-contents">
@@ -12,6 +13,7 @@
               View/Add Activity
           </router-link>
        <!--</button>-->
+    </div>
     </div>
     </div>
     </div>

@@ -1,8 +1,8 @@
 <template>
 <section class="library">
       <div style="display:flex; flex-direction:column; align-items:center">
-        <button v-on:click='display=true' v-show="!display">Add a Book</button> 
-        <button v-on:click='display=false' v-show="display">Hide Add a Book</button> 
+        <div class="library-btn" v-on:click='display=true' v-show="!display">Add a Book</div> 
+        <div class="library-btn" v-on:click='display=false' v-show="display">Hide Add a Book</div> 
         <div v-if="display">
           <AddBook />
         </div>
