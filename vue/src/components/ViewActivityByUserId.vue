@@ -1,5 +1,5 @@
 <template>
-  <section class="container" id = "app">
+  <section id = "app">
     <h1> Your Previous Activity</h1>
     <div class="card-deck">
       <div class="activity-card" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">

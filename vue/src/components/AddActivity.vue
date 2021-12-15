@@ -53,7 +53,7 @@
 
         <div class="form-group">
           <label for="bookFormat" class="form-label">Book Format</label>
-          <select v-model="addedActivity.bookFormat">
+          <select v-model="addedActivity.bookFormat" class="form-select">
             <option>Paper</option>
             <option>Digital</option>
             <option>Audiobook</option>
