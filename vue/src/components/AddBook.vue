@@ -22,32 +22,32 @@
     <div class="container">
     <form v-on:submit.prevent="addedBook">
         <div class="form-part">
-        <h4> Add A Book </h4>
+        <h4 class="addbook"> Add A Book </h4>
         <p v-if="errorMessage" class="alert alert-danger">
             {{errorMessage}}
         </p>
-        <label for="title" class="form-label">Title</label>
+        <label for="title" class="booklabel">Title</label>
             <input type="text" class="form-control" id="title" 
                 v-model.trim="addBook.title"
                 required 
                 placeholder="Enter a Book title">
         </div>
         <div class="form-part">
-        <label for="author" class="form-label">Author</label>
+        <label for="author" class="booklabel">Author</label>
             <input type="text" class="form-control" id="author" 
                 v-model.trim="addBook.author"
                 required 
                 placeholder="Enter a Book author">
         </div>
         <div class="form-part">
-        <label for="isbn" class="form-label">ISBN</label>
+        <label for="isbn" class="booklabel">ISBN</label>
             <input type="text" class="form-control" id="isbn" 
                 v-model.trim="addBook.isbn"
                 required 
                 placeholder="Enter a Book ISBN">
         </div>
         <div>
-        <button type="submit" class="submit"> Add</button>
+        <button class="library-btn" type="submit"> Add</button>
         </div>
     </form>
     </div>
@@ -97,7 +97,24 @@ export default {
 </script>
 
 <style>
+.booklabel {
+    font-size: 50px !important;
+    color: #92D5F2;
+    letter-spacing: 5px;    
+}
 
+.addbook {
+    color: #92D5F2;
+    font-size: 50px;
+    text-align: center;
+}
 
+.library-btn {
+    text-align: center;
+}
+
+input {
+    ;
+}
 
 </style>
