@@ -1,14 +1,6 @@
 <template>
   <section class="container" id = "app">
     <h1> Your Previous Activity</h1>
-    <!--
-    <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
-      <div class = "card" :color="colorChange">,
-      <h2>Date: {{activityLog.dateOfActivity | formatDate}} </h2>
-      <h2>Minutes Read: {{activityLog.minutesRead}}</h2>
-    </div>
-    </div> -->
-
     <div class="card-deck">
       <div class="activity-card" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
       <!--<img src="..." class="card-img-top" alt="...">-->

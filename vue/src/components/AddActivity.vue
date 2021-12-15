@@ -1,6 +1,6 @@
 <template>
 
-  <section class="add-activity">
+  <section class="add-activity row">
             <p v-if="errorMessage"  class="alert alert-danger">
         {{ errorMessage }}
       </p>

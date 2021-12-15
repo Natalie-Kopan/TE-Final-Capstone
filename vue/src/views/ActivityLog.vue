@@ -1,8 +1,16 @@
 <template>
-<section class="activityLog">
+<section class="activityLog container">
   <h1>Activity Dashboard</h1>
-  <AddActivity v-bind:isbn="isbn"/>
+    <div style="display:flex; flex-direction:column; align-items:center">
+        <button class="add-button" v-on:click='display=true' v-show="!display">Add an Activity</button> 
+        <button class="add-button" v-on:click='display=false' v-show="display">Hide Add an Activity</button> 
+    <div v-if="display">
+        <AddActivity v-bind:isbn="isbn"/>
+    </div> 
+    </div> 
+  
   <ViewActivity v-bind:isbn="isbn"/>
+
 </section>
 </template>
 
@@ -16,6 +24,7 @@ export default {
         data(){
             return {
                 isbn: '',
+                display: false,
             }
         },    
     components:{
