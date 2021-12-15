@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center container">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="title-page h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -41,7 +41,9 @@
       <button class="btn btn-primary" type="submit">Sign in</button>
     </form>
     <div class="img">
-        <img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" />
+            <img data-v-c226fde6="" src="/img/reading-astro.203076f8.jpeg" class="about-img">
+
+        <!--img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" /-->
     </div>
   </div>
 </template>

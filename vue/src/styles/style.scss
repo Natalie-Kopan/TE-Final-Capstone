@@ -1,3 +1,4 @@
+
 html {
     background-color: rgb(49, 49, 49);
 }
@@ -36,6 +37,11 @@ html {
     font-size: 2rem; 
     padding: 20px;
 
+}
+.title-page{
+        font-size: calc(2.3rem + 0.6vw)!important;
+        margin-top: 1rem!important;
+        letter-spacing: 4px!important;
 }
 h1 {
     color: #92d5f2;
@@ -91,8 +97,8 @@ form label {
 }
 
 form{
-    border: 2px solid #FFCA3A ;
-    border-radius: 10px;
+    border: 10px solid #FFCA3A ;
+    border-radius: 30px;
     width: 450px;
     margin: 20px;
     align-self: center;
