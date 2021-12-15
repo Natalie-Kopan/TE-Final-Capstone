@@ -40,6 +40,9 @@
       </div>
       <button class="btn btn-primary" type="submit">Sign in</button>
     </form>
+    <div class="img">
+        <img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" />
+    </div>
   </div>
 </template>
 
@@ -85,3 +88,24 @@ export default {
   },
 };
 </script>
+
+<style>
+
+.form-signin {
+  grid-area: create;
+}
+
+.img {
+  grid-area: img;
+}
+
+#login {
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 50px;
+  grid-template-areas:
+  "create img"
+}
+
+</style>
