@@ -2,13 +2,13 @@
   <section id = "app">
     <div v-for="familyMember of allFamily" v-bind:key="familyMember.username">
         <div class="card-contents">
-          <h2 class="title-page" id="center-title">{{familyMember.username}}</h2>
-          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:2px; margin-top:auto">
+          <h2 class="title-page" id="center-title" style="color:#8ac926">{{familyMember.username}}</h2>
+          <button class="library-btn" type ="submit" style="background-color: #313131">
             <router-link v-bind:to="{name: 'LibraryByUserIdView', params: {userId: familyMember.userId}}" style="color:white">
               View User Library/Activity 
             </router-link>
           </button>
-          <button class="btn btn-primary" type ="submit" style="width:100%; bottom:2px; margin-top:10px">
+          <button class="library-btn" type ="submit" style="background-color: #313131; margin-top:40px">
             <router-link v-bind:to="{name: 'ViewUserActivity', params: {userId: familyMember.userId}}" style="color:white">
               View All User Activity
             </router-link>
