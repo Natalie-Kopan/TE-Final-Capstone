@@ -52,6 +52,6 @@ data() {
     height: 50px;
 }
 .prize-column{
-    grid-area: prize-column;
+    display: grid;
 }
 </style>
