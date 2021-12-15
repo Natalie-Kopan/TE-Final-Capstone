@@ -19,38 +19,40 @@
         class="nav-item"
         v-bind:to="{ name: 'Login' }"
         v-if="!$store.state.token">
-        Login
+        <i class="fas fa-user-astronaut"></i> Login
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'UserDashboard'}"
         v-if="$store.state.token">
-        User Dashboard
+        <i class="fas fa-user-astronaut"></i> Dashboard
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'PrizeDashboard' }"
         v-if="$store.state.token">
-       Prizes Dashboard
+       <i class="fas fa-rocket"></i> Prizes
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'UserLibrary' }"
         v-if="$store.state.token">
-        User Library
+        <i class="fas fa-meteor"></i> Library
       </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'FamilyDisplay' }"
         v-if="$store.state.user.role == 'parent'">
-        View Family
+        <i class="far fa-hand-spock"></i> My Family
       </router-link>
+      
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'Logout' }"
         v-if="$store.state.token">
-        Logout
+        <i class="fas fa-door-open"></i> Logout
       </router-link>
+      
       <!-- <router-link
         class="nav-item"
         v-bind:to="{ name: 'ViewPrizes' }"
