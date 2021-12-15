@@ -1,8 +1,8 @@
 <template>
   <section id = "app">
-    <div v-for="familyMember of allFamily" v-bind:key="familyMember.username" class="card">
+    <div v-for="familyMember of allFamily" v-bind:key="familyMember.username">
         <div class="card-contents">
-          <h2>{{familyMember.username}}</h2>
+          <h2 class="title-page" id="center-title">{{familyMember.username}}</h2>
           <button class="btn btn-primary" type ="submit" style="width:100%; bottom:2px; margin-top:auto">
             <router-link v-bind:to="{name: 'LibraryByUserIdView', params: {userId: familyMember.userId}}" style="color:white">
               View User Library/Activity 

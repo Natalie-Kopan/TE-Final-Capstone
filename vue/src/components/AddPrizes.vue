@@ -1,8 +1,8 @@
 <template>
   <section>
         <div>
-            <form v-on:submit.prevent="addedPrize" class="prizesform" >
-                <h1 class="h3 mb-3 font-weight-normal" id="center"> Add A Prize </h1>
+            <form v-on:submit.prevent="addedPrize" class="title-page" >
+                <h1 class="h3 mb-3 font-weight-normal" id="center-title"> Add A Prize </h1>
                 <div v-if="errorMessage" class="alert alert-danger">
                     {{errorMessage}}
                 </div>
@@ -123,8 +123,8 @@ export default {
 
 <style>
 .prizesform{
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 10px solid #1982c4;
+    border-radius: 30px;
     width: 450px;
     margin: 20px;
 }
@@ -133,5 +133,15 @@ form div > div {
 }
 #center{
     text-align: center;
+}
+#center-title{
+    text-align: center;
+    font-size: 80px;
+    letter-spacing: .2ch;
+    /* margin: 30px; */
+    /* color: white; */
+    /* border: 5px solid #92d5f2; */
+    /* border-style: outset; */
+    padding: 20px;
 }
 </style>
