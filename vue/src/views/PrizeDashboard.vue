@@ -1,15 +1,16 @@
 <template>
 <main>
         <!--AddPrizes /-->
-    <div style="display:flex; flex-direction:column; align-items:center">
-        <button v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'">Add a Prize</button> 
-        <button v-on:click='display=false' v-show="display" v-if="$store.state.user.role == 'parent'">Hide Add a Prize</button> 
-        <div v-if="display">
+    <div class="prize-container">
+        <button v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'" class="prize-column-one">Add a Prize</button> 
+        <button v-on:click='display=false' v-show="display" v-if="$store.state.user.role == 'parent'" class="prize-column-one">Hide Add a Prize</button> 
+        <div v-if="display" class="prize-column">
             <AddPrizes/>
         <!--router-link v-bind:to="{ name: 'AddPrizes' }" /-->
     </div>
+    <div class="prize-column-two">
        <FamilyPrizes />
-
+    </div>
     </div>
 </main>
 </template>
@@ -32,5 +33,25 @@ data() {
 </script>
 
 <style>
+.prize-container{
+    margin: 1rem;
+    display: grid;
+    align-content: center;
+    grid-gap: 10px;
+    grid-template-columns: 12fr 5fr;
+    grid-template-areas:
+      "view-prize add-prize"
+      "view-prize prize-column";
+}
+.prize-column-one{
+    grid-area: add-prize;
 
+}
+.prize-column-two{
+    grid-area: view-prize;
+    height: 50px;
+}
+.prize-column{
+    grid-area: prize-column;
+}
 </style>

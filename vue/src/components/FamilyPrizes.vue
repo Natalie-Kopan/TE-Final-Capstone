@@ -1,19 +1,20 @@
 <template>
-    <section id = "app" class="library-container">
-      <h1>Here are your available prizes!</h1>
+    <section class="view-prize-container">
+      <h1 class="prize-title">Here are your available prizes!</h1>
+                    <div class="prize-card">
+
         <div v-for="prize of allPrizes" v-bind:key="prize.prizeId">
-            <div class = "card">
-                <div class="card-contents">
+                <div class="card card-contents">
                     <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
-                      <p>Start Date: {{prize.startDate | formatDate}}</p>
-                      <p>End Date: {{prize.endDate | formatDate}}</p>
+                      <p style="padding:10px">Start Date: {{prize.startDate | formatDate}}</p>
+                      <p style="padding:10px">End Date: {{prize.endDate | formatDate}}</p>
                         <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
                            <router-link v-bind:to="{name: 'PrizeDetails', params: {id: prize.prizeId}}" style="color:white">
                                 View Prize Details
                             </router-link>
                         </button>
             </div>
-        </div>
+            </div>
         </div>
   </section>
 </template>
@@ -51,5 +52,22 @@ export default {
 </script>
 
 <style>
+.view-prize-container{
+  display: grid;
+  grid-template-areas:
+      "header"
+      "card";
+}
+.prize-title{
+  text-align: center;
+    grid-area: header;
 
+}
+.prize-card{
+  grid-area: card;
+  display: flex;
+  flex-wrap: wrap;
+  position: inherit;
+  justify-content: space-evenly;
+  }
 </style>
