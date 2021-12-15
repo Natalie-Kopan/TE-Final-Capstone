@@ -7,7 +7,6 @@
           <AddBook />
         </div>
         </div>
-      <h1 id="center">User's Library</h1>
   <Library />
 </section>
 </template>
@@ -30,9 +29,6 @@ export default {
 </script>
 
 <style>
-.library{
-  justify-content: space-evenly;
 
-}
 
 </style>

@@ -1,18 +1,18 @@
 <template>
     <section class="view-prize-container">
-      <h1 class="prize-title">Here are your available prizes!</h1>
+   
+      <h1 class="prize-title" id="center"><i class="fas fa-rocket"></i>  Available prizes  <i class="fas fa-rocket"></i></h1>
+     
                     <div class="prize-card">
 
         <div v-for="prize of allPrizes" v-bind:key="prize.prizeId">
-                <div class="card card-contents">
-                    <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
-                      <p style="padding:10px">Start Date: {{prize.startDate | formatDate}}</p>
-                      <p style="padding:10px">End Date: {{prize.endDate | formatDate}}</p>
-                        <button class="btn btn-primary" type ="submit" style="width:100%; bottom:0; margin-top:auto">
-                           <router-link v-bind:to="{name: 'PrizeDetails', params: {id: prize.prizeId}}" style="color:white">
+                <div class="library-card">
+                    <h2 id="center-2" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
+                      <p id="center-4" >Start Date: {{prize.startDate | formatDate}}</p>
+                      <p id="center-4" >End Date: {{prize.endDate | formatDate}}</p>
+                           <router-link class="library-btn" v-bind:to="{name: 'PrizeDetails', params: {id: prize.prizeId}}">
                                 View Prize Details
                             </router-link>
-                        </button>
             </div>
             </div>
         </div>

@@ -1,4 +1,6 @@
-
+html {
+    background-color: rgb(49, 49, 49);
+}
 #app {
     background-color: rgb(49, 49, 49);
     color: rgb(199, 199, 199);
@@ -35,13 +37,11 @@
     padding: 20px;
 
 }
-
-section {
-    grid-area: main;
+h1 {
+    color: #92d5f2;
+    font-size: 50px;
 }
-
 button {
-    background: #8AC926;
     padding-right: 1rem;
     padding-left: 1rem;
 }
@@ -110,6 +110,69 @@ form{
     margin: 20px;
     border-radius: 10px;
     border: solid 5px #8AC926
-    
 }
+.library-btn{
+    border: 8px solid #92d5f2;
+    border-radius: 30px;
+    padding: 7px;
+    color: #d65458;
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+.bookcover{
+    padding: 10px;
+}
+.library-card{
+  border-radius: 30px;
+  border: 7px solid #ef2e35;
+  border-style: outset;
+  margin: 5px;
+  padding: 20px;
+  text-align: center;
+}
+.library{
+    justify-content: space-evenly;
+}
+
+#center {
+    font-size: 80px;
+    letter-spacing: .2ch;
+    margin: 30px;
+    color: white;
+    border: 5px solid #92d5f2;
+    border-style: outset;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#center-2 {
+    font-size: 50px;
+    letter-spacing: .2ch;
+    text-align: center;
+    margin: 30px;
+    color: white;
+    text-decoration: underline;
+}
+
+#center-3 {
+    font-size: 100px;
+    letter-spacing: .2ch;
+    text-align: center;
+    border: 10px #8ac926;
+    border-style: outset;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px;
+    color: white;
+}
+
+#center-4 {
+    font-size: 30px;
+    letter-spacing: .2ch;
+    text-align: center;
+    color: white;
+
+}
+
+
 
