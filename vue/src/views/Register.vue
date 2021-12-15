@@ -58,10 +58,10 @@
       <button class="btn btn-primary" type="submit">
         Create Account
       </button>
-      <div class="container">
-        <img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" />
-      </div>
     </form>
+    <div class="img">
+        <img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" />
+    </div>
   </div>
 
   
@@ -118,13 +118,22 @@ export default {
 </script>
 
 <style>
-img {
-  align-items: center;
-  padding: 10px;
-  display: grid;
-}
 
 .form-group {
-  display: flexbox;
+  grid-area: create;
 }
+
+.img {
+  grid-area: img;
+}
+
+#register {
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 50px;
+  grid-template-areas:
+  "create img"
+}
+
 </style>
