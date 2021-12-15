@@ -1,13 +1,16 @@
 <template>
 <main>
-    <FamilyPrizes />
-    <AddPrizes />
-    <!-- <button v-on:click='false' v-if="$store.state.user.role == 'parent' ">
-        <div v-if="!click">
-        <router-link v-bind:to="{ name: 'AddPrizes' }" />
-        </div>
-        Add A Prize
-    </button> -->
+        <!--AddPrizes /-->
+    <div style="display:flex; flex-direction:column; align-items:center">
+        <button v-on:click='display=true' v-show="!display" v-if="$store.state.user.role == 'parent'">Add a Prize</button> 
+        <button v-on:click='display=false' v-show="display" v-if="$store.state.user.role == 'parent'">Hide Add a Prize</button> 
+        <div v-if="display">
+            <AddPrizes/>
+        <!--router-link v-bind:to="{ name: 'AddPrizes' }" /-->
+    </div>
+       <FamilyPrizes />
+
+    </div>
 </main>
 </template>
 
@@ -18,11 +21,11 @@ import AddPrizes from '../components/AddPrizes.vue'
 export default {
 components: {
     FamilyPrizes,
-    AddPrizes
+   AddPrizes
     },
 data() {
     return {
-        click: true,
+        display: false,
     }
     },
 }

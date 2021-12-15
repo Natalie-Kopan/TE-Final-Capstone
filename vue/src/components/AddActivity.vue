@@ -10,7 +10,7 @@
     <div style="display:inline-block">
               <div v-if="timerEnabled"></div>
       <div v-if="!userTimer" style="margin-top:20px; margin-left:40px; padding:5px">
-        <button class="btn btn-primary" v-on:click.prevent="userTimer=true">
+        <button class="btn btn-primary" v-on:click.prevent="userTimer=true" >
           Use Timer
         </button>
       </div>
@@ -19,7 +19,7 @@
         <button
           class="btn btn-primary"
           v-on:click.prevent="userTimer = false"
-          style="width: 100%"
+          style="width:100%"
         >
           Hide Timer
         </button>
@@ -89,7 +89,7 @@ import AuthService from "../services/AuthService";
 
 export default {
   props: {
-    isbn: Number,
+    isbn: String,
   },
   name: "AddActivity",
   data() {
