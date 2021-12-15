@@ -38,10 +38,10 @@ data() {
     display: grid;
     align-content: center;
     grid-gap: 10px;
-    grid-template-columns: 12fr 5fr;
     grid-template-areas:
-      "view-prize add-prize"
-      "view-prize prize-column";
+      "add-prize"
+      "prize-column"
+      "view-prize";
 }
 .prize-column-one{
     grid-area: add-prize;
