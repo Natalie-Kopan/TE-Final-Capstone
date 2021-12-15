@@ -55,6 +55,9 @@ export default new Vuex.Store({
     ACTIVITY_ADDED(state, activityLog){
       state.activityLog.push(activityLog);
     },
+    BOOK_ADDED(state, book) {
+      state.books.push(book);
+    },
     PRIZES_LOADED(state, prizes) {
       state.prizes = prizes;
     },

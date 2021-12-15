@@ -75,6 +75,7 @@ export default {
             AuthService.addNewBook(this.addBook)
                 .then(response => {
                     const newItem = response.data;
+                    this.$store.commit('BOOK_ADDED', this.addBook);
                     this.books.push(newItem);
                     this.addBook={
                         title: '',
@@ -82,9 +83,9 @@ export default {
                         isbn: '',
                         };
                     this.errorMessage = '';
-                    if (response.status == 201) {
-                        this.$router.push({ name: 'UserLibrary' });
-                    }
+                    //if (response.status == 201) {
+                       // this.$router.push({ name: 'UserLibrary' });
+                    //}
                 })
                 .catch(response => {
                     console.error("Could not add book", response);
