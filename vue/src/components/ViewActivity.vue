@@ -1,12 +1,12 @@
 <template>
   <section class="container" id = "app">
     <h1> Your Previous Activity</h1>
-    <div class="card-deck">
-      <div class="activity-card" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
-      <div class="card-body">
-        <h5 class="card-title">You Read for {{activityLog.minutesRead}} minutes on {{activityLog.dateOfActivity | formatDate}} </h5>
-        <p class="card-text">Here's some things you noted during this read: {{activityLog.notes}}</p>
-        <p class="card-text"><small class="text-muted">{{activityLog.dateOfActivity | formatDate}}</small></p>
+    <div>
+      <div class="circle" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
+      <div class="text">
+        <h5 >You Read for {{activityLog.minutesRead}} minutes on {{activityLog.dateOfActivity | formatDate}} </h5>
+        <p>Here's some things you noted: {{activityLog.notes}}</p>
+        <p><small class="text-muted">{{activityLog.dateOfActivity | formatDate}}</small></p>
     </div>
     </div>
     </div>
@@ -50,7 +50,24 @@ export default {
 }
 </script>
 
-<style>
-
-
+<style scoped>
+.circle {
+    background-color: #FFCA3A;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    margin:5px;
+    overflow:hidden;
+    padding:25px;
+    position:relative;
+}
+.text{
+  transform:translate(-50%,-50%);
+  position:relative;
+  top:50%;
+  left:50%;
+  font-size: 60%;
+}
 </style>
