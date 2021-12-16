@@ -13,7 +13,7 @@ export default {
     name: 'ActivityLogByUserId',
     data(){
         return {
-            isbn: '',
+            isbn: String,
             userId: '',
         }
     },    
