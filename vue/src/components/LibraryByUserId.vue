@@ -24,7 +24,7 @@
         <img class= "bookcover" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="book.title" />
         <!--h3 class="book-author">{{ book.author }}</h3-->
         <!--<button class="library-button" type ="submit" style="width:100%; bottom:0; margin-top:auto">-->
-          <router-link class="library-btn" v-bind:to="{name: 'ActivityLog', params: {isbn: book.isbn}}">
+          <router-link class="library-btn" v-bind:to="{name: 'ActivityLogByUserId', params: {isbn: book.isbn, userId: userId}}">
               View/Add Activity
           </router-link>
        <!--</button>-->
