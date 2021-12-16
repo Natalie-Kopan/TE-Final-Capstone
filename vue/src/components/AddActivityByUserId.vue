@@ -48,7 +48,7 @@ import AuthService from '../services/AuthService'
 
 export default {
     props: {
-        isbn: Number,
+        isbn: String,
         userId: Number
     },
     name: 'AddActivityByUserId',

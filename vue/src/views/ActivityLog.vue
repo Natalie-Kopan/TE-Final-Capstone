@@ -32,7 +32,7 @@ export default {
         AddActivity
     },
     created() {
-        this.isbn = +this.$route.params.isbn
+        this.isbn = this.$route.params.isbn
     }
 }
 </script>

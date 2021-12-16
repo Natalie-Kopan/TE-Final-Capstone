@@ -111,6 +111,7 @@ export default {
 
 .library-btn {
     text-align: center;
+    background: #313131;
 }
 
 

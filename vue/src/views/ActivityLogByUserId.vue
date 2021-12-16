@@ -22,7 +22,7 @@ export default {
         ViewActivityByUserId,
     },
     created() {
-        this.isbn = +this.$route.params.isbn
+        this.isbn = this.$route.params.isbn
         this.userId = +this.$route.params.userId
     }
 }
