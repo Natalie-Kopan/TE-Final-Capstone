@@ -10,14 +10,14 @@
     <div style="display:inline-block">
               <div v-if="timerEnabled"></div>
       <div v-if="!userTimer" style="margin-top:20px; margin-left:40px; padding:5px">
-        <button class="btn btn-primary" v-on:click.prevent="userTimer=true" >
+        <button class="btn btn-primary use-timer-button" v-on:click.prevent="userTimer=true" >
           Use Timer
         </button>
       </div>
 
-      <div id="center" class="card" v-if="userTimer">
+      <div v-if="userTimer" style="margin-top:20px; margin-left:40px; padding:5px">
         <button
-          class="btn btn-primary"
+          class="btn btn-primary use-timer-button"
           v-on:click.prevent="userTimer = false"
           style="width:100%"
         >
@@ -28,12 +28,12 @@
 
       <form style="border:0" v-on:submit.prevent="addingActivity">
         <div v-if="userTimer">
+          <div>
           <p>
             {{ minute > 9 ? minute : "0" + minute }}:{{
               second > 9 ? second : "0" + second
             }}
           </p>
-          <div>
             <button v-on:click.prevent="play, timerEnabled=true">Start Timer</button>
             <button v-on:click.prevent="pause, timerEnabled=false">Pause Timer</button>
           </div>
