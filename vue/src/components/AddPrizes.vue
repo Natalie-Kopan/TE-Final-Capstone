@@ -1,7 +1,7 @@
 <template>
   <section>
         <div>
-            <form v-on:submit.prevent="addedPrize" class="prizesform" >
+            <form v-on:submit="addedPrize" class="prizesform" >
                 <h1 class="h3 mb-3 font-weight-normal" id="center"> Add A Prize </h1>
                 <div v-if="errorMessage" class="alert alert-danger">
                     {{errorMessage}}

@@ -48,7 +48,7 @@ import AuthService from '../services/AuthService'
 
 export default {
     props: {
-        isbn: Number,
+        isbn: String,
         userId: Number
     },
     name: 'AddActivityByUserId',
@@ -71,6 +71,7 @@ export default {
             AuthService.addActivityByUserId(this.addedActivity, this.userId)
                 .then(response => {
                     const newItem = response.data;
+                    this.$store.commit('ACTIVITY_ADDED', this.addedActivity);
                     this.activityLog.push(newItem);
                     this.addActivity={
                         minutesRead: '',

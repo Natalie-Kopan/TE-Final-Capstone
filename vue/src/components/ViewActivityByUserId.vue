@@ -26,7 +26,7 @@ export default {
     }
   },
   props: {
-      isbn: Number,
+      isbn: String,
       userId: Number,
   },
   computed: {
