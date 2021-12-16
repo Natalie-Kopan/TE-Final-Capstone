@@ -12,7 +12,7 @@
         src="../../img/istockphoto-1294218659-170667a.jpg"
         alt="parent reading to kids"
       /> -->
-      <div class="col-sm">>
+      <div class="col-sm">
         <img class="about-img" src="../../img/reading-astro.jpeg" />
       </div>
       <div class="circle col-sm">
