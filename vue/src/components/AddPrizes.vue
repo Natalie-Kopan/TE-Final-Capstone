@@ -24,11 +24,11 @@
                 placeholder="Enter a Prize descriptiom">
             </div>
             <div class="form-part">
-                <label for="milestone" class="form-label">Milestone</label>
+                <label for="milestone" class="form-label">Reading Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
                 v-model.trim.number="addPrize.mileStone"
                 required 
-                placeholder="Enter a Prize milestone">
+                placeholder="Enter a Reading milestone">
             </div>
             <div class="form-part">
                 <label for="max_prize" class="form-label">Max Prize</label>

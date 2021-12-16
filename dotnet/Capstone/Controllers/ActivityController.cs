@@ -47,7 +47,7 @@ namespace Capstone.Controllers
 
             return Ok(logs);
         }
-
+            
         [HttpPost("{isbn}")]
         [Authorize]
         public ActionResult AddActivityToBook(ActivityLog activity, string isbn)

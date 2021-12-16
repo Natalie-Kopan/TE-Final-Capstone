@@ -1,7 +1,7 @@
 <template>
   <div class="home container">
     <div>
-      <h1 id="center-3"> Welcome {{this.user.username}}   <i class="fas fa-user-astronaut"></i></h1>
+      <h1 id="center-3"><i class="fas fa-user-astronaut"></i> Welcome {{this.user.username}} <i class="fas fa-user-astronaut"></i></h1>
       <div>
         <Library  />
         <!--<ViewActivityByUserId v-bind:userId="userId"/>-->
