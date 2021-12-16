@@ -79,8 +79,18 @@ CREATE TABLE user_prizes (
 
 -- Populate default data for testing: user and admin with password of 'password'
 -- These values should not be kept when going to Production
-INSERT INTO family (family_name) VALUES ('test');
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('child','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','child', 1);
-INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('parent','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','parent', 1);
+INSERT INTO family (family_name) VALUES ('Jones');
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('matt','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','parent', 1);
+INSERT INTO users (username, password_hash, salt, user_role, family_id) VALUES ('kevin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','child', 1);
+INSERT INTO books (user_id, isbn, author, title) VALUES
+	(1, '1984877925', 'Will Smith', 'Will'),
+	(2, '1442496738', 'Doreen Cronin', 'Click, clack, ho! ho! ho!'),
+	(2, '1646118367', 'Bruce Betts', 'My First Book Of Planets');
+INSERT INTO prizes (family_id, description, prize_title, milestone, max_prize, start_date, end_date)
+	VALUES (1, 'Going out for ice cream!', 'Ice Cream', 120, 1, '2021-12-10', '2021-12-24');
+INSERT INTO reading_log
+	(user_id, minutes_read, book_format, date_of_activity, isbn, notes)
+VALUES
+	(2, 60, 'Paper', '2021-12-15', '1442496738', 'Read the first half'),
+	(2, 60, 'Paper', '2021-12-16', '1442496738', 'Read the second half')
 GO
-
