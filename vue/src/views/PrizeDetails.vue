@@ -41,11 +41,11 @@
                 placeholder="Enter a Prize descriptiom">
             </div>
             <div class="form-part">
-                <label for="milestone" class="form-label">Milestone</label>
+                <label for="milestone" class="form-label">Reading Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
                 v-model.trim.number="prize.milestone"
                 required 
-                placeholder="Enter a Prize milestone">
+                placeholder="Enter a Reading milestone">
             </div>
             <div class="form-part">
                 <label for="max_prize" class="form-label">Max Prize</label>
@@ -105,8 +105,10 @@ data() {
     created() {
         let prizeparamId = parseInt(this.$route.params.id);
         let vuexPrize = this.$store.state.prizes.find(prize => prize.prizeId === prizeparamId);
-        this.prize = {
-            description:vuexPrize.description,
+        if (vuexPrize) {
+
+            this.prize = {
+                description:vuexPrize.description,
             endDate:vuexPrize.endDate,
             familyId:vuexPrize.familyId,
             maxPrize:vuexPrize.maxPrize,
@@ -115,6 +117,8 @@ data() {
             prizeTitle:vuexPrize.prizeTitle,    
             startDate:vuexPrize.startDate
             }
+        }
+            console.log(vuexPrize, this.prize)
         },
     params:{
         id: Number
