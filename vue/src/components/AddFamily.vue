@@ -1,7 +1,7 @@
 <template>
   <div id="addFamilyMember" class="text-center container">
-    <form class="form-add-family-member" @submit.prevent="addFamilyMember">
-      <h1 class="h3 mb-3 font-weight-normal">Add Family Member</h1>
+    <form class="form-add-family-member" @submit="addFamilyMember">
+      <h1 class="h3 mb-3 font-weight-normal" id="center-title" >Add Family Member</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>

@@ -24,18 +24,18 @@
                 placeholder="Enter a Prize descriptiom">
             </div>
             <div class="form-part">
-                <label for="milestone" class="form-label">Milestone</label>
+                <label for="milestone" class="form-label">Reading Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
                 v-model.trim.number="addPrize.mileStone"
                 required 
-                placeholder="Enter a Prize milestone">
+                placeholder="Enter a Reading milestone">
             </div>
             <div class="form-part">
-                <label for="max_prize" class="form-label">Max Prize</label>
+                <label for="max_prize" class="form-label">Max Prize Recipient</label>
                 <input type="text" class="form-control" id="max_prize" 
                 v-model.trim.number="addPrize.maxPrize"
                 required 
-                placeholder="Enter a Max Prize">
+                placeholder="Enter the max number of Prize Recipient">
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>
@@ -107,6 +107,7 @@ export default {
                     };
                     if (response.status == 201) {
                         this.successMessage='Prize was successfully added.'
+
                     }
                     this.errorMessage = '';
                 })
@@ -123,8 +124,8 @@ export default {
 
 <style>
 .prizesform{
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 10px solid #1982c4;
+    border-radius: 30px;
     width: 450px;
     margin: 20px;
 }
@@ -133,5 +134,15 @@ form div > div {
 }
 #center{
     text-align: center;
+}
+#center-title{
+    text-align: center;
+    font-size: 80px;
+    letter-spacing: .2ch;
+    /* margin: 30px; */
+    /* color: white; */
+    /* border: 5px solid #92d5f2; */
+    /* border-style: outset; */
+    padding: 20px;
 }
 </style>

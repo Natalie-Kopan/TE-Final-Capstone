@@ -1,19 +1,19 @@
 <template>
 <div >
     <section id ="app" style="display:flex; justify-content:space-evenly">
-        <div class="card">
+        <div class="library-card">
         <div class="card-contents">
             <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
             <p>Prize Description: {{prize.description}}</p>
             <p>Prize Milestone: {{prize.milestone}}</p>
-            <p>Max Prize: {{prize.maxPrize}}</p>
+            <p>Max Prize Recipients: {{prize.maxPrize}}</p>
             <p>Start Date: {{prize.startDate | formatDate}}</p>
             <p>End Date: {{prize.endDate | formatDate}}</p>
     <!--This is a 'mark complete' button for prizes, it does nothing yet
                 <button class="btn btn-success"  v-on:click="edit=true" style="width:100%; color:white;">Mark Prize Complete</button> 
     -->            
-                <button class="btn btn-primary"  v-on:click="edit=true" style="width:100%">Edit Prize</button> 
-                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-bottom:1rem; color:white">Delete Prize</button>
+                <button class="btn btn-primary"  v-on:click="edit=true" style="margin-bottom:10px; width:100%">Edit Prize</button> 
+                <button class="btn btn-danger" type ="submit" v-on:click.prevent="deletedPrize()" style="width:100%; bottom:0; margin-top:10px; margin-bottom:1rem; color:white">Delete Prize</button>
         </div>  
         </div>
             <div v-if="edit">
@@ -41,18 +41,18 @@
                 placeholder="Enter a Prize descriptiom">
             </div>
             <div class="form-part">
-                <label for="milestone" class="form-label">Milestone</label>
+                <label for="milestone" class="form-label">Reading Milestone</label>
                 <input type="text" class="form-control" id="milestone" 
-                v-model.trim.number="prize.mileStone"
+                v-model.trim.number="prize.milestone"
                 required 
-                placeholder="Enter a Prize milestone">
+                placeholder="Enter a Reading milestone">
             </div>
             <div class="form-part">
-                <label for="max_prize" class="form-label">Max Prize</label>
+                <label for="max_prize" class="form-label">Max Prize Recipients</label>
                 <input type="text" class="form-control" id="max_prize" 
                 v-model.trim.number="prize.maxPrize"
                 required 
-                placeholder="Enter a Max Prize">
+                placeholder="Enter the max number of Prize Recipients">
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>
@@ -105,8 +105,10 @@ data() {
     created() {
         let prizeparamId = parseInt(this.$route.params.id);
         let vuexPrize = this.$store.state.prizes.find(prize => prize.prizeId === prizeparamId);
-        this.prize = {
-            description:vuexPrize.description,
+        if (vuexPrize) {
+
+            this.prize = {
+                description:vuexPrize.description,
             endDate:vuexPrize.endDate,
             familyId:vuexPrize.familyId,
             maxPrize:vuexPrize.maxPrize,
@@ -115,6 +117,8 @@ data() {
             prizeTitle:vuexPrize.prizeTitle,    
             startDate:vuexPrize.startDate
             }
+        }
+            console.log(vuexPrize, this.prize)
         },
     params:{
         id: Number
@@ -126,7 +130,7 @@ data() {
                 AuthService.deletedPrize(this.prize.prizeId)
                 .then(() => {
                     this.$store.commit('DELETE_PRIZE', this.prize.prizeId);
-                    this.$router.push({name: 'ViewPrizes'});
+                    this.$router.push({name: 'PrizeDashboard'});
                 })
                 .catch(response => {
                     console.error("Could not delete prize", response);

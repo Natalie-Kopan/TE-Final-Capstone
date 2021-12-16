@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center container">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="title-page h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -60,7 +60,9 @@
       </button>
     </form>
     <div class="img">
-        <img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" />
+      <img data-v-c226fde6="" src="/img/reading-astro.203076f8.jpeg" class="about-img">
+
+        <!--img src="../../img/istockphoto-1284998990-170667a.jpg" alt="dad reading" /-->
     </div>
   </div>
 

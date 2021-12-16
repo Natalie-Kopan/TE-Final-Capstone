@@ -1,9 +1,9 @@
 <template>
 <section class="activityLog container">
-  <h1>Activity Dashboard</h1>
+  <h1 id="center"> <i class="fas fa-star"/> Activity Dashboard <i class="fas fa-star"/></h1>
     <div style="display:flex; flex-direction:column; align-items:center">
-        <button class="add-button" v-on:click='display=true' v-show="!display">Add an Activity</button> 
-        <button class="add-button" v-on:click='display=false' v-show="display">Hide Add an Activity</button> 
+        <button class="add-button library-btn" v-on:click='display=true' v-show="!display">Add an Activity</button> 
+        <button class="add-button library-btn" v-on:click='display=false' v-show="display">Hide Add an Activity</button> 
     <div v-if="display">
         <AddActivity v-bind:isbn="isbn"/>
     </div> 
@@ -32,7 +32,7 @@ export default {
         AddActivity
     },
     created() {
-        this.isbn = +this.$route.params.isbn
+        this.isbn = this.$route.params.isbn
     }
 }
 </script>
