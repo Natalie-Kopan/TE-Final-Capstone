@@ -6,7 +6,7 @@
         <h2> Minutes Read </h2>
         <label for="minutesRead" class="form-label">Mintues Read</label>
             <input type="text" class="form-control" id="minutesRead" 
-                v-model.trim="addedActivity.minutesRead"
+                v-model.trim.number="addedActivity.minutesRead"
                 required 
                 placeholder="Enter Minutes Read">
         </div>

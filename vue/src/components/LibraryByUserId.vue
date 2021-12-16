@@ -15,7 +15,7 @@
     </div>
   </section-->
     <section  id = "app">
-    <h1 id="center"><i class="fas fa-meteor"></i>  Your Library  <i class="fas fa-meteor"></i></h1>
+    <h1 id="center"><i class="fas fa-meteor" v-b></i>  {{getUserName}} Library  <i class="fas fa-meteor"></i></h1>
     <div class="library-container">
     <div v-for="book of allBooks" v-bind:key="book.isbn">
       <div class = "library-card">
@@ -47,6 +47,9 @@ export default {
       allBooks() {
           return this.$store.state.books;
       },
+      getUserName(){
+        return this.$store.state.familyMembers.find(f => f.userId === this.userId).username
+      }
    },
      created() {
           // Make a HTTP GET request and return a promise representing the operation

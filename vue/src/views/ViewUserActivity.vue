@@ -1,6 +1,6 @@
 <template>
   <section class="activity container" id = "app">
-    <h1> User Activity</h1>
+    <h1 id="center"> <i class="fas fa-star"/> {{getUserName}} Activity <i class="fas fa-star" /> </h1>
     <div v-for="activityLog of allActivityLog" v-bind:key="activityLog.logId" class="activity-card">
       <!--<img src="..." class="card-img-top" alt="...">-->
       <div class="card-body">
@@ -26,6 +26,9 @@ export default {
     allActivityLog() {
           return this.$store.state.activityLog;
       },
+      getUserName(){
+        return this.$store.state.familyMembers.find(f => f.userId === this.userId).username
+      }
     },
     created() {
       this.userId = +this.$route.params.userId

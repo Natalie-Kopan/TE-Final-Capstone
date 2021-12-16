@@ -1,6 +1,6 @@
 <template>
 <main class="container">
-    <h1>Activity Dashboard</h1>
+    <h1 id="center"> <i class="fas fa-star"/> Activity Dashboard <i class="fas fa-star"/> </h1>
   <AddActivityByUserId v-bind:isbn="isbn" v-bind:userId="userId"/>
   <ViewActivityByUserId v-bind:isbn="isbn" v-bind:userId="userId"/>
 </main>

@@ -8,7 +8,7 @@
         <!--router-link v-bind:to="{ name: 'AddPrizes' }" /-->
     </div>
         </div>
-    <h1 class="title-page" id="center-title">Current Family Users</h1>
+    <h1 class="title-page" id="center"> <i class="fas fa-hand-spock"/> My Family Members <i class="fas fa-hand-spock"/> </h1>
     <ViewFamily />
   </section>
 </template>

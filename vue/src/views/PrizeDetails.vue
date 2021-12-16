@@ -6,7 +6,7 @@
             <h2 id="center" class="h3 mb-3 font-weight-normal">{{prize.prizeTitle}}</h2>
             <p>Prize Description: {{prize.description}}</p>
             <p>Prize Milestone: {{prize.milestone}}</p>
-            <p>Max Prize: {{prize.maxPrize}}</p>
+            <p>Max Prize Recipients: {{prize.maxPrize}}</p>
             <p>Start Date: {{prize.startDate | formatDate}}</p>
             <p>End Date: {{prize.endDate | formatDate}}</p>
     <!--This is a 'mark complete' button for prizes, it does nothing yet
@@ -48,11 +48,11 @@
                 placeholder="Enter a Reading milestone">
             </div>
             <div class="form-part">
-                <label for="max_prize" class="form-label">Max Prize</label>
+                <label for="max_prize" class="form-label">Max Prize Recipients</label>
                 <input type="text" class="form-control" id="max_prize" 
                 v-model.trim.number="prize.maxPrize"
                 required 
-                placeholder="Enter a Max Prize">
+                placeholder="Enter the max number of Prize Recipients">
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>

@@ -31,11 +31,11 @@
                 placeholder="Enter a Reading milestone">
             </div>
             <div class="form-part">
-                <label for="max_prize" class="form-label">Max Prize</label>
+                <label for="max_prize" class="form-label">Max Prize Recipient</label>
                 <input type="text" class="form-control" id="max_prize" 
                 v-model.trim.number="addPrize.maxPrize"
                 required 
-                placeholder="Enter a Max Prize">
+                placeholder="Enter the max number of Prize Recipient">
             </div>
             <div class="form-part">
                 <label for="start_date" class="form-label">Start Date </label>

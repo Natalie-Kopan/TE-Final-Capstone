@@ -1,9 +1,11 @@
 <template>
   <main>
+        <h1 id="center-2"> Your Previous Activity</h1>
+
   <section class="row" id = "app">
     <div class="col-sm">
     </div>
-    <div class="col-sm">
+    <!--div class="col-sm"-->
       <div>
         <div class="circle" v-for="activityLog of allActivityLog" v-bind:key="activityLog.userId">
           <div class="text">
@@ -13,10 +15,9 @@
           </div>
         </div>
       </div>
-    </div>
+    <!--/div-->
     <div class="col-sm">
     </div>
-    <h1> Your Previous Activity</h1>
   </section>
   </main>
 </template>
@@ -66,7 +67,7 @@ export default {
     border-radius: 50%;
     display: inline-block;
     text-align: center;
-    margin:5px;
+    margin:10px;
     overflow:hidden;
     padding:25px;
     position:relative;
