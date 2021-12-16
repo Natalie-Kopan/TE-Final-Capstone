@@ -6,7 +6,7 @@
         <h2> Minutes Read </h2>
         <label for="minutesRead" class="form-label">Mintues Read</label>
             <input type="text" class="form-control" id="minutesRead" 
-                v-model.trim.number="addedActivity.minutesRead"
+                v-model.trim="addedActivity.minutesRead"
                 required 
                 placeholder="Enter Minutes Read">
         </div>
@@ -48,7 +48,7 @@ import AuthService from '../services/AuthService'
 
 export default {
     props: {
-        isbn: Number,
+        isbn: String,
         userId: Number
     },
     name: 'AddActivityByUserId',

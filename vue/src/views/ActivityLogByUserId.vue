@@ -13,7 +13,7 @@ export default {
     name: 'ActivityLogByUserId',
     data(){
         return {
-            isbn: '',
+            isbn: String,
             userId: '',
         }
     },    
@@ -22,7 +22,7 @@ export default {
         ViewActivityByUserId,
     },
     created() {
-        this.isbn = +this.$route.params.isbn
+        this.isbn = "" +this.$route.params.isbn
         this.userId = +this.$route.params.userId
     }
 }

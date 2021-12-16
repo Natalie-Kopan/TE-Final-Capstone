@@ -1,7 +1,7 @@
 <template>
   <section>
         <div>
-            <form v-on:submit.prevent="addedPrize" class="title-page" >
+            <form v-on:submit="addedPrize" class="title-page" >
                 <h1 class="h3 mb-3 font-weight-normal" id="center-title"> Add A Prize </h1>
                 <div v-if="errorMessage" class="alert alert-danger">
                     {{errorMessage}}
@@ -107,6 +107,7 @@ export default {
                     };
                     if (response.status == 201) {
                         this.successMessage='Prize was successfully added.'
+
                     }
                     this.errorMessage = '';
                 })
